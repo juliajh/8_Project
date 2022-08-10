@@ -21,7 +21,7 @@ public abstract class IRequestPacket
 
 public class ResponsePacket
 {
-    [JsonProperty] public bool result { get; private set; }
+    [JsonProperty] public bool Result { get; private set; }
 }
 
 public class DataError
