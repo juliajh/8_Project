@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Test : MonoBehaviour
 {
@@ -32,8 +33,9 @@ public class Desk
     }
 }
 
-public class DesckManger : MonoBehaviour
+public class DeskManger : MonoBehaviour
 {
+    
     public List<Desk> List;
 
     private void Start()
@@ -49,3 +51,33 @@ public class DesckManger : MonoBehaviour
         });
     }
 }
+
+
+
+/*
+public class UI_Desk : MonoBehaviour
+{
+    public ItemList<UI_DeskItem>;
+
+    private void OnEanble()
+    {
+        var deskList = DeskManager.Instance.List;
+
+        for(int i = 0; i < deskList.count; ++i)
+        {
+            ItemList.Init(deskList[i]);
+        }
+    }
+}
+
+public class UI_DeskItem : MonoBehaviour
+{
+    Image m_Image;
+    public void Init(Desk desk)
+    {
+        m_Image.sprite = desk.FrontImage;
+
+    }
+}
+
+*/
