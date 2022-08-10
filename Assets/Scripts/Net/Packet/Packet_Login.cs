@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RequestLoginPacket : IRequestPacket
 {
-    public RequestLoginPacket() : base("/login")
+    public RequestLoginPacket() : base("/Login")
     {
 
     }

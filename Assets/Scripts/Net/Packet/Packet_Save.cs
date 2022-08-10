@@ -8,7 +8,7 @@ public class RequestSavePacket : IRequestPacket
 {
     public string Map { get; private set; }
     
-    public RequestSavePacket(string map) : base("/save")
+    public RequestSavePacket(string map) : base("/Save")
     {
         this.Map = map;
     }
