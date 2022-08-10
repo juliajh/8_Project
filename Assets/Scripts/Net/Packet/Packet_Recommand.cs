@@ -14,6 +14,7 @@ public class RecommendResponseData
 {
     public string ImageUrl;
     public string Name;
+    public string Link;
 }
 
 public class RequestRecommendPacket : IRequestPacket

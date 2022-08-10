@@ -70,6 +70,7 @@ public class UI_Net : MonoBehaviour
                 var data = responseData[i];
                 Debug.Log(data.Name);
                 Debug.Log(data.ImageUrl);
+                Debug.Log(data.Link);
             }
         }
     }
