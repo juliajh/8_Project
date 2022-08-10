@@ -3,24 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class RecommendData
+public class RecommendRequestData
 {
     public int Index;
     public string FurnitureType;
     public string ColorType;
 }
 
+public class RecommendResponseData
+{
+    public string ImageUrl;
+    public string Name;
+}
 
 public class RequestRecommendPacket : IRequestPacket
 {
-    public RecommendData RecommendData { get; private set; }
+    public RecommendRequestData RecommendRequestData { get; private set; }
     
-    public RequestRecommendPacket(RecommendData recommendData) : base("/Recommend")
+    public RequestRecommendPacket(RecommendRequestData recommendRequestData) : base("/Recommend")
     {
-        this.RecommendData = recommendData;
+        this.RecommendRequestData = recommendRequestData;
     }
 }
 
 public class ResponseRecommendPacket : ResponsePacket
 {
+    public RecommendResponseData[] Data { get; private set; }
+
 }

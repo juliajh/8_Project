@@ -50,18 +50,27 @@ public class UI_Net : MonoBehaviour
         // 가구 아이디
         // 가구 색상
 
-        RecommendData recommendData = new RecommendData
+        RecommendRequestData recommendRequestData = new RecommendRequestData
         {
             Index = 0,
             FurnitureType = FurnitureType.Chair.ToString(),
             ColorType = ColorType.Blue.ToString()
         };
         
-        var response = await NetManager.Post<ResponseRecommendPacket>(new RequestRecommendPacket(recommendData));
+        var response = await NetManager.Post<ResponseRecommendPacket>(new RequestRecommendPacket(recommendRequestData));
 
         if (response.Result)
         {
-            UnityEngine.Debug.Log("저장 성공");
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+            
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Name);
+                Debug.Log(data.ImageUrl);
+            }
         }
     }
 }
