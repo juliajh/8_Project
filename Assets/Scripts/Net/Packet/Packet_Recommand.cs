@@ -12,8 +12,8 @@ public class RecommendRequestData
 
 public class RecommendResponseData
 {
-    public string ImageUrl;
-    public string Name;
+    public string ImageUrl; // 가구 이미지 주소
+    public string Name;     // 가구
 }
 
 public class RequestRecommendPacket : IRequestPacket
