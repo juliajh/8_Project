@@ -39,9 +39,25 @@ public class UI_Net : MonoBehaviour
         }
     }
 
-    public async UniTaskVoid OnClickRecommendButton()
+    public void OnClickRecommendButton()
     {
-        var response = await NetManager.Post<ResponseSavePacket>(new RequestSavePacket("{id: 234234}"));
+       Recommend();
+    }
+
+    public  async UniTaskVoid Recommend()
+    {
+        // 가구 타입
+        // 가구 아이디
+        // 가구 색상
+
+        RecommendData recommendData = new RecommendData
+        {
+            Index = 0,
+            FurnitureType = FurnitureType.Chair.ToString(),
+            ColorType = ColorType.Blue.ToString()
+        };
+        
+        var response = await NetManager.Post<ResponseRecommendPacket>(new RequestRecommendPacket(recommendData));
 
         if (response.Result)
         {
