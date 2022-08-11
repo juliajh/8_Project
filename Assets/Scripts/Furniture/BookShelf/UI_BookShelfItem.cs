@@ -26,5 +26,8 @@ public class UI_BookShelfItem : MonoBehaviour
     public void OnClickItem()
     {
         Debug.Log($"{m_BookShelf.Data.Index}");
+
+        FurnitureManager.Instance.Make(FurnitureType.BookShelf, m_BookShelf.Data.Index);
+
     }
 }

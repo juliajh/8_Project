@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Tile
   - Interior
+  - BackWall
+  - FrontWall
+  - DetectLayer
   layers:
   - Default
   - TransparentFX
@@ -13,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - DetectLayer
+  - Interior
   - 
   - 
   - 
@@ -45,4 +48,10 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 927287217
+    locked: 0
+  - name: 1
+    uniqueID: 3981440079
+    locked: 0
+  - name: 2
+    uniqueID: 2592196909
     locked: 0
