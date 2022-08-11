@@ -9,7 +9,5 @@ public enum ColorType
     Green, 
     White,
     Red,
-    LightBrown,
-    Brown,
-    DarkBrown
+    Brown
 }
