@@ -6,6 +6,11 @@ public class BookShelfObject : InteriorObject
 {
     private BookShelf m_BookShelf;
 
+    public override void SetIndex(int index)
+    {
+        Make(BookShelfManager.Instance.List[index]);
+    }
+
     public void Make(BookShelf bookShelf)
     {
         FurnitureType = FurnitureType.BookShelf;

@@ -20,15 +20,56 @@ public class FurnitureManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        Load();
+    }
+
 
     public void Make(FurnitureType furnitureType, int index)
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
 
+        obj.SetIndex(index);
+
         obj.transform.position = new Vector3(0, 0, 0);
 
         InteriorObjects.Add(obj);
     }
+
+    public void Make(FurnitureType furnitureType, int index, float x, float y, Direction direction)
+    {
+        InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
+        obj.SetIndex(index);
+
+        obj.transform.position = new Vector3(x, y, 0);
+
+        InteriorObjects.Add(obj);
+    }
+
+    public async UniTaskVoid Load()
+    {
+        var response = await NetManager.Post<ResponseLoginPacket>(new RequestLoginPacket());
+
+        if (response.Result)
+        {
+            UnityEngine.Debug.Log(response.Map);
+
+            var mapDatas = JsonConvert.DeserializeObject<List<MapData>>(response.Map);
+            if(mapDatas.Count > 0)
+            {
+                for(int i = 0; i < mapDatas.Count; ++i)
+                {
+                    var data = mapDatas[i];
+
+                    Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
+                }
+
+            }    
+
+        }
+    }
+
 
     public async UniTaskVoid Save()
     {
@@ -43,8 +84,8 @@ public class FurnitureManager : MonoBehaviour
 
             MapData data = new MapData()
             {
-                FurnitureType = FurnitureType.Bed,
-                Index = 1,
+                FurnitureType = o.FurnitureType,
+                Index = o.Index,
                 x = o.transform.position.x,
                 y = o.transform.position.y,
                 Direction = o.Direction

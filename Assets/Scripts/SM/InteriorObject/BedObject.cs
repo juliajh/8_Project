@@ -6,6 +6,8 @@ public class BedObject :InteriorObject
 {
     private Bed m_Bed;
  
+
+
     public void Make(Bed bed)
     {
         FurnitureType = FurnitureType.Bed;
@@ -17,5 +19,8 @@ public class BedObject :InteriorObject
         m_SpriteRenderer.sprite = m_Bed.Data.FrontImage;
     }
 
-
+    public override void SetIndex(int index)
+    {
+        Make(BedManager.Instance.List[index]);
+    }
 }

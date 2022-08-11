@@ -27,6 +27,8 @@ public abstract class InteriorObject : MonoBehaviour
 
     public Direction Direction = Direction.Front;
 
+    public abstract void SetIndex(int index);
+
     private void Awake()
     {
         m_Material = GetComponent<SpriteRenderer>().material;
