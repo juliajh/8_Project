@@ -47,13 +47,3 @@ def make_Json():
         for j in color_dict.keys():
             item_info(i,j)
     print('end of save')
-def renew():
-
-    schedule.every(6).hours.do(make_Json)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(100)
-
-if __name__ == "__main__":
-    renew()
