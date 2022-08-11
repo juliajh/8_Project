@@ -2,7 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteriorObject : MonoBehaviour
+public enum Direction
+{
+    Front,
+    Back,
+    Left,
+    Right,
+
+    Count,
+}
+
+public abstract class InteriorObject : MonoBehaviour
 {
     public SpriteRenderer triggerRenderer;
 
@@ -12,27 +22,14 @@ public class InteriorObject : MonoBehaviour
     public Material m_Material;
     public SpriteRenderer m_SpriteRenderer;
 
+    public Direction Direction = Direction.Front;
+
     private void Awake()
     {
         m_Material = GetComponent<SpriteRenderer>().material;
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-       /* if (collision.gameObject.tag == "Interior" && isSelected == true)
-        {
-            Debug.Log("False");
-            print(m_SpriteRenderer.sortingOrder);
-            triggerRenderer = collision.GetComponent<SpriteRenderer>();
-            if (m_SpriteRenderer.sortingOrder <= triggerRenderer.sortingOrder)
-            {
-                print(1);
-                m_SpriteRenderer.sortingOrder = (int)transform.position.y + triggerRenderer.sortingOrder;
-            }
-        }*/
-    }
 
     private void OnMouseDown()
     {
@@ -46,31 +43,34 @@ public class InteriorObject : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        //Debug.Log("Down");
-
         if (!isSelected) return;
 
-
-        // 게임 좌표료 변환
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        worldPosition.z = 0;
-
-
 
         worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.1, (float)4.1);
         worldPosition.y = Mathf.Clamp(worldPosition.y, (float)-1.3, (float)3);
+        worldPosition.z = 0;
+
+
         transform.position = worldPosition;
-        
     }
 
     private void OnMouseUp()
     {
-        //Debug.Log("Up");
-
         isSelected = false;
 
         m_Material.DisableKeyword("OUTBASE_ON");
-
     }
+
+
+    public void Rortate()
+    {
+        Direction = (Direction)((int)Direction + 1);
+
+        if(Direction == Direction.Count)
+        {
+            Direction = Direction.Front;
+        }
+    }
+  
 }
