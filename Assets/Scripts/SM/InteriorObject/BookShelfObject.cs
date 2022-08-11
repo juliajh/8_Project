@@ -8,7 +8,11 @@ public class BookShelfObject : InteriorObject
 
     public void Make(BookShelf bookShelf)
     {
+        FurnitureType = FurnitureType.BookShelf;
+
         m_BookShelf = bookShelf;
+
+        Index = m_BookShelf.Data.Index;
 
         m_SpriteRenderer.sprite = m_BookShelf.Data.FrontImage;
     }

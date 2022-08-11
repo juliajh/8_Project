@@ -14,6 +14,9 @@ public enum Direction
 
 public abstract class InteriorObject : MonoBehaviour
 {
+    public FurnitureType FurnitureType;
+    public int Index;
+
     public SpriteRenderer triggerRenderer;
 
     public bool isSelected = false;
