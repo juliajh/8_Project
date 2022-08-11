@@ -4,7 +4,12 @@ using UnityEngine;
 
 public enum FurnitureType 
 {
-    // 맘대로 바꿔쓰세요.
-    Desk,
-    Chair
+    Bed = 0,
+    BookShelf=1,
+    Chair=2,
+    Desk=3,
+    FlowerPot=4,
+    PhotoFrame=5,
+    Sofa=6,
+    Stand=7
 }
