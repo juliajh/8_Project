@@ -12,7 +12,7 @@ public class Test : MonoBehaviour
 
         Debug.Log(a.ColorType);
         Debug.Log(a.FrontImage);
-        Debug.Log(a.BackImage);
+        //Debug.Log(a.BackImage);
     }
 
     // Update is called once per frame

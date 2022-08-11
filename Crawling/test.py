@@ -1,30 +1,49 @@
-import time
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
-from bs4 import BeautifulSoup
 import requests
+import json
+import schedule
+import time
+import re
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_experimental_option("detach", True)
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-driver.maximize_window()
+item_dict = {'CHAIR': '의자', 'SOFA': '소파', 'BED': '이불', 'REFRIGERATOR':'냉장고'}
+color_dict = {'Yellow': '노란색', 'Blue': '파란색', 'Green':'초록색', 'White':'흰색', 'Red':'빨간색', 'Brown':'갈색'}
 
-driver.get('https://search.shopping.naver.com/search/all?query=의자')
-time.sleep(2)
+def item_info(item_name, color_type):
+    client_id = 'bdpWYU7e70Thq9gFsYAU'
+    client_secret = '9JU2hmkHTD'
 
-driver.find_element(By.CLASS_NAME, 'filter_color_128__24iKq').click()
-driver.find_element(By.CLASS_NAME, 'filter_color_256__2LMHp').click()
-time.sleep(2)
+    item_dict = {'CHAIR': '의자', 'SOFA': '소파', 'BED': '이불', 'REFRIGERATOR':'냉장고'}
+    color_dict = {'Yellow': '노란색', 'Blue': '파란색', 'Green':'초록색', 'White':'흰색', 'Red':'빨간색', 'Brown':'갈색'}
+    item_color = f"{item_dict[item_name]} {color_dict[color_type]}"
+    name = item_name +'_'+ color_type
 
-img_url = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[2]/div[2]/div[3]/div[1]/ul/div/div[1]/li/div/div[1]/div/a/img').get_attribute('src')
-price = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[2]/div[2]/div[3]/div[1]/ul/div/div[1]/li/div/div[2]/div[2]/strong/span/span').text
-product_url = driver.find_element(By.XPATH, '//*[@id="__next"]/div/div[2]/div[2]/div[3]/div[1]/ul/div/div[1]/li/div/div[2]/div[1]/a').get_attribute('href')
+    naver_open_api = 'https://openapi.naver.com/v1/search/shop.json?query=' + item_color
+    header_params = {"X-Naver-Client-Id":client_id, "X-Naver-Client-Secret":client_secret}
+    res = requests.get(naver_open_api, headers=header_params)
 
-print(img_url)
-print(price)
-print(product_url)
+    item_information = []
+    if res.status_code == 200:
 
+        data = res.json()
+        print(data['items'])
 
+        # for index, item in enumerate(data['items']):
+        #     item_tmp = {}
+        #     #item_tmp['Category'] = item_name
+        #     #item_tmp['Color'] = color_type
+        #     tmp = re.compile('[ㄱ-ㅎ]+').findall(item['title'])
+        #     #item_tmp['Title'] = tmp
+        #     #item_tmp['Link'] = item['link']
+        #     #item_tmp['Image'] = item['image']
+        #     #item_tmp['Price'] = item['lprice']
+        #     #item_tmp['Brand'] = item['brand']
+        #     #item_tmp['Price'] = item['lprice']
+        #     #item_information.append(item_tmp)
+        #     if index >= 3:
+        #         break
+
+    else:
+        print ("Error Code:", res.status_code)
+
+    #print(item_information)
+
+item_info('BED', 'Red')
