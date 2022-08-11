@@ -22,38 +22,28 @@ def item_info(item_name, color_type):
 
     item_information = []
     if res.status_code == 200:
+
         data = res.json()
-        for index, item in enumerate(data['items']):
-            item_tmp = {}
-            item_tmp['Category'] = item_name
-            item_tmp['Color'] = color_type
-            item_tmp['Title'] = re.sub(r'[0-9|<|>|b|\/]+', '', item['title'])
-            item_tmp['Link'] = item['link']
-            item_tmp['Image'] = item['image']
-            item_tmp['Price'] = item['lprice']
-            item_tmp['Brand'] = item['brand']
-            item_tmp['Price'] = item['lprice']
-            item_information.append(item_tmp)
-            if index >= 5:
-                break
+        print(data['items'])
+
+        # for index, item in enumerate(data['items']):
+        #     item_tmp = {}
+        #     #item_tmp['Category'] = item_name
+        #     #item_tmp['Color'] = color_type
+        #     tmp = re.compile('[ㄱ-ㅎ]+').findall(item['title'])
+        #     #item_tmp['Title'] = tmp
+        #     #item_tmp['Link'] = item['link']
+        #     #item_tmp['Image'] = item['image']
+        #     #item_tmp['Price'] = item['lprice']
+        #     #item_tmp['Brand'] = item['brand']
+        #     #item_tmp['Price'] = item['lprice']
+        #     #item_information.append(item_tmp)
+        #     if index >= 3:
+        #         break
+
     else:
         print ("Error Code:", res.status_code)
 
-    print(item_information)
-    with open('.\\data\\{}.json'.format(name), 'w', encoding='utf-8') as file:
-        json.dump(item_information, file, ensure_ascii=False, indent='\t')
-def make_Json():
-    for i in item_dict.keys():
-        for j in color_dict.keys():
-            item_info(i,j)
-    print('end of save')
-def renew():
+    #print(item_information)
 
-    schedule.every(6).hours.do(make_Json)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(100)
-
-if __name__ == "__main__":
-    renew()
+item_info('BED', 'Red')
