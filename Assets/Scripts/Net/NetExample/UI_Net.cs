@@ -31,7 +31,7 @@ public class UI_Net : MonoBehaviour
 
     public async UniTaskVoid Save()
     {
-        var response = await NetManager.Post<ResponseSavePacket>(new RequestSavePacket("{id: 234234}"));
+        var response = await NetManager.Post<ResponseSavePacket>(new RequestSavePacket("{id: 134234}"));
 
         if (response.Result)
         {
