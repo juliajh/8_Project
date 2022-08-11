@@ -9,19 +9,19 @@ public abstract class IRequestPacket
     [JsonIgnore]
     public string url { get; }
 
-    public string deviceId { get; private set; }
+    public string DeviceId { get; private set; }
     
     
     protected IRequestPacket(string url)
     {
         this.url = url;
-        this.deviceId = UnityEngine.SystemInfo.deviceUniqueIdentifier;
+        this.DeviceId = UnityEngine.SystemInfo.deviceUniqueIdentifier;
     }
 }
 
 public class ResponsePacket
 {
-    [JsonProperty] public bool result { get; private set; }
+    [JsonProperty] public bool Result { get; private set; }
 }
 
 public class DataError

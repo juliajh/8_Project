@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class RequestSavePacket : IRequestPacket
 {
-    public RequestSavePacket() : base("/save")
+    public string Map { get; private set; }
+    
+    public RequestSavePacket(string map) : base("/Save")
     {
+        this.Map = map;
     }
 }
 
