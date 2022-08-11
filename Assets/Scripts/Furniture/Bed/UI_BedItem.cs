@@ -26,5 +26,7 @@ public class UI_BedItem : MonoBehaviour
     public void OnClickItem()
     {
         Debug.Log($"{m_Bed.Data.Index}");
+
+        FurnitureManager.Instance.Make(FurnitureType.Bed, m_Bed.Data.Index);
     }
 }
