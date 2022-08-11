@@ -17,9 +17,16 @@ public class UI_Panel : MonoBehaviour
 
     private void OnClickPannelButton(FurnitureType furnitureType)
     {
-        m_PanelAnimator.Play("bottomPanelUp");
+
+        foreach(UI_Furniture furniture in Panels)
+        {
+            furniture.gameObject.SetActive(false);
+        }
+
+
         Panels[(int)furnitureType].gameObject.SetActive(true);
         Panels[(int)furnitureType].Refresh();
+        m_PanelAnimator.Play("bottomPanelUp");
 
     }
 

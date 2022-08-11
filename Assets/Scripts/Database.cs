@@ -25,27 +25,27 @@ public partial class TBL_SOFA : BGEntity
 		get => _name[Index];
 		set => _name[Index] = value;
 	}
-	public UnityEngine.Texture2D FrontImage => _FrontImage[Index];
-	public UnityEngine.Texture2D RightImage => _RightImage[Index];
-	public UnityEngine.Texture2D BackImage => _BackImage[Index];
-	public UnityEngine.Texture2D LeftImage => _LeftImage[Index];
 	public ColorType ColorType
 	{
 		get => (ColorType) _ColorType[Index];
 		set => _ColorType[Index] = value;
 	}
+	public UnityEngine.Sprite FrontImage => _FrontImage[Index];
+	public UnityEngine.Sprite RightImage => _RightImage[Index];
+	public UnityEngine.Sprite BottomImage => _BottomImage[Index];
+	public UnityEngine.Sprite LeftImage => _LeftImage[Index];
 	private static BansheeGz.BGDatabase.BGFieldEntityName _ufle12jhs77_name;
 	public static BansheeGz.BGDatabase.BGFieldEntityName _name => _ufle12jhs77_name ?? (_ufle12jhs77_name = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEntityName>(MetaDefault, new BGId(5507460022406674585UL, 6109536621842896567UL), () => _ufle12jhs77_name = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_FrontImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(4729068310613643976UL, 8525476769919126929UL), () => _ufle12jhs77_FrontImage = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_RightImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _RightImage => _ufle12jhs77_RightImage ?? (_ufle12jhs77_RightImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(5130777513348833057UL, 15139734218191168417UL), () => _ufle12jhs77_RightImage = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_BackImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _BackImage => _ufle12jhs77_BackImage ?? (_ufle12jhs77_BackImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(5637338392798807374UL, 13725834038674076084UL), () => _ufle12jhs77_BackImage = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_LeftImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _LeftImage => _ufle12jhs77_LeftImage ?? (_ufle12jhs77_LeftImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(5212706897377238143UL, 13816184785774334882UL), () => _ufle12jhs77_LeftImage = null));
 	private static BansheeGz.BGDatabase.BGFieldEnum _ufle12jhs77_ColorType;
 	public static BansheeGz.BGDatabase.BGFieldEnum _ColorType => _ufle12jhs77_ColorType ?? (_ufle12jhs77_ColorType = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEnum>(MetaDefault, new BGId(5737661778298655789UL, 91334704520282029UL), () => _ufle12jhs77_ColorType = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_FrontImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5398925878853855407UL, 13107495127626052026UL), () => _ufle12jhs77_FrontImage = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_RightImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _RightImage => _ufle12jhs77_RightImage ?? (_ufle12jhs77_RightImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(4737381264901370988UL, 12278017522003901859UL), () => _ufle12jhs77_RightImage = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_BottomImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _BottomImage => _ufle12jhs77_BottomImage ?? (_ufle12jhs77_BottomImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(4863820707875751196UL, 5461111490820717450UL), () => _ufle12jhs77_BottomImage = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_LeftImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _LeftImage => _ufle12jhs77_LeftImage ?? (_ufle12jhs77_LeftImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5576138691180531966UL, 16571534555718588830UL), () => _ufle12jhs77_LeftImage = null));
 	private static readonly TBL_SOFA.Factory _factory0_PFS = new TBL_SOFA.Factory();
 	private static readonly TBL_BED.Factory _factory1_PFS = new TBL_BED.Factory();
 	private static readonly TBL_CHAIR.Factory _factory2_PFS = new TBL_CHAIR.Factory();
@@ -261,13 +261,13 @@ public partial class TBL_STAND : BGEntity
 		get => (ColorType) _ColorType[Index];
 		set => _ColorType[Index] = value;
 	}
-	public UnityEngine.Texture2D FrontImage => _FrontImage[Index];
+	public UnityEngine.Sprite FrontImage => _FrontImage[Index];
 	private static BansheeGz.BGDatabase.BGFieldEntityName _ufle12jhs77_name;
 	public static BansheeGz.BGDatabase.BGFieldEntityName _name => _ufle12jhs77_name ?? (_ufle12jhs77_name = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEntityName>(MetaDefault, new BGId(5065691844626759308UL, 2719437684810685856UL), () => _ufle12jhs77_name = null));
 	private static BansheeGz.BGDatabase.BGFieldEnum _ufle12jhs77_ColorType;
 	public static BansheeGz.BGDatabase.BGFieldEnum _ColorType => _ufle12jhs77_ColorType ?? (_ufle12jhs77_ColorType = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEnum>(MetaDefault, new BGId(4623604759171456068UL, 16211250140699301540UL), () => _ufle12jhs77_ColorType = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_FrontImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(5339717489230159383UL, 10981018396119457667UL), () => _ufle12jhs77_FrontImage = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_FrontImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5237184440970635494UL, 4797762018031622538UL), () => _ufle12jhs77_FrontImage = null));
 	private static readonly TBL_SOFA.Factory _factory0_PFS = new TBL_SOFA.Factory();
 	private static readonly TBL_BED.Factory _factory1_PFS = new TBL_BED.Factory();
 	private static readonly TBL_CHAIR.Factory _factory2_PFS = new TBL_CHAIR.Factory();
@@ -394,11 +394,11 @@ public partial class TBL_FLOWERPOT : BGEntity
 		get => _name[Index];
 		set => _name[Index] = value;
 	}
-	public UnityEngine.Texture2D FrontImage => _FrontImage[Index];
+	public UnityEngine.Sprite FrontImage => _FrontImage[Index];
 	private static BansheeGz.BGDatabase.BGFieldEntityName _ufle12jhs77_name;
 	public static BansheeGz.BGDatabase.BGFieldEntityName _name => _ufle12jhs77_name ?? (_ufle12jhs77_name = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEntityName>(MetaDefault, new BGId(5041410854864211735UL, 10813666471851790986UL), () => _ufle12jhs77_name = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_FrontImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(4696193262843525261UL, 9659219277906622101UL), () => _ufle12jhs77_FrontImage = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_FrontImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5739542114586080356UL, 13300557023371103904UL), () => _ufle12jhs77_FrontImage = null));
 	private static readonly TBL_SOFA.Factory _factory0_PFS = new TBL_SOFA.Factory();
 	private static readonly TBL_BED.Factory _factory1_PFS = new TBL_BED.Factory();
 	private static readonly TBL_CHAIR.Factory _factory2_PFS = new TBL_CHAIR.Factory();
@@ -456,11 +456,11 @@ public partial class TBL_PHOTOFRAME : BGEntity
 		get => _name[Index];
 		set => _name[Index] = value;
 	}
-	public UnityEngine.Texture2D FrontImage => _FrontImage[Index];
+	public UnityEngine.Sprite FrontImage => _FrontImage[Index];
 	private static BansheeGz.BGDatabase.BGFieldEntityName _ufle12jhs77_name;
 	public static BansheeGz.BGDatabase.BGFieldEntityName _name => _ufle12jhs77_name ?? (_ufle12jhs77_name = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEntityName>(MetaDefault, new BGId(5473670791692288804UL, 11290559141127191700UL), () => _ufle12jhs77_name = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_FrontImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(5527627084749649108UL, 6983221282038723989UL), () => _ufle12jhs77_FrontImage = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_FrontImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5564057947300978356UL, 16430213800666331552UL), () => _ufle12jhs77_FrontImage = null));
 	private static readonly TBL_SOFA.Factory _factory0_PFS = new TBL_SOFA.Factory();
 	private static readonly TBL_BED.Factory _factory1_PFS = new TBL_BED.Factory();
 	private static readonly TBL_CHAIR.Factory _factory2_PFS = new TBL_CHAIR.Factory();
@@ -518,18 +518,18 @@ public partial class TBL_DESK : BGEntity
 		get => _name[Index];
 		set => _name[Index] = value;
 	}
-	public UnityEngine.Texture2D FrontImage => _FrontImage[Index];
 	public ColorType ColorType
 	{
 		get => (ColorType) _ColorType[Index];
 		set => _ColorType[Index] = value;
 	}
+	public UnityEngine.Sprite FrontImage => _FrontImage[Index];
 	private static BansheeGz.BGDatabase.BGFieldEntityName _ufle12jhs77_name;
 	public static BansheeGz.BGDatabase.BGFieldEntityName _name => _ufle12jhs77_name ?? (_ufle12jhs77_name = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEntityName>(MetaDefault, new BGId(5479762493859594800UL, 13565908832271032723UL), () => _ufle12jhs77_name = null));
-	private static BansheeGz.BGDatabase.BGFieldUnityTexture2d _ufle12jhs77_FrontImage;
-	public static BansheeGz.BGDatabase.BGFieldUnityTexture2d _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnityTexture2d>(MetaDefault, new BGId(4769171333427282806UL, 2506725174830199707UL), () => _ufle12jhs77_FrontImage = null));
 	private static BansheeGz.BGDatabase.BGFieldEnum _ufle12jhs77_ColorType;
 	public static BansheeGz.BGDatabase.BGFieldEnum _ColorType => _ufle12jhs77_ColorType ?? (_ufle12jhs77_ColorType = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEnum>(MetaDefault, new BGId(5616580997339418073UL, 12244329598197199797UL), () => _ufle12jhs77_ColorType = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_FrontImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5412293100072137544UL, 11960746287224655794UL), () => _ufle12jhs77_FrontImage = null));
 	private static readonly TBL_SOFA.Factory _factory0_PFS = new TBL_SOFA.Factory();
 	private static readonly TBL_BED.Factory _factory1_PFS = new TBL_BED.Factory();
 	private static readonly TBL_CHAIR.Factory _factory2_PFS = new TBL_CHAIR.Factory();
