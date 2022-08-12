@@ -30,6 +30,14 @@ public class RequestRecommendPacket : IRequestPacket
     }
 }
 
+public class RequestRecommendRandomPacket: IRequestPacket
+{
+    public RequestRecommendRandomPacket() : base("/RecommendRandom")
+    {
+    }
+}
+
+
 public class ResponseRecommendPacket : ResponsePacket
 {
     public RecommendResponseData[] Data { get; private set; }
