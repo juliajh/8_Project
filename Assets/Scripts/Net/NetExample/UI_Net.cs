@@ -79,4 +79,41 @@ public class UI_Net : MonoBehaviour
             }
         }
     }
+
+
+    public void OnClickRandomRecommendButton()
+    {
+        RandomRecommend();
+    }
+
+    public async UniTaskVoid RandomRecommend()
+    {
+        // 가구 타입
+        // 가구 아이디
+        // 가구 색상
+
+
+        var response = await NetManager.Post<ResponseRecommendPacket>(new RequestRecommendRandomPacket());
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Category);
+                Debug.Log(data.Color);
+                Debug.Log(data.Title);
+                Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Brand);
+                Debug.Log(data.Price);
+            }
+        }
+    }
+
+
 }
