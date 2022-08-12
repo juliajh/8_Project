@@ -28,5 +28,6 @@ public class UI_BedItem : MonoBehaviour
         Debug.Log($"{m_Bed.Data.Index}");
 
         FurnitureManager.Instance.Make(FurnitureType.Bed, m_Bed.Data.Index);
+        RecommendManager.Instance.Recommend(FurnitureType.Bed, m_Bed.Data.ColorType);
     }
 }

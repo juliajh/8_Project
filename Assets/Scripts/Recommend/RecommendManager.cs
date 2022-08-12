@@ -51,7 +51,7 @@ public class RecommendManager : MonoBehaviour
         }
     }
 
-    private async UniTaskVoid GetRecommend(FurnitureType furnitureType, ColorType colorType)
+    public async UniTaskVoid Recommend(FurnitureType furnitureType, ColorType colorType)
     {
         RecommendRequestData recommendRequestData = new RecommendRequestData
         {
