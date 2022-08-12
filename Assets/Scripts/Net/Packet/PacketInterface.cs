@@ -19,6 +19,7 @@ public abstract class IRequestPacket
 #if UNITY_WEBGL        
         if (!PlayerPrefs.HasKey("UniqueIdentifier"))
             PlayerPrefs.SetString("UniqueIdentifier", Guid.NewGuid().ToString());
+        
         this.DeviceId = PlayerPrefs.GetString("UniqueIdentifier");        
 #else
         this.DeviceId = UnityEngine.SystemInfo.deviceUniqueIdentifier;
