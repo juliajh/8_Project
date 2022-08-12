@@ -54,7 +54,6 @@ public class UI_Net : MonoBehaviour
 
         RecommendRequestData recommendRequestData = new RecommendRequestData
         {
-            Index = 0,
             FurnitureType = FurnitureType.Chair.ToString(),
             ColorType = ColorType.Blue.ToString()
         };
@@ -70,9 +69,13 @@ public class UI_Net : MonoBehaviour
             for (int i = 0; i < count; ++i)
             {
                 var data = responseData[i];
-                Debug.Log(data.Name);
-                Debug.Log(data.ImageUrl);
+                Debug.Log(data.Category);
+                Debug.Log(data.Color);
+                Debug.Log(data.Title);
                 Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Brand);
+                Debug.Log(data.Price);
             }
         }
     }

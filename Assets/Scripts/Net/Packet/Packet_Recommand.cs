@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class RecommendRequestData
 {
-    public int Index;
     public string FurnitureType;
     public string ColorType;
 }
 
 public class RecommendResponseData
 {
-    public string ImageUrl;
-    public string Name;
+    public string Category;
+    public string Color;
+    public string Title;
     public string Link;
+    public string Image;
+    public string Brand;
+    public string Price;
 }
 
 public class RequestRecommendPacket : IRequestPacket
