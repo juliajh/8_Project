@@ -15,7 +15,15 @@ public abstract class IRequestPacket
     protected IRequestPacket(string url)
     {
         this.url = url;
+        
+#if UNITY_WEBGL        
+        if (!PlayerPrefs.HasKey("UniqueIdentifier"))
+            PlayerPrefs.SetString("UniqueIdentifier", Guid.NewGuid().ToString());
+        this.DeviceId = PlayerPrefs.GetString("UniqueIdentifier");        
+#else
         this.DeviceId = UnityEngine.SystemInfo.deviceUniqueIdentifier;
+
+#endif
     }
 }
 
