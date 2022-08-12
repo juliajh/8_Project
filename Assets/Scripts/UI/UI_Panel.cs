@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UI_Panel : MonoBehaviour
 {
-    public Animation m_PanelAnimator;
     public List<UI_Furniture> Panels;
     public void OnClickBedButton() { OnClickPannelButton(FurnitureType.Bed); }
     public void OnClickBookShelfButton() { OnClickPannelButton(FurnitureType.BookShelf); }
@@ -26,7 +25,6 @@ public class UI_Panel : MonoBehaviour
 
         Panels[(int)furnitureType].gameObject.SetActive(true);
         Panels[(int)furnitureType].Refresh();
-        m_PanelAnimator.Play("bottomPanelUp");
 
     }
 
