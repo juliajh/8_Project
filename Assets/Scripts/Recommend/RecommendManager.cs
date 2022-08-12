@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RecommendManager : MonoBehaviour
 {
-    public RecommendManager Instance;
+    public static RecommendManager Instance;
     
     public List<RecommendResponseData> List = new List<RecommendResponseData>(32);
 
@@ -27,6 +27,9 @@ public class RecommendManager : MonoBehaviour
 
         if (response.Result)
         {
+            
+            List.Clear();
+            
             int count = response.Data.Length;
 
             var responseData = response.Data;
@@ -34,6 +37,7 @@ public class RecommendManager : MonoBehaviour
             for (int i = 0; i < count; ++i)
             {
                 var data = responseData[i];
+                List.Add(data);
                 Debug.Log(data.Category);
                 Debug.Log(data.Color);
                 Debug.Log(data.Title);
@@ -42,6 +46,8 @@ public class RecommendManager : MonoBehaviour
                 Debug.Log(data.Brand);
                 Debug.Log(data.Price);
             }
+            
+            UI_Recommend.Instance.Refresh();
         }
     }
 
@@ -57,6 +63,8 @@ public class RecommendManager : MonoBehaviour
 
         if (response.Result)
         {
+            List.Clear();
+
             int count = response.Data.Length;
 
             var responseData = response.Data;
@@ -64,6 +72,8 @@ public class RecommendManager : MonoBehaviour
             for (int i = 0; i < count; ++i)
             {
                 var data = responseData[i];
+                List.Add(data);
+
                 Debug.Log(data.Category);
                 Debug.Log(data.Color);
                 Debug.Log(data.Title);
@@ -72,6 +82,9 @@ public class RecommendManager : MonoBehaviour
                 Debug.Log(data.Brand);
                 Debug.Log(data.Price);
             }
+            
+            UI_Recommend.Instance.Refresh();
+
         }
     }
 }
