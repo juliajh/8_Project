@@ -21,4 +21,12 @@ public class BookShelfObject : InteriorObject
 
         m_SpriteRenderer.sprite = m_BookShelf.Data.FrontImage;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && isSelected == true) 
+        {
+            transform.Rotate(0,0,90);
+        }
+    }
 }
