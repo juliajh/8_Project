@@ -14,6 +14,8 @@ public enum Direction
 
 public abstract class InteriorObject : MonoBehaviour
 {
+    private Bed m_Bed;
+
     public FurnitureType FurnitureType;
     public int Index;
 
@@ -25,7 +27,7 @@ public abstract class InteriorObject : MonoBehaviour
     public Material m_Material;
     public SpriteRenderer m_SpriteRenderer;
 
-    public Direction Direction = Direction.Front;
+    public Direction direction = Direction.Front;
 
     public abstract void SetIndex(int index);
 
@@ -44,6 +46,9 @@ public abstract class InteriorObject : MonoBehaviour
 
         m_Material.EnableKeyword("OUTBASE_ON");
 
+        
+       
+
     }
 
     private void OnMouseDrag()
@@ -52,7 +57,7 @@ public abstract class InteriorObject : MonoBehaviour
 
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.1, (float)4.1);
+        worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.39, (float)4.39);
         worldPosition.y = Mathf.Clamp(worldPosition.y, (float)-1.3, (float)3);
         worldPosition.z = 0;
 
@@ -65,17 +70,24 @@ public abstract class InteriorObject : MonoBehaviour
         isSelected = false;
 
         m_Material.DisableKeyword("OUTBASE_ON");
+
     }
 
 
     public void Rortate()
     {
-        Direction = (Direction)((int)Direction + 1);
+        print("Rotate");
+       
+        
 
-        if(Direction == Direction.Count)
-        {
-            Direction = Direction.Front;
-        }
+
+        direction = (Direction)((int)direction + 1);
+
+ 
+
+       
     }
+
   
+
 }

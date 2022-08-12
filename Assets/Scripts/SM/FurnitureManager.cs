@@ -88,7 +88,7 @@ public class FurnitureManager : MonoBehaviour
                 Index = o.Index,
                 x = o.transform.position.x,
                 y = o.transform.position.y,
-                Direction = o.Direction
+                Direction = o.direction
             };
 
             saveData.Add(data);
