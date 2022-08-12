@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BookShelfObject : InteriorObject
+public class ChairObject : InteriorObject
 {
     private BookShelf m_BookShelf;
 
@@ -24,9 +24,9 @@ public class BookShelfObject : InteriorObject
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isSelected == true) 
+        if (Input.GetKeyDown(KeyCode.E) && isSelected == true)
         {
-            transform.Rotate(0,0,90);
+            transform.Rotate(0, 0, 90);
         }
     }
 }

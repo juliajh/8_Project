@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class UI_BedItem : MonoBehaviour
     private Bed m_Bed;
 
     public Image m_IconImage;
-    public Text m_NameText;
+    public TextMeshProUGUI m_NameText;
 
     public void Init(Bed data)
     {
