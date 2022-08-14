@@ -27,5 +27,19 @@ public class LayerSort : MonoBehaviour
                 parentSpriteRenderer.sortingOrder = (int)parentObject.transform.position.y + spriteRendererOfcollisionObjectParent.sortingOrder;
             }
         }
+
+       /* if (collision.gameObject.CompareTag("FrontWall")) 
+        {
+            parentSpriteRenderer.sortingOrder = -10;
+        }*/
     }
+
+
+/*    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("FrontWall"))
+        {
+            parentSpriteRenderer.sortingOrder = -0;
+        }
+    }*/
 }
