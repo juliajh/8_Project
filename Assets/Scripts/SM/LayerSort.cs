@@ -27,6 +27,5 @@ public class LayerSort : MonoBehaviour
                 parentSpriteRenderer.sortingOrder = (int)parentObject.transform.position.y + spriteRendererOfcollisionObjectParent.sortingOrder;
             }
         }
-
     }
 }

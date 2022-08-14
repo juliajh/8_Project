@@ -24,6 +24,7 @@ public class UI_StandItem : MonoBehaviour
 
     public void OnClickItem()
     {
-        Debug.Log($"{m_Stand.Data.Index}");
+        FurnitureManager.Instance.Make(FurnitureType.Stand, m_Stand.Data.Index);
+        RecommendManager.Instance.Recommend(FurnitureType.Stand, m_Stand.Data.ColorType);
     }
 }

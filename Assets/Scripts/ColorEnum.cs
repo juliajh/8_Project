@@ -9,5 +9,6 @@ public enum ColorType
     Green, 
     White,
     Red,
-    Brown
+    Brown,
+    None
 }

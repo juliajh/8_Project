@@ -8,6 +8,11 @@ public class UI_Bed : UI_Furniture
     [Header("아이템들")]
     public List<UI_BedItem> Items;
 
+    public void Start()
+    {
+        Refresh();
+    }
+
     public override void Refresh()
     {
         var list = BedManager.Instance.List;

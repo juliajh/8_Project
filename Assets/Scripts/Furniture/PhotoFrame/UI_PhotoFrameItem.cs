@@ -25,6 +25,7 @@ public class UI_PhotoFrameItem : MonoBehaviour
 
     public void OnClickItem()
     {
-        Debug.Log($"{m_PhotoFrame.Data.Index}");
+        FurnitureManager.Instance.Make(FurnitureType.PhotoFrame, m_PhotoFrame.Data.Index);
+        RecommendManager.Instance.Recommend(FurnitureType.PhotoFrame, ColorType.None);
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - BackWall
   - FrontWall
   - DetectLayer
+  - SendBack
   layers:
   - Default
   - TransparentFX

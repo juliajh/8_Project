@@ -25,6 +25,7 @@ public class UI_ChairItem : MonoBehaviour
 
     public void OnClickItem()
     {
-        Debug.Log($"{m_Chair.Data.Index}");
+        FurnitureManager.Instance.Make(FurnitureType.Chair, m_Chair.Data.Index);
+        RecommendManager.Instance.Recommend(FurnitureType.Chair, m_Chair.Data.ColorType);
     }
 }

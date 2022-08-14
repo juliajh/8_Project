@@ -42,12 +42,14 @@ public class BedObject :InteriorObject
                     break;
                 case Direction.Right:
                     {
+                        //transform.Rotate(0, 0, 90);
                         direction = Direction.Left;
                         m_SpriteRenderer.sprite = m_Bed.Data.LeftImage;
                     }
                     break;
                 case Direction.Left:
                     {
+                        //transform.Rotate(0, 0, 90);
                         direction = Direction.Front;
                         m_SpriteRenderer.sprite = m_Bed.Data.FrontImage;
                         //Rortate();
@@ -55,37 +57,6 @@ public class BedObject :InteriorObject
                     break;
             }
 
-            /*//m_SpriteRenderer.sprite = m_Bed.Data.RightImage;
-            if (direction == Direction.Front)
-            {
-                print(direction);
-                direction = Direction.Right;
-                m_SpriteRenderer.sprite = m_Bed.Data.RightImage;
-                Rortate();
-                print(direction);
-            }
-            if (direction == Direction.Right) 
-            {
-                direction = Direction.Left;
-                m_SpriteRenderer.sprite = m_Bed.Data.LeftImage;
-                Rortate();
-            }
-            if (direction == Direction.Left)
-            {
-                direction = Direction.Front;
-                m_SpriteRenderer.sprite = m_Bed.Data.FrontImage;
-                Rortate();
-            }*/
-
-
         }
-    }
-
-
-    IEnumerator Spin() 
-    {
-        yield return new WaitForSeconds(0.5f);
-        
-
     }
 }

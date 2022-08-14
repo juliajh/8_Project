@@ -25,6 +25,7 @@ public class UI_SofaItem : MonoBehaviour
 
     public void OnClickItem()
     {
-        Debug.Log($"{m_Sofa.Data.Index}");
+        FurnitureManager.Instance.Make(FurnitureType.Sofa, m_Sofa.Data.Index);
+        RecommendManager.Instance.Recommend(FurnitureType.Sofa, m_Sofa.Data.ColorType);
     }
 }

@@ -257,10 +257,17 @@ public partial class TBL_STAND : BGEntity
 		set => _name[Index] = value;
 	}
 	public UnityEngine.Sprite FrontImage => _FrontImage[Index];
+	public ColorType ColorType
+	{
+		get => (ColorType) _ColorType[Index];
+		set => _ColorType[Index] = value;
+	}
 	private static BansheeGz.BGDatabase.BGFieldEntityName _ufle12jhs77_name;
 	public static BansheeGz.BGDatabase.BGFieldEntityName _name => _ufle12jhs77_name ?? (_ufle12jhs77_name = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEntityName>(MetaDefault, new BGId(5065691844626759308UL, 2719437684810685856UL), () => _ufle12jhs77_name = null));
 	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_FrontImage;
 	public static BansheeGz.BGDatabase.BGFieldUnitySprite _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5237184440970635494UL, 4797762018031622538UL), () => _ufle12jhs77_FrontImage = null));
+	private static BansheeGz.BGDatabase.BGFieldEnum _ufle12jhs77_ColorType;
+	public static BansheeGz.BGDatabase.BGFieldEnum _ColorType => _ufle12jhs77_ColorType ?? (_ufle12jhs77_ColorType = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEnum>(MetaDefault, new BGId(4830538747696773296UL, 5379176235444945593UL), () => _ufle12jhs77_ColorType = null));
 	private static readonly TBL_SOFA.Factory _factory0_PFS = new TBL_SOFA.Factory();
 	private static readonly TBL_BED.Factory _factory1_PFS = new TBL_BED.Factory();
 	private static readonly TBL_CHAIR.Factory _factory2_PFS = new TBL_CHAIR.Factory();

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class ChairObject : InteriorObject
 {
-    private BookShelf m_BookShelf;
+    //private Bed m_Chair;
+    private Chair m_Chair;
 
     public override void SetIndex(int index)
     {
-        Make(BookShelfManager.Instance.List[index]);
+        Make(ChairManager.Instance.List[index]);
     }
 
-    public void Make(BookShelf bookShelf)
+    public void Make(Chair chair)
     {
-        FurnitureType = FurnitureType.BookShelf;
+        FurnitureType = FurnitureType.Chair;
 
-        m_BookShelf = bookShelf;
+        m_Chair = chair;
 
-        Index = m_BookShelf.Data.Index;
+        Index = m_Chair.Data.Index;
 
-        m_SpriteRenderer.sprite = m_BookShelf.Data.FrontImage;
+        m_SpriteRenderer.sprite = m_Chair.Data.FrontImage;
     }
 
     private void Update()
@@ -29,4 +30,7 @@ public class ChairObject : InteriorObject
             transform.Rotate(0, 0, 90);
         }
     }
+
+
+
 }

@@ -25,6 +25,7 @@ public class UI_FlowerPotItem : MonoBehaviour
 
     public void OnClickItem()
     {
-        Debug.Log($"{m_FlowerPot.Data.Index}");
+        FurnitureManager.Instance.Make(FurnitureType.FlowerPot, m_FlowerPot.Data.Index);
+        RecommendManager.Instance.Recommend(FurnitureType.FlowerPot,ColorType.None);
     }
 }

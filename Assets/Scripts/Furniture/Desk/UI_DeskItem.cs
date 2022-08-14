@@ -25,6 +25,7 @@ public class UI_DeskItem : MonoBehaviour
 
     public void OnClickItem()
     {
-        Debug.Log($"{m_Desk.Data.Index}");
+        FurnitureManager.Instance.Make(FurnitureType.Desk, m_Desk.Data.Index);
+        RecommendManager.Instance.Recommend(FurnitureType.Desk, m_Desk.Data.ColorType);
     }
 }
