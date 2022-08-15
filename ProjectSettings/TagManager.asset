@@ -10,6 +10,9 @@ TagManager:
   - FrontWall
   - DetectLayer
   - SendBack
+  - Furniture
+  - RightWall
+  - LeftWall
   layers:
   - Default
   - TransparentFX
