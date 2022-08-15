@@ -26,6 +26,10 @@ public abstract class InteriorObject : MonoBehaviour
 
     public Material m_Material;
     public SpriteRenderer m_SpriteRenderer;
+    public BoxCollider2D furnitureCollider;
+    public Rigidbody2D furnitureRigidBody;
+
+
 
     public Direction direction = Direction.Front;
 
@@ -33,6 +37,8 @@ public abstract class InteriorObject : MonoBehaviour
 
     private void Awake()
     {
+        furnitureRigidBody = GetComponent<Rigidbody2D>();
+        furnitureCollider = GetComponent<BoxCollider2D>();
         m_Material = GetComponent<SpriteRenderer>().material;
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -45,6 +51,7 @@ public abstract class InteriorObject : MonoBehaviour
         m_Material.EnableKeyword("OUTBASE_ON");
         gameObject.tag = "Furniture";
 
+        FurnitureManager.Instance.SetCurrentInterObject(this);
     }
 
     private void OnMouseDrag()
@@ -53,9 +60,9 @@ public abstract class InteriorObject : MonoBehaviour
 
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.39, (float)4.61);
+        /*worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.39, (float)4.61);
         worldPosition.y = Mathf.Clamp(worldPosition.y, (float)-1.3, (float)3);
-        worldPosition.z = 0;
+*/        worldPosition.z = 0;
 
 
         transform.position = worldPosition;
@@ -67,18 +74,18 @@ public abstract class InteriorObject : MonoBehaviour
 
         m_Material.DisableKeyword("OUTBASE_ON");
 
+        //FurnitureManager.Instance.SetCurrentInterObject(null);
     }
 
-    
-    public void Rortate()
+
+    public virtual void RotationObject()
     {
         print("Rotate");
         direction = (Direction)((int)direction + 1);
 
        
     }
-    BoxCollider2D furnitureCollider;
-    Rigidbody2D furnitureRigidBody;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -99,18 +106,24 @@ public abstract class InteriorObject : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("RightWall") || collision.gameObject.CompareTag("LeftWall") || collision.gameObject.CompareTag("Furniture"))
+        if (collision.gameObject.CompareTag("RightWall") || collision.gameObject.CompareTag("LeftWall"))
         {
+            StartCoroutine(StopRigidBody());
+        }
+        if (collision.gameObject.CompareTag("Furniture")) 
+        {
+            print(gameObject.name);
             StartCoroutine(StopRigidBody());
         }
     }
     
     IEnumerator StopRigidBody()
     {
-        yield return new WaitForSeconds(0.2f);
-        furnitureRigidBody.velocity = new Vector2(0, 0);
-        furnitureCollider.isTrigger = false;
+        yield return new WaitForSeconds(0.1f);
+        print("Start");
+        furnitureCollider.isTrigger = true;
         furnitureRigidBody.bodyType = RigidbodyType2D.Kinematic;
+        furnitureRigidBody.velocity = new Vector2(0, 0);
 
     }
 
@@ -119,14 +132,14 @@ public abstract class InteriorObject : MonoBehaviour
     {
         print("NuckBack");
         //print(col);
-        furnitureCollider = gameObject.GetComponent<BoxCollider2D>();
-        furnitureRigidBody = gameObject.GetComponent<Rigidbody2D>();
+        /*furnitureCollider = gameObject.GetComponent<BoxCollider2D>();
+        furnitureRigidBody = gameObject.GetComponent<Rigidbody2D>();*/
         //furnitureCollider.isTrigger = false;
 
         furnitureRigidBody.gravityScale = 0f;
         furnitureRigidBody.bodyType = RigidbodyType2D.Dynamic;
         furnitureRigidBody.AddForce(dir);
-        furnitureRigidBody.velocity = new Vector2(0.5f, 0);
+        furnitureRigidBody.velocity = new Vector2(1.4f, 0);
     }
 
 

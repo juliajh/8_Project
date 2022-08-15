@@ -27,7 +27,13 @@ public class StandObject : InteriorObject
     {
         if (Input.GetKeyDown(KeyCode.E) && isSelected == true)
         {
-            transform.Rotate(0, 0, 90);
+            RotationObject();
         }
+    }
+
+
+    public override void RotationObject() 
+    {
+        transform.Rotate(0, 0, 90);
     }
 }

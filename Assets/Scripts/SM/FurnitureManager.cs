@@ -15,6 +15,9 @@ public class FurnitureManager : MonoBehaviour
 
     public List<InteriorObject> InteriorObjects = new List<InteriorObject>(64);
 
+    private InteriorObject m_CurrentInterObject;
+    public InteriorObject CurrentInterObject => m_CurrentInterObject;
+
     private void Awake()
     {
         Instance = this;
@@ -45,6 +48,14 @@ public class FurnitureManager : MonoBehaviour
         obj.transform.position = new Vector3(x, y, 0);
 
         InteriorObjects.Add(obj);
+    }
+
+    public void SetCurrentInterObject(InteriorObject interiorObject)
+    {
+        m_CurrentInterObject = interiorObject;
+
+        // 버튼 노출 로직
+        UI_RotateButton.Instance.Show();
     }
 
     public async UniTaskVoid Load()
