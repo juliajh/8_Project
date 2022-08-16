@@ -11,5 +11,6 @@ public enum FurnitureType
     FlowerPot=4,
     PhotoFrame=5,
     Sofa=6,
-    Stand=7
+    Stand=7,
+    Tile=8
 }

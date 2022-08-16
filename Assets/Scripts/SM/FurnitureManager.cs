@@ -40,6 +40,13 @@ public class FurnitureManager : MonoBehaviour
         InteriorObjects.Add(obj);
     }
 
+
+    public GameObject[] tiles;
+    public void ChangeTile() 
+    {
+        tiles[0].SetActive(false);
+    }
+
     public void Make(FurnitureType furnitureType, int index, float x, float y, Direction direction)
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
@@ -56,6 +63,7 @@ public class FurnitureManager : MonoBehaviour
 
         // 버튼 노출 로직
         UI_RotateButton.Instance.Show();
+        UI_DeleteButton.Instance.Show();
     }
 
     public async UniTaskVoid Load()

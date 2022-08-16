@@ -52,6 +52,7 @@ public abstract class InteriorObject : MonoBehaviour
         gameObject.tag = "Furniture";
 
         FurnitureManager.Instance.SetCurrentInterObject(this);
+        //UI_RotateButton.Instance.Show();
     }
 
     private void OnMouseDrag()
@@ -84,6 +85,11 @@ public abstract class InteriorObject : MonoBehaviour
         direction = (Direction)((int)direction + 1);
 
        
+    }
+
+    public virtual void DeleteObject() 
+    {
+        Destroy(gameObject);
     }
     
 
