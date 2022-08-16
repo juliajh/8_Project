@@ -97,17 +97,18 @@ public abstract class InteriorObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LeftWall"))
         {
-            NuckBack(new Vector2(10, 0));   
+            NuckBack(Vector2.right*15f);   
         }
 
         if (collision.gameObject.CompareTag("RightWall"))
         {
-            NuckBack(new Vector2(-10, 0));
+            NuckBack(Vector2.left*15f);
         }
 
         if (collision.gameObject.CompareTag("Furniture")&&isSelected == true) 
         {
-            NuckBack(new Vector3(-10, 0));
+
+            NuckBack(Input.mousePosition);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -145,7 +146,7 @@ public abstract class InteriorObject : MonoBehaviour
         furnitureRigidBody.gravityScale = 0f;
         furnitureRigidBody.bodyType = RigidbodyType2D.Dynamic;
         furnitureRigidBody.AddForce(dir);
-        furnitureRigidBody.velocity = new Vector2(1.4f, 0);
+        //furnitureRigidBody.velocity = new Vector2(1.4f, 0);
     }
 
 
