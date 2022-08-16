@@ -28,7 +28,7 @@ public class UI_DeleteButton : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void OnDeleteButton()
+    public void AllDeleteButton()
     {
         FurnitureManager.Instance.CurrentInterObject?.DeleteObject();
         obj = GameObject.FindGameObjectsWithTag("Furniture");
@@ -38,8 +38,13 @@ public class UI_DeleteButton : MonoBehaviour
             DestroyObject(obj[i]);
         
         }
-        print(obj);
     }
+    public void DeleteButton() 
+    {
+        FurnitureManager.Instance.CurrentInterObject?.DeleteObject();
+    }
+
+
 
     public void LateUpdate()
     {
