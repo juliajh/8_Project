@@ -54,6 +54,7 @@ public partial class TBL_SOFA : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_SOFA() : base(MetaDefault)
 	{
 	}
@@ -129,6 +130,7 @@ public partial class TBL_BED : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_BED() : base(MetaDefault)
 	{
 	}
@@ -207,6 +209,7 @@ public partial class TBL_CHAIR : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_CHAIR() : base(MetaDefault)
 	{
 	}
@@ -276,6 +279,7 @@ public partial class TBL_STAND : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_STAND() : base(MetaDefault)
 	{
 	}
@@ -345,6 +349,7 @@ public partial class TBL_BOOKSHELF : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_BOOKSHELF() : base(MetaDefault)
 	{
 	}
@@ -407,6 +412,7 @@ public partial class TBL_FLOWERPOT : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_FLOWERPOT() : base(MetaDefault)
 	{
 	}
@@ -469,6 +475,7 @@ public partial class TBL_PHOTOFRAME : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_PHOTOFRAME() : base(MetaDefault)
 	{
 	}
@@ -538,6 +545,7 @@ public partial class TBL_DESK : BGEntity
 	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
 	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
 	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
 	private TBL_DESK() : base(MetaDefault)
 	{
 	}
@@ -567,6 +575,76 @@ public partial class TBL_DESK : BGEntity
 	public static TBL_DESK NewEntity(Action<TBL_DESK> callback)
 	{
 		return (TBL_DESK) MetaDefault.NewEntity(new BGMetaEntity.NewEntityContext(entity => callback((TBL_DESK)entity)));
+	}
+}
+
+public partial class TBL_FLOOR : BGEntity
+{
+
+	public class Factory : BGEntity.EntityFactory
+	{
+		public BGEntity NewEntity(BGMetaEntity meta) => new TBL_FLOOR(meta);
+		public BGEntity NewEntity(BGMetaEntity meta, BGId id) => new TBL_FLOOR(meta, id);
+	}
+	private static BansheeGz.BGDatabase.BGMetaRow _metaDefault;
+	public static BansheeGz.BGDatabase.BGMetaRow MetaDefault => _metaDefault ?? (_metaDefault = BGCodeGenUtils.GetMeta<BansheeGz.BGDatabase.BGMetaRow>(new BGId(4921005600949138904UL,8672655079426786715UL), () => _metaDefault = null));
+	public static BansheeGz.BGDatabase.BGRepoEvents Events => BGRepo.I.Events;
+	public static int CountEntities => MetaDefault.CountEntities;
+	public System.String name
+	{
+		get => _name[Index];
+		set => _name[Index] = value;
+	}
+	public System.Int32 FloorNum
+	{
+		get => _FloorNum[Index];
+		set => _FloorNum[Index] = value;
+	}
+	public UnityEngine.Sprite FrontImage => _FrontImage[Index];
+	private static BansheeGz.BGDatabase.BGFieldEntityName _ufle12jhs77_name;
+	public static BansheeGz.BGDatabase.BGFieldEntityName _name => _ufle12jhs77_name ?? (_ufle12jhs77_name = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldEntityName>(MetaDefault, new BGId(4867397000636466485UL, 8998895227959889030UL), () => _ufle12jhs77_name = null));
+	private static BansheeGz.BGDatabase.BGFieldInt _ufle12jhs77_FloorNum;
+	public static BansheeGz.BGDatabase.BGFieldInt _FloorNum => _ufle12jhs77_FloorNum ?? (_ufle12jhs77_FloorNum = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldInt>(MetaDefault, new BGId(5426703133028113099UL, 10478027918708817573UL), () => _ufle12jhs77_FloorNum = null));
+	private static BansheeGz.BGDatabase.BGFieldUnitySprite _ufle12jhs77_FrontImage;
+	public static BansheeGz.BGDatabase.BGFieldUnitySprite _FrontImage => _ufle12jhs77_FrontImage ?? (_ufle12jhs77_FrontImage = BGCodeGenUtils.GetField<BansheeGz.BGDatabase.BGFieldUnitySprite>(MetaDefault, new BGId(5570013584012579922UL, 2909462246528121997UL), () => _ufle12jhs77_FrontImage = null));
+	private static readonly TBL_SOFA.Factory _factory0_PFS = new TBL_SOFA.Factory();
+	private static readonly TBL_BED.Factory _factory1_PFS = new TBL_BED.Factory();
+	private static readonly TBL_CHAIR.Factory _factory2_PFS = new TBL_CHAIR.Factory();
+	private static readonly TBL_STAND.Factory _factory3_PFS = new TBL_STAND.Factory();
+	private static readonly TBL_BOOKSHELF.Factory _factory4_PFS = new TBL_BOOKSHELF.Factory();
+	private static readonly TBL_FLOWERPOT.Factory _factory5_PFS = new TBL_FLOWERPOT.Factory();
+	private static readonly TBL_PHOTOFRAME.Factory _factory6_PFS = new TBL_PHOTOFRAME.Factory();
+	private static readonly TBL_DESK.Factory _factory7_PFS = new TBL_DESK.Factory();
+	private static readonly TBL_FLOOR.Factory _factory8_PFS = new TBL_FLOOR.Factory();
+	private TBL_FLOOR() : base(MetaDefault)
+	{
+	}
+	private TBL_FLOOR(BGId id) : base(MetaDefault, id)
+	{
+	}
+	private TBL_FLOOR(BGMetaEntity meta) : base(meta)
+	{
+	}
+	private TBL_FLOOR(BGMetaEntity meta, BGId id) : base(meta, id)
+	{
+	}
+	public static TBL_FLOOR FindEntity(Predicate<TBL_FLOOR> filter)
+	{
+		return MetaDefault.FindEntity(entity => filter==null || filter((TBL_FLOOR) entity)) as TBL_FLOOR;
+	}
+	public static List<TBL_FLOOR> FindEntities(Predicate<TBL_FLOOR> filter, List<TBL_FLOOR> result=null, Comparison<TBL_FLOOR> sort=null) => BGCodeGenUtils.FindEntities(MetaDefault, filter, result, sort);
+	public static void ForEachEntity(Action<TBL_FLOOR> action, Predicate<TBL_FLOOR> filter=null, Comparison<TBL_FLOOR> sort=null)
+	{
+		MetaDefault.ForEachEntity(entity => action((TBL_FLOOR) entity), filter == null ? null : (Predicate<BGEntity>) (entity => filter((TBL_FLOOR) entity)), sort==null?(Comparison<BGEntity>) null:(e1,e2) => sort((TBL_FLOOR)e1,(TBL_FLOOR)e2));
+	}
+	public static TBL_FLOOR GetEntity(BGId entityId) => (TBL_FLOOR) MetaDefault.GetEntity(entityId);
+	public static TBL_FLOOR GetEntity(int index) => (TBL_FLOOR) MetaDefault[index];
+	public static TBL_FLOOR GetEntity(string entityName) => (TBL_FLOOR) MetaDefault.GetEntity(entityName);
+	public static TBL_FLOOR NewEntity() => (TBL_FLOOR) MetaDefault.NewEntity();
+	public static TBL_FLOOR NewEntity(BGId entityId) => (TBL_FLOOR) MetaDefault.NewEntity(entityId);
+	public static TBL_FLOOR NewEntity(Action<TBL_FLOOR> callback)
+	{
+		return (TBL_FLOOR) MetaDefault.NewEntity(new BGMetaEntity.NewEntityContext(entity => callback((TBL_FLOOR)entity)));
 	}
 }
 #pragma warning restore 414

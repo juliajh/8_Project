@@ -41,12 +41,6 @@ public class FurnitureManager : MonoBehaviour
     }
 
 
-    public GameObject[] tiles;
-    public void ChangeTile() 
-    {
-        tiles[0].SetActive(false);
-    }
-
     public void Make(FurnitureType furnitureType, int index, float x, float y, Direction direction)
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
