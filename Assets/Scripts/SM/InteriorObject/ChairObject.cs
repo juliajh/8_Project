@@ -23,11 +23,35 @@ public class ChairObject : InteriorObject
         m_SpriteRenderer.sprite = m_Chair.Data.FrontImage;
     }
 
-    private void Update()
+
+    public override void RotationObject()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isSelected == true)
+        switch (direction)
         {
-            transform.Rotate(0, 0, 90);
+            case Direction.Front:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    direction = Direction.Right;
+                    m_SpriteRenderer.sprite = m_Chair.Data.RightImage;
+                    //StartCoroutine(Spin());
+                    //Rortate();
+                }
+                break;
+            case Direction.Right:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    direction = Direction.Left;
+                    m_SpriteRenderer.sprite = m_Chair.Data.LeftImage;
+                }
+                break;
+            case Direction.Left:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    direction = Direction.Front;
+                    m_SpriteRenderer.sprite = m_Chair.Data.FrontImage;
+                    //Rortate();
+                }
+                break;
         }
     }
 

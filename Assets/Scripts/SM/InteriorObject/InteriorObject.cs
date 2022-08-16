@@ -83,7 +83,7 @@ public abstract class InteriorObject : MonoBehaviour
     {
         print("Rotate");
         direction = (Direction)((int)direction + 1);
-
+        transform.Rotate(0, 0,90);
        
     }
 
