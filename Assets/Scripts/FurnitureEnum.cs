@@ -4,13 +4,13 @@ using UnityEngine;
 
 public enum FurnitureType 
 {
-    Bed = 0,
-    BookShelf=1,
-    Chair=2,
-    Desk=3,
-    FlowerPot=4,
-    PhotoFrame=5,
-    Sofa=6,
-    Stand=7,
-    Tile=8
+    Floor = 0,
+    Bed = 1,
+    BookShelf=2,
+    Chair=3,
+    Desk=4,
+    FlowerPot=5,
+    PhotoFrame=6,
+    Sofa=7,
+    Stand=8
 }

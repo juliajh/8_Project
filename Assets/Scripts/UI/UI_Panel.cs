@@ -13,8 +13,7 @@ public class UI_Panel : MonoBehaviour
     public void OnClickPhotoFrameButton() { OnClickPannelButton(FurnitureType.PhotoFrame); }
     public void OnClickSofaButton() { OnClickPannelButton(FurnitureType.Sofa); }
     public void OnClickStandButton() { OnClickPannelButton(FurnitureType.Stand); }
-
-    public void OnClickChangeTileBtn() { OnClickPannelButton(FurnitureType.Tile); }
+    public void OnClickFloorBtn() { OnClickPannelButton(FurnitureType.Floor); }
 
     private void OnClickPannelButton(FurnitureType furnitureType)
     {
