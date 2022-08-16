@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class UI_Net : MonoBehaviour
 {
+    /*
     public void OnClickLoginButton()
     {
         Login();
@@ -24,6 +25,7 @@ public class UI_Net : MonoBehaviour
         
     }
 
+    */
     public void OnClickSaveButton()
     {
        // Save();
