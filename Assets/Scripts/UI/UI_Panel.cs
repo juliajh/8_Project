@@ -14,6 +14,8 @@ public class UI_Panel : MonoBehaviour
     public void OnClickSofaButton() { OnClickPannelButton(FurnitureType.Sofa); }
     public void OnClickStandButton() { OnClickPannelButton(FurnitureType.Stand); }
 
+    public void OnClickChangeTileBtn() { OnClickPannelButton(FurnitureType.Tile); }
+
     private void OnClickPannelButton(FurnitureType furnitureType)
     {
 

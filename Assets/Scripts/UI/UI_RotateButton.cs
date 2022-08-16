@@ -5,6 +5,7 @@ using UnityEngine;
 public class UI_RotateButton : MonoBehaviour
 {
     public static UI_RotateButton Instance;
+    public List<GameObject> allFurnitureObject;
    
     public Vector3 offset;
 
@@ -32,6 +33,8 @@ public class UI_RotateButton : MonoBehaviour
     {
         FurnitureManager.Instance.CurrentInterObject?.RotationObject();
     }
+
+
 
     public void LateUpdate()
     {
