@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Color color;
     private void Start()
     {
-        color = saveText.GetComponent<Color>();
+        //color = saveText.GetComponent<Color>();
     }
     void Update()
     {
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
 
         color.r = Mathf.Lerp(0,255,2f);
-        Color.Lerp(saveText.color.r, saveText.color, color.r);
+       //. Color.Lerp(saveText.color.r, saveText.color, color.r);
         saveText.color = color;
 
         //saveText.SetActive(true);
