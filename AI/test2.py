@@ -76,3 +76,11 @@ word = '오늘의집 3D'
 num = 1
 #WordCloud.make_wordcloud_graph(craw_blog_text_from_link(make_blog_craw_link(word, 1)))
 craw_blog_text_from_link(make_blog_craw_link(word, num))
+
+
+
+import os
+
+f = open('craw_text.txt','r')
+
+print(f)

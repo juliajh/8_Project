@@ -47,3 +47,6 @@ ex)
 (가구 색상)으로 볼것인가
 
 가구와 색상을 다른 요소로 볼것인가 생각 해봐야 한다.
+
+
+https://cyc1am3n.github.io/2018/11/10/classifying_korean_movie_review.html
