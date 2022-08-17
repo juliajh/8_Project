@@ -32,7 +32,6 @@ public class FurnitureManager : MonoBehaviour
     public void Make(FurnitureType furnitureType, int index)
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
-
         obj.SetIndex(index);
         if (furnitureType == FurnitureType.PhotoFrame) 
         {
@@ -71,6 +70,7 @@ public class FurnitureManager : MonoBehaviour
 
     public async UniTaskVoid Load()
     {
+        print("load");
         var response = await NetManager.Post<ResponseLoginPacket>(new RequestLoginPacket());
 
         if (response.Result)
@@ -78,6 +78,7 @@ public class FurnitureManager : MonoBehaviour
             UnityEngine.Debug.Log(response.Map);
 
             var mapDatas = JsonConvert.DeserializeObject<List<MapData>>(response.Map);
+
             if(mapDatas.Count > 0)
             {
                 for(int i = 0; i < mapDatas.Count; ++i)

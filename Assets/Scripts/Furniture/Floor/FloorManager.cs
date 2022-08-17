@@ -37,6 +37,7 @@ public class FloorManager : MonoBehaviour
         {
             floor.SetActive(false);
         }
+
         floors[m_NumInt].SetActive(true);
     }
 }

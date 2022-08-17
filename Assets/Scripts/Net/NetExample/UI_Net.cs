@@ -28,7 +28,7 @@ public class UI_Net : MonoBehaviour
     */
     public void OnClickSaveButton()
     {
-       // Save();
+        //Save();
 
         FurnitureManager.Instance.Save();
     }
