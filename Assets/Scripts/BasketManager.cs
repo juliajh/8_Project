@@ -1,74 +1,41 @@
-using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using UniRx;
-using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 using Newtonsoft.Json;
 
-public class FurnitureManager : MonoBehaviour
+public class BasketManager : MonoBehaviour
 {
-    public static FurnitureManager Instance;
+    public static BasketManager Instance;
+    public GameObject shopContent;
 
-    public List<InteriorObject> Prefabs;
-    public List<GameObject> floors;
-
-    public List<InteriorObject> InteriorObjects = new List<InteriorObject>(64);
-
-    private InteriorObject m_CurrentInterObject;
-    public InteriorObject CurrentInterObject => m_CurrentInterObject;
+    public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
 
     private void Awake()
     {
         Instance = this;
+
     }
 
     private void Start()
     {
-        Load();
+        //Load();
     }
 
-
-    public void Make(FurnitureType furnitureType, int index)
+    public void AddBasket(RecommendResponseData data)
     {
-        InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
-        obj.SetIndex(index);
-        if (furnitureType == FurnitureType.PhotoFrame) 
-        {
-            obj.transform.position = new Vector3(0, 3.8f, 0);
-
-        }
-
-        else
-        {
-            obj.transform.position = new Vector3(0, 0, 0);
-
-        }
-
-        InteriorObjects.Add(obj);
+        BasketList.Add(data);
     }
 
-
-    public void Make(FurnitureType furnitureType, int index, float x, float y, Direction direction)
+    public void RemoveBasket(RecommendResponseData data)
     {
-        InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
-        obj.SetIndex(index);
-
-        obj.transform.position = new Vector3(x, y, 0);
-
-        InteriorObjects.Add(obj);
+        BasketList.Remove(data);
     }
 
-    public void SetCurrentInterObject(InteriorObject interiorObject)
-    {
-        m_CurrentInterObject = interiorObject;
-
-        // 버튼 노출 로직
-        UI_RotateButton.Instance.Show();
-        UI_DeleteButton.Instance.Show();
-    }
-
+    /*
     public async UniTaskVoid Load()
     {
         print("load");
@@ -80,9 +47,9 @@ public class FurnitureManager : MonoBehaviour
 
             var mapDatas = JsonConvert.DeserializeObject<List<MapData>>(response.Map);
 
-            if(mapDatas.Count > 0)
+            if (mapDatas.Count > 0)
             {
-                for(int i = 0; i < mapDatas.Count; ++i)
+                for (int i = 0; i < mapDatas.Count; ++i)
                 {
                     var data = mapDatas[i];
 
@@ -96,23 +63,11 @@ public class FurnitureManager : MonoBehaviour
                     }
                 }
 
-            }    
-
-        }
-    }
-
-    private int checkFloor()
-    {
-        int floorNum = 0;
-        foreach(GameObject f in floors)
-        {
-            if (gameObject.activeSelf == true)
-            {
-                floorNum = floors.IndexOf(f);
             }
+
         }
-        return floorNum;
     }
+
 
     public async UniTaskVoid Save()
     {
@@ -156,13 +111,6 @@ public class FurnitureManager : MonoBehaviour
             UnityEngine.Debug.Log("저장 성공");
         }
     }
-}
 
-public class MapData
-{
-    public FurnitureType FurnitureType;
-    public int Index;
-    public float x;
-    public float y;
-    public Direction Direction;
+    */
 }
