@@ -4,7 +4,8 @@ import schedule
 import time
 import re
 
-item_dict = {'CHAIR': '의자', 'SOFA': '소파', 'BED': '이불', 'REFRIGERATOR':'냉장고','BOOKSHELF':'책장'}
+item_dict = {'Chair': '의자', 'Sofa': '소파', 'Bed': '이불', 'Stand': '스탠드', 'BookShelf': '책장', 'Desk': '책상',
+             'FlowerPot:꽃병', 'PhotoFrame:액자'}
 color_dict = {'Yellow': '노란색', 'Blue': '파란색', 'Green':'초록색', 'White':'흰색', 'Red':'빨간색', 'Brown':'갈색'}
 
 def item_info(item_name, color_type):
