@@ -61,9 +61,15 @@ public abstract class InteriorObject : MonoBehaviour
 
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        if (FurnitureType==FurnitureType.PhotoFrame ) 
+        {
+            worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.4, (float)4.4);
+            worldPosition.y = Mathf.Clamp(worldPosition.y, (float)3.5, (float)3.85);
+        }
+
         /*worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.39, (float)4.61);
         worldPosition.y = Mathf.Clamp(worldPosition.y, (float)-1.3, (float)3);
-*/        worldPosition.z = 0;
+*/      worldPosition.z = 0;
 
 
         transform.position = worldPosition;
@@ -97,18 +103,18 @@ public abstract class InteriorObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LeftWall"))
         {
-            NuckBack(Vector2.right*15f);   
+            NuckBack(Vector2.right*20f);   
         }
 
         if (collision.gameObject.CompareTag("RightWall"))
         {
-            NuckBack(Vector2.left*15f);
+            NuckBack(Vector2.left*20f);
         }
 
         if (collision.gameObject.CompareTag("Furniture")&&isSelected == true) 
         {
 
-            NuckBack(Input.mousePosition);
+            NuckBack(Vector2.left*15f);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

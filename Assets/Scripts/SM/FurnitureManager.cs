@@ -34,8 +34,17 @@ public class FurnitureManager : MonoBehaviour
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
 
         obj.SetIndex(index);
+        if (furnitureType == FurnitureType.PhotoFrame) 
+        {
+            obj.transform.position = new Vector3(0, 3.8f, 0);
 
-        obj.transform.position = new Vector3(0, 0, 0);
+        }
+
+        else
+        {
+            obj.transform.position = new Vector3(0, 0, 0);
+
+        }
 
         InteriorObjects.Add(obj);
     }
