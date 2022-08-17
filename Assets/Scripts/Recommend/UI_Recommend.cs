@@ -30,7 +30,12 @@ public class UI_Recommend : MonoBehaviour
             {
                 var newItem = Instantiate<UI_RecommendItem>(Prefab);
                 newItem.transform.SetParent(ParentTransform);
+                newItem.GetComponent<RectTransform>().localScale = Vector3.one;
+
+                Items.Add(newItem);
             }
+
+            itemCount = Items.Count;
         }
 
         for (int i = 0; i < itemCount; ++i)

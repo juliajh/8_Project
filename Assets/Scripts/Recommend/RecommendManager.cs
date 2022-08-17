@@ -36,6 +36,7 @@ public class RecommendManager : MonoBehaviour
 
             for (int i = 0; i < count; ++i)
             {
+                
                 var data = responseData[i];
                 List.Add(data);
                 Debug.Log(data.Category);
@@ -66,7 +67,6 @@ public class RecommendManager : MonoBehaviour
             List.Clear();
 
             int count = response.Data.Length;
-
             var responseData = response.Data;
 
             for (int i = 0; i < count; ++i)
