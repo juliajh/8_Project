@@ -27,7 +27,10 @@ public class BasketManager : MonoBehaviour
 
     public void AddBasket(RecommendResponseData data)
     {
-        BasketList.Add(data);
+        if (!BasketList.Contains(data))
+        {
+            BasketList.Add(data);
+        }
     }
 
     public void RemoveBasket(RecommendResponseData data)
