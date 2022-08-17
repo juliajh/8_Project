@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PosRequestData
 {
-    public int FurnitureType;
-    public int ColorType;
+    public string FurnitureType;
+    public string ColorType;
 }
 
 public class PosResponseData

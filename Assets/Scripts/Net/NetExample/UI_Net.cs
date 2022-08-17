@@ -134,8 +134,8 @@ public class UI_Net : MonoBehaviour
         // 가구 색상
         PosRequestData posRequestData = new PosRequestData
         {
-            FurnitureType = (int)FurnitureType.Bed,
-            ColorType = (int)ColorType.Blue
+            FurnitureType = FurnitureType.Bed.ToString(),
+            ColorType = ColorType.Blue.ToString()
         };
 
         var response = await NetManager.Post<ResponsePosPacket>(new RequestPosPacket(posRequestData));
