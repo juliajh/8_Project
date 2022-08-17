@@ -103,18 +103,18 @@ public abstract class InteriorObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LeftWall"))
         {
-            NuckBack(Vector2.right*20f);   
+            NuckBack(Vector2.right*30f);   
         }
 
         if (collision.gameObject.CompareTag("RightWall"))
         {
-            NuckBack(Vector2.left*20f);
+            NuckBack(Vector2.left*30f);
         }
 
         if (collision.gameObject.CompareTag("Furniture")&&isSelected == true) 
         {
 
-            NuckBack(Vector2.left*15f);
+            NuckBack(Vector2.right*30f);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
