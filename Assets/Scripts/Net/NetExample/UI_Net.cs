@@ -118,4 +118,43 @@ public class UI_Net : MonoBehaviour
     }
 
 
+    // 가구 위치값 추천
+    // furnitureType, colorType을 보내고
+    // 추천 위치인 pos_x, pos_y값을 받는다
+
+    public void OnClickPosRecommendButton()
+    {
+        PosRecommend();
+    }
+
+    public async UniTaskVoid PosRecommend()
+    {
+        // 가구 타입
+        // 가구 아이디
+        // 가구 색상
+        PosRequestData posRequestData = new PosRequestData
+        {
+            FurnitureType = FurnitureType.Bed.ToString(),
+            ColorType = ColorType.Blue.ToString()
+        };
+
+        var response = await NetManager.Post<ResponsePosPacket>(new RequestPosPacket(posRequestData));
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.PosX);
+                Debug.Log(data.PosY);
+            }
+        }
+    }
+
+
+
 }
