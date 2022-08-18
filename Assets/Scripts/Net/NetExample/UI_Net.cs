@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Newtonsoft.Json;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -156,5 +157,63 @@ public class UI_Net : MonoBehaviour
     }
 
 
+    // 장바구니 저장
+    public void OnClickBasketSaveButton()
+    {
+        BasketSave();
+    }
+
+    public async UniTaskVoid BasketSave()
+    {
+        List<String> saveData = new List<String>(3);
+
+        String tmp = new String("83963435437");
+        String tmp1 = new String("31793306187");
+        String tmp2 = new String("32942017315");
+        saveData.Add(tmp);
+        saveData.Add(tmp1);
+        saveData.Add(tmp2);
+
+        string jsonData = JsonConvert.SerializeObject(saveData);
+
+        var response = await NetManager.Post<ResponseBasketSavePacket>(new RequestBasketSavePacket(jsonData));
+
+        if (response.Result)
+        {
+            UnityEngine.Debug.Log("저장 성공");
+        }
+    }
+
+
+    // 장바구니 로드
+
+    public void OnClickBasketLoadButton()
+    {
+        BasketLoad();
+    }
+
+    public async UniTaskVoid BasketLoad()
+    {
+        var response = await NetManager.Post<ResponseBasketLoadPacket>(new RequestBasketLoadPacket());
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Category);
+                Debug.Log(data.Color);
+                Debug.Log(data.Title);
+                Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Brand);
+                Debug.Log(data.Price);
+            }
+        }
+    }
 
 }

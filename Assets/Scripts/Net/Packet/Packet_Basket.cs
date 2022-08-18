@@ -17,6 +17,7 @@ public class BasketResponseData
 
 
 // 장바구니 불러오는 요청 패킷
+// deviceId만 보내면 됨
 public class RequestBasketLoadPacket : IRequestPacket
 {
     public RequestBasketLoadPacket() : base("/LoadBasket")
@@ -25,6 +26,7 @@ public class RequestBasketLoadPacket : IRequestPacket
 }
 
 // 장바구니 불러오는 수신 패킷
+// 상품 정보들을 받아온다
 public class ResponseBasketLoadPacket : ResponsePacket
 {
     public BasketResponseData[] Data { get; private set; }
@@ -33,6 +35,7 @@ public class ResponseBasketLoadPacket : ResponsePacket
 
 
 // 장바구니 저장하는 요청 패킷
+// 저장할 상품의 Link 문자열의 끝에 존재하는 id값 리스트를 string형태로 보내기
 public class RequestBasketSavePacket : IRequestPacket
 {
     public string Product { get; private set; }
