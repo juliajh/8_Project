@@ -30,6 +30,20 @@ public class FurnitureManager : MonoBehaviour
     }
 
 
+    public void RecommendMake(FurnitureType furnitureType, int index, float x, float y, Direction direction) 
+    {
+        InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
+        obj.SetIndex(index);
+        obj.transform.position = new Vector3(x, y, 0);
+
+        obj.direction = direction;
+        obj.LoadTurnObject(direction);
+        InteriorObjects.Add(obj);
+        obj.ColorChange();
+      
+    }
+
+
     public void Make(FurnitureType furnitureType, int index)
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
@@ -48,6 +62,14 @@ public class FurnitureManager : MonoBehaviour
 
         InteriorObjects.Add(obj);
     }
+
+    /*public async UniTaskVoid Recommend() 
+    {
+        //var response = await NetManager.Post<ResponsePacket>(new RequestPosPacket());
+
+        //print(response);
+        UInet
+    }*/
 
 
     public void Make(FurnitureType furnitureType, int index, float x, float y, Direction direction)

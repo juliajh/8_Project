@@ -29,7 +29,7 @@ public abstract class InteriorObject : MonoBehaviour
     public BoxCollider2D furnitureCollider;
     public Rigidbody2D furnitureRigidBody;
 
-
+    
 
     public Direction direction = Direction.Front;
 
@@ -43,6 +43,15 @@ public abstract class InteriorObject : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+
+    public void ColorChange() 
+    {
+        Color color = m_SpriteRenderer.color;
+
+        color.a = 0.5f;
+        m_SpriteRenderer.color = color;
+        print("color chabnge");
+    }
 
     private void OnMouseDown()
     {
@@ -132,9 +141,6 @@ public abstract class InteriorObject : MonoBehaviour
                 }
                 break;
         }
-
-
-
     }
 
 
