@@ -216,4 +216,21 @@ public class UI_Net : MonoBehaviour
         }
     }
 
+
+    // 장바구니 전체 삭제
+    public void OnClickBasketDeleteButton()
+    {
+        BasketDelete();
+    }
+
+    public async UniTaskVoid BasketDelete()
+    {
+        var response = await NetManager.Post<ResponseBasketDeletePacket>(new RequestBasketDeletePacket());
+
+        if (response.Result)
+        {
+            Debug.Log("장바구니 삭제 완료");
+        }
+    }
+
 }
