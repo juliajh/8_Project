@@ -168,4 +168,39 @@ public class UI_Net : MonoBehaviour
             }*/
         }
     }
+
+
+    // 관련 상품 불러오기
+    public void OnClickRelativeLoadButton()
+    {
+        RelativeLoad();
+    }
+
+    public async UniTaskVoid RelativeLoad()
+    {
+        RelativeRequestData relativeData = new RelativeRequestData
+        {
+            Title = "여름초록이불 그린컬러이불 여름줄무늬이불 세트 스트"
+        };
+
+        var response = await NetManager.Post<ResponseRelativePacket>(new RequestRelativePacket(relativeData));
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Title);
+                Debug.Log(data.Price);
+                Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Relative);
+            }
+        }
+    }
+
 }
