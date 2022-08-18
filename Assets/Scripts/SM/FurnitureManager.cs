@@ -56,7 +56,6 @@ public class FurnitureManager : MonoBehaviour
         obj.SetIndex(index);
         obj.transform.position = new Vector3(x, y, 0);
 
-        print(obj);
         obj.direction = direction;
         obj.LoadTurnObject(direction);
         InteriorObjects.Add(obj);
@@ -124,8 +123,6 @@ public class FurnitureManager : MonoBehaviour
                 {
                     var data = mapDatas[i];
 
-                    //Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
-                    print(data.Direction);
                     if (data.FurnitureType == FurnitureType.Floor)
                     {
                         floors[data.Index].SetActive(true);
