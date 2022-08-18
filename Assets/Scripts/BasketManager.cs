@@ -22,14 +22,13 @@ public class BasketManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
     }
 
     private void Start()
     {
         //Load();
-        CountBasket();
         BasketLoad();
+
     }
 
     private string splitId(String link)
@@ -86,7 +85,7 @@ public class BasketManager : MonoBehaviour
 
     public async UniTaskVoid BasketLoad()
     {
-        var response = await NetManager.Post<ResponseBasketLoadPacket>(new RequestBasketLoadPacket());
+         var response = await NetManager.Post<ResponseRecommendPacket>(new RequestBasketLoadPacket());
 
         if (response.Result)
         {
@@ -105,28 +104,27 @@ public class BasketManager : MonoBehaviour
                 Debug.Log(data.Brand);
                 Debug.Log(data.Price);
 
-                Make(data);
+                BasketList.Add(data);
             }
         }
+
+        CountBasket();
     }
 
-
-
-    public void Make(BasketResponseData data)
+    public void OnClickBasketDeleteButton()
     {
-        var newItem = Instantiate<UI_BasketItem>(Prefab);
-        newItem.transform.SetParent(ParentTransform);
-        newItem.transform.localScale = new Vector3(1, 1, 1);
-        newItem.transform.position = new Vector3(0,0, 0);
-        newItem.gameObject.SetActive(true);
-
-        /*
-        newItem.m_NameText.text = data.Title;
-        newItem.m_PriceText.text = data.Price;
-        */
-
-
+        BasketDelete();
     }
 
+    public async UniTaskVoid BasketDelete()
+    {
+        var response = await NetManager.Post<ResponseBasketDeletePacket>(new RequestBasketDeletePacket());
+        BasketList.Clear();
+        CountBasket();
+        if (response.Result)
+        {
+            Debug.Log("장바구니 삭제 완료");
+        }
+    }
 
 }
