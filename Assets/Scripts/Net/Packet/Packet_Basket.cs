@@ -50,3 +50,19 @@ public class RequestBasketSavePacket : IRequestPacket
 public class ResponseBasketSavePacket : ResponsePacket
 {
 }
+
+
+
+// 장바구니 전체 삭제하는 패킷
+// deviceId만 보내면 됨
+public class RequestBasketDeletePacket : IRequestPacket
+{
+    public RequestBasketDeletePacket() : base("/DeleteBasket")
+    {
+    }
+}
+
+// 장바구니 삭제한 수신 패킷
+public class ResponseBasketDeletePacket : ResponsePacket
+{
+}
