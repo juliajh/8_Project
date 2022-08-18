@@ -15,7 +15,7 @@ from nltk import Text
 
 okt = Okt()
 
-with open('오늘의집 MZ.txt', 'r', encoding='utf-8') as file:
+with open('온라인 가구.txt', 'r', encoding='utf-8') as file:
     x = file.read()
 
 tmp_list = okt.pos(x, norm=True, stem=True)

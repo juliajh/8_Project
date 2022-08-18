@@ -17,7 +17,6 @@ public class UI_DeleteButton : MonoBehaviour
     }
 
 
-
     public void Show()
     {
         this.gameObject.SetActive(true);
