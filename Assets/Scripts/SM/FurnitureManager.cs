@@ -40,7 +40,6 @@ public class FurnitureManager : MonoBehaviour
         obj.LoadTurnObject(direction);
         InteriorObjects.Add(obj);
         obj.ColorChange();
-      
     }
 
 
@@ -61,6 +60,9 @@ public class FurnitureManager : MonoBehaviour
         }
 
         InteriorObjects.Add(obj);
+        PosRecommend();
+
+        
     }
 
     /*public async UniTaskVoid Recommend() 
@@ -81,6 +83,7 @@ public class FurnitureManager : MonoBehaviour
         obj.direction = direction;
         obj.LoadTurnObject(direction);
         InteriorObjects.Add(obj);
+
     }
 
     public void ClearMap()
@@ -127,6 +130,42 @@ public class FurnitureManager : MonoBehaviour
         UI_DeleteButton.Instance.Show();
     }
 
+    public async UniTaskVoid PosRecommend()
+    {
+        // 가구 타입
+        // 가구 아이디
+        // 가구 색상
+
+        PosRequestData posRequestData = new PosRequestData
+        {
+            FurnitureType = FurnitureType.Bed.ToString(),
+            ColorType = ColorType.Blue.ToString()
+        };
+        var response = await NetManager.Post<ResponsePosPacket>(new RequestPosPacket(posRequestData));
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            var data = responseData[0];
+            float p_X = float.Parse(data.PosX);
+            float p_Y = float.Parse(data.PosY);
+            RecommendMake(FurnitureType.Bed, 1, p_X, p_Y, Direction.Front);
+
+
+            //allPos.RemoveAll();
+            /*for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                float.Parse(data.PosX);
+                Debug.Log("====="+ float.Parse(data.PosX));
+                //Debug.Log("2||||"+data.PosY);
+                FurnitureManager.Instance.Make(FurnitureType.Bed, 1,data.PosX,data.PosY,Direction.Front);
+            }*/
+        }
+    }
     public async UniTaskVoid Load()
     {
         print("load");

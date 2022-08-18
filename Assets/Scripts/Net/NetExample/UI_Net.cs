@@ -122,17 +122,17 @@ public class UI_Net : MonoBehaviour
     // furnitureType, colorType을 보내고
     // 추천 위치인 pos_x, pos_y값을 받는다
 
-    public void OnClickPosRecommendButton()
+/*    public void OnClickPosRecommendButton()
     {
         PosRecommend();
         
-    }
-    private void Start()
+    }*/
+/*    private void Start()
     {
         PosRecommend();
-    }
+    }*/
 
-    public async UniTaskVoid PosRecommend()
+    /*public async UniTaskVoid PosRecommend()
     {
         // 가구 타입
         // 가구 아이디
@@ -158,16 +158,16 @@ public class UI_Net : MonoBehaviour
 
 
             //allPos.RemoveAll();
-            /*for (int i = 0; i < count; ++i)
+            *//*for (int i = 0; i < count; ++i)
             {
                 var data = responseData[i];
                 float.Parse(data.PosX);
                 Debug.Log("====="+ float.Parse(data.PosX));
                 //Debug.Log("2||||"+data.PosY);
                 FurnitureManager.Instance.Make(FurnitureType.Bed, 1,data.PosX,data.PosY,Direction.Front);
-            }*/
+            }*//*
         }
-    }
+    }*/
 
 
     // 관련 상품 불러오기
