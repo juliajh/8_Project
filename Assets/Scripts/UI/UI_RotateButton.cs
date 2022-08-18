@@ -35,7 +35,6 @@ public class UI_RotateButton : MonoBehaviour
     }
 
 
-
     public void LateUpdate()
     {
         if(FurnitureManager.Instance.CurrentInterObject == null)
