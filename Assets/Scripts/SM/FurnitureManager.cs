@@ -54,14 +54,12 @@ public class FurnitureManager : MonoBehaviour
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
         obj.SetIndex(index);
-
         obj.transform.position = new Vector3(x, y, 0);
-        InteriorObjects.Add(obj);
 
-
-
+        print(obj);
         obj.direction = direction;
         obj.LoadTurnObject(direction);
+        InteriorObjects.Add(obj);
     }
 
     public void ClearMap()
@@ -126,10 +124,8 @@ public class FurnitureManager : MonoBehaviour
                 {
                     var data = mapDatas[i];
 
-<<<<<<< HEAD
-                    Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
+                    //Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
                     print(data.Direction);
-=======
                     if (data.FurnitureType == FurnitureType.Floor)
                     {
                         floors[data.Index].SetActive(true);
@@ -138,7 +134,6 @@ public class FurnitureManager : MonoBehaviour
                     {
                         Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
                     }
->>>>>>> c4fde2bc12176e313b59aee1dd645a6b38bf1f5a
                 }
 
             }    
