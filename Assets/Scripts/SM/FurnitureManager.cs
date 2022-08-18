@@ -173,6 +173,11 @@ public class FurnitureManager : MonoBehaviour
         return floorNum;
     }
 
+    public void OnClickSaveButton()
+    {
+        Save();
+    }
+
     public async UniTaskVoid Save()
     {
         int count = InteriorObjects.Count;

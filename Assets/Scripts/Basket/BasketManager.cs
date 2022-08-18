@@ -12,7 +12,7 @@ using System;
 public class BasketManager : MonoBehaviour
 {
     public static BasketManager Instance;
-    public GameObject shopContent;
+   // public GameObject shopContent;
     public TextMeshProUGUI countText;
     public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
     public Transform ParentTransform;
