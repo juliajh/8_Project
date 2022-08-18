@@ -1,0 +1,68 @@
+.bb-legend-item-title, .bb-xgrid-focus, .bb-ygrid, .bb-event-rect, .bb-bars path { shape-rendering: crispEdges; }
+/* graph */
+.bb-tooltip-container {z-index: 5}
+.bb svg{padding-left:3px;font-family:'나눔고딕',NanumGothic,'돋움',Dotum,Helvetica,sans-serif;color:#5c5c5c;letter-spacing:-1px}
+.bb path{fill:none;stroke:#e5e5e5}
+.bb path.domain{fill:none;opacity:0}
+
+/* Axis */
+.bb-axis-x .tick{font-family:'나눔고딕',NanumGothic,'돋움',Dotum,Helvetica,sans-serif;font-size:13px;font-weight:bold;letter-spacing:-1px;fill:#5c5c5c}
+.bb-axis-y .tick{font-family:'나눔고딕',NanumGothic,'돋움',Dotum,Helvetica,sans-serif;font-size:13px;letter-spacing:-1px;fill:#5c5c5c}
+.bb-axis line .bb-axis-x path{stroke:#e5e5e5}
+.bb-axis-y path, ._trend_graph .bb-axis-y2 path{display:none}
+.bb-axis .tick line{display:none}
+.bb-axis .tick path{display:none}
+
+/* Grid */
+.bb-grid line.bb-ygrid{stroke:#ededed}
+.bb-grid line.bb-xgrid-focus{stroke:#b9c3ce;opacity:1;stroke-width:1px}
+.bb-grid line.bb-xgrid{stroke:#f7f7f7;opacity:1;stroke-width:1px}
+.bb-grid text{fill:#aaa}
+.bb-ygrids:first-child,.bb-ygrids:last-child{stroke:#ccc!important}
+
+/* Line */
+.bb-line{stroke-width:2px}
+
+/* x축 그리드 */
+.bb-xgrid-line line{
+    stroke : #EDEDED;
+}
+/* 포인터 */
+.bb-circle._expanded_{
+    fill: #fff !important;
+    stroke-width : 3px;
+}
+
+._realtime_graph .bb-ygrids :nth-child(2n) {
+    stroke-dasharray: 0;
+}
+
+/* y그리드 첫번째/마지막 */
+.bb-ygrids :nth-child(2n) {
+    stroke: #ccc;
+    stroke-dasharray: 2;
+}
+
+/* y그리드 첫번째/마지막 */
+.bb-ygrids :nth-child(2n+1) {
+    stroke: #ccc;
+    stroke-dasharray: 0;
+}
+
+/* x 축의 시/분/초 텍스트 */
+.bb-axis-x .tick tspan:nth-child(1){
+    font-size:12px;
+    fill:#000;
+}
+/* x 축의 날짜 텍스트 */
+.bb-axis-x .tick tspan:nth-child(2){
+    font-size:12px;
+    font-weight:normal;
+    fill:#999;
+}
+
+.bb-chart-arcs .bb-arc{stroke:none;}
+.bb-chart-arcs text{pointer-events:none;text-anchor:middle;display:block;font-size:17px;}
+.bb-chart-arcs text .datalab-unit{font-size:10px}
+
+

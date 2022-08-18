@@ -12,6 +12,7 @@ public class FurnitureManager : MonoBehaviour
     public static FurnitureManager Instance;
 
     public List<InteriorObject> Prefabs;
+    public List<GameObject> floors;
 
     public List<InteriorObject> InteriorObjects = new List<InteriorObject>(64);
 
@@ -125,8 +126,19 @@ public class FurnitureManager : MonoBehaviour
                 {
                     var data = mapDatas[i];
 
+<<<<<<< HEAD
                     Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
                     print(data.Direction);
+=======
+                    if (data.FurnitureType == FurnitureType.Floor)
+                    {
+                        floors[data.Index].SetActive(true);
+                    }
+                    else
+                    {
+                        Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
+                    }
+>>>>>>> c4fde2bc12176e313b59aee1dd645a6b38bf1f5a
                 }
 
             }    
@@ -134,6 +146,18 @@ public class FurnitureManager : MonoBehaviour
         }
     }
 
+    private int checkFloor()
+    {
+        int floorNum = 0;
+        foreach(GameObject f in floors)
+        {
+            if (gameObject.activeSelf == true)
+            {
+                floorNum = floors.IndexOf(f);
+            }
+        }
+        return floorNum;
+    }
 
     public async UniTaskVoid Save()
     {
@@ -142,7 +166,7 @@ public class FurnitureManager : MonoBehaviour
 
         List<MapData> saveData = new List<MapData>(count);
 
-        for(int i = 0; i < count; ++i)
+        for (int i = 0; i < count; ++i)
         {
             var o = InteriorObjects[i];
 
@@ -158,6 +182,16 @@ public class FurnitureManager : MonoBehaviour
             saveData.Add(data);
         }
 
+        MapData floordata = new MapData()
+        {
+            FurnitureType = FurnitureType.Floor,
+            Index = checkFloor(),
+            x = 0,
+            y = 0,
+            Direction = 0
+        };
+
+        saveData.Add(floordata);
         string jsonData = JsonConvert.SerializeObject(saveData);
 
         var response = await NetManager.Post<ResponseSavePacket>(new RequestSavePacket(jsonData));

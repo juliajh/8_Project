@@ -51,7 +51,7 @@ public class UI_RecommendItem : MonoBehaviour
         Application.OpenURL(m_Data.Link);
     }
 
-    public void onClickBascketButton() 
+    public void OnClickBasketButton() 
     {
         //장바구니 리스트에 추가 할 항목
         print(m_Data.Image);
@@ -59,26 +59,12 @@ public class UI_RecommendItem : MonoBehaviour
         print(m_Data.Link);
         print(m_Data.Title);
 
-        StartCoroutine(AddBasket(m_Data.Image,basketImage));
+        BasketManager.Instance.AddBasket(m_Data);
 
         //basketImage.texture = ((DownloadHandler)request.downloadHandler)m_Data.Image;
     }
-    public RawImage basketImage;
+    
 
-    IEnumerator AddBasket(string MediaUrl,RawImage forBasket) 
-    {
-        string url = MediaUrl.Replace("https://", "http://");
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
-        yield return request.SendWebRequest();
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.Log(request.error);
-        }
-        else
-        {
-            forBasket.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
-        }
-    }
 
 
 }
