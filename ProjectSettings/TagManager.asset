@@ -50,12 +50,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: UI
-    uniqueID: 927287217
-    locked: 0
   - name: 1
     uniqueID: 3981440079
     locked: 0
   - name: 2
     uniqueID: 2592196909
+    locked: 0
+  - name: UI
+    uniqueID: 927287217
     locked: 0
