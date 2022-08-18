@@ -55,13 +55,52 @@ public class FurnitureManager : MonoBehaviour
         obj.SetIndex(index);
 
         obj.transform.position = new Vector3(x, y, 0);
-
         InteriorObjects.Add(obj);
+
+
+
+        obj.direction = direction;
+        obj.LoadTurnObject(direction);
+    }
+
+    public void ClearMap()
+    {
+        int count = InteriorObjects.Count;
+
+        for(int i = 0; i < count; ++i)
+        {
+            Destroy(InteriorObjects[i].gameObject);
+        }
+
+        InteriorObjects.Clear();
+
+        FurnitureManager.Instance.SetCurrentInterObject(null);
+    }
+
+
+    public void RemoveCurrenntInteriorObject() 
+    {
+        if(m_CurrentInterObject == null)
+        {
+            return;
+        }
+
+        InteriorObjects.Remove(m_CurrentInterObject);
+
+        Destroy(m_CurrentInterObject.gameObject);
+        SetCurrentInterObject(null);
     }
 
     public void SetCurrentInterObject(InteriorObject interiorObject)
     {
         m_CurrentInterObject = interiorObject;
+
+        if(m_CurrentInterObject == null)
+        {
+            UI_RotateButton.Instance.Hide();
+            UI_DeleteButton.Instance.Hide();
+            return;
+        }
 
         // 버튼 노출 로직
         UI_RotateButton.Instance.Show();
@@ -71,6 +110,7 @@ public class FurnitureManager : MonoBehaviour
     public async UniTaskVoid Load()
     {
         print("load");
+        
         var response = await NetManager.Post<ResponseLoginPacket>(new RequestLoginPacket());
 
         if (response.Result)
@@ -86,6 +126,7 @@ public class FurnitureManager : MonoBehaviour
                     var data = mapDatas[i];
 
                     Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
+                    print(data.Direction);
                 }
 
             }    

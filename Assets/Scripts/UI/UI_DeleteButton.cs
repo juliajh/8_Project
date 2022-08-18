@@ -30,18 +30,12 @@ public class UI_DeleteButton : MonoBehaviour
 
     public void AllDeleteButton()
     {
-        FurnitureManager.Instance.CurrentInterObject?.DeleteObject();
-        obj = GameObject.FindGameObjectsWithTag("Furniture");
+       // FurnitureManager.Instance.SetCurrentInterObject(null);
 
-        for (int i = 0; i < obj.Length; i++) 
-        {
-            DestroyObject(obj[i]);
-        
-        }
     }
     public void DeleteButton() 
     {
-        FurnitureManager.Instance.CurrentInterObject?.DeleteObject();
+        FurnitureManager.Instance.RemoveCurrenntInteriorObject();
     }
 
 

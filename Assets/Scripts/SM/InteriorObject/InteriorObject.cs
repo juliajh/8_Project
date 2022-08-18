@@ -5,9 +5,9 @@ using UnityEngine;
 public enum Direction
 {
     Front,
+    Right,
     Back,
     Left,
-    Right,
 
     Count,
 }
@@ -89,15 +89,91 @@ public abstract class InteriorObject : MonoBehaviour
     {
         print("Rotate");
         direction = (Direction)((int)direction + 1);
-        transform.Rotate(0, 0,90);
-       
+        transform.Rotate(0, 0, 90);
+        
+
     }
 
-    public virtual void DeleteObject() 
+    public virtual void LoadRoatate(Direction ImageDir)
     {
-        Destroy(gameObject);
+        print("Rotate");
+        direction = (Direction)((int)direction + 1);
+        //direction = ImageDir;
+        //transform.Rotate(0, 0, 90);
+
+
     }
-    
+
+    public virtual void LoadTurnObject(Direction dir)
+    {
+        //print("Rotate");
+        //direction = (Direction)((int)direction + 1);
+
+        switch (dir) 
+        {
+            case Direction.Front:
+                {
+                    transform.Rotate(0, 0, 0);
+                }
+                break;
+            case Direction.Back:
+                {
+                    transform.Rotate(0, 0, 180);
+                }
+                break;
+            case Direction.Left:
+                {
+                    transform.Rotate(0, 0, 270);
+                }
+                break;
+            case Direction.Right:
+                {
+                    transform.Rotate(0, 0, 90);
+                }
+                break;
+        }
+
+
+
+    }
+
+
+    /*public void ChangeDirection(Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.Front:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    direction = Direction.Right;
+                    m_SpriteRenderer.sprite = .Data.LeftImage;
+                    //StartCoroutine(Spin());
+                    //Rortate();
+                }
+                break;
+            case Direction.Right:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    direction = Direction.Left;
+                    m_SpriteRenderer.sprite = be.Data.LeftImage;
+                }
+                break;
+            case Direction.Left:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    direction = Direction.Front;
+                    m_SpriteRenderer.sprite = be.Data.FrontImage;
+                    //Rortate();
+                }
+                break;
+        }
+    }*/
+
+    /* public virtual void DeleteObject() 
+     {
+         Destroy(gameObject);
+     }*/
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
