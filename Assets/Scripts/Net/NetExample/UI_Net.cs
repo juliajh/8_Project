@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class UI_Net : MonoBehaviour
 {
-    /*
+    
     public void OnClickLoginButton()
     {
         Login();
@@ -26,7 +26,7 @@ public class UI_Net : MonoBehaviour
         
     }
 
-    */
+    
     public void OnClickSaveButton()
     {
         //Save();
@@ -186,7 +186,6 @@ public class UI_Net : MonoBehaviour
 
 
     // 장바구니 로드
-
     public void OnClickBasketLoadButton()
     {
         BasketLoad();

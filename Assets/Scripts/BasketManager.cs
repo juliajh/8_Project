@@ -6,13 +6,18 @@ using UniRx;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Newtonsoft.Json;
+using TMPro;
+using System;
 
 public class BasketManager : MonoBehaviour
 {
     public static BasketManager Instance;
     public GameObject shopContent;
-
+    public TextMeshProUGUI countText;
     public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
+    public Transform ParentTransform;
+    public UI_BasketItem Prefab;
+
 
     private void Awake()
     {
@@ -23,6 +28,19 @@ public class BasketManager : MonoBehaviour
     private void Start()
     {
         //Load();
+        CountBasket();
+        BasketLoad();
+    }
+
+    private string splitId(String link)
+    {
+        string id = link.Substring(link.IndexOf("=") + 1).Trim();
+        return id;
+    }
+
+    private void CountBasket()
+    {
+        countText.text = BasketList.Count.ToString();
     }
 
     public void AddBasket(RecommendResponseData data)
@@ -31,83 +49,33 @@ public class BasketManager : MonoBehaviour
         {
             BasketList.Add(data);
         }
-    }
+        CountBasket();
 
+    }
+    
     public void RemoveBasket(RecommendResponseData data)
     {
         BasketList.Remove(data);
+        CountBasket();
     }
 
-    /*
-    public async UniTaskVoid Load()
+    public void SaveBtnClick()
     {
-        print("load");
-        var response = await NetManager.Post<ResponseLoginPacket>(new RequestLoginPacket());
-
-        if (response.Result)
-        {
-            UnityEngine.Debug.Log(response.Map);
-
-            var mapDatas = JsonConvert.DeserializeObject<List<MapData>>(response.Map);
-
-            if (mapDatas.Count > 0)
-            {
-                for (int i = 0; i < mapDatas.Count; ++i)
-                {
-                    var data = mapDatas[i];
-
-                    if (data.FurnitureType == FurnitureType.Floor)
-                    {
-                        floors[data.Index].SetActive(true);
-                    }
-                    else
-                    {
-                        Make(data.FurnitureType, data.Index, data.x, data.y, data.Direction);
-                    }
-                }
-
-            }
-
-        }
+        BasketSave();
     }
 
-
-    public async UniTaskVoid Save()
+    public async UniTaskVoid BasketSave()
     {
-        int count = InteriorObjects.Count;
-        if (count == 0) return;
+        List<String> saveData = new List<String>(BasketList.Count);
 
-        List<MapData> saveData = new List<MapData>(count);
-
-        for (int i = 0; i < count; ++i)
+        foreach(RecommendResponseData item in BasketList)
         {
-            var o = InteriorObjects[i];
-
-            MapData data = new MapData()
-            {
-                FurnitureType = o.FurnitureType,
-                Index = o.Index,
-                x = o.transform.position.x,
-                y = o.transform.position.y,
-                Direction = o.direction
-            };
-
-            saveData.Add(data);
+            saveData.Add(splitId(item.Link));
         }
 
-        MapData floordata = new MapData()
-        {
-            FurnitureType = FurnitureType.Floor,
-            Index = checkFloor(),
-            x = 0,
-            y = 0,
-            Direction = 0
-        };
-
-        saveData.Add(floordata);
         string jsonData = JsonConvert.SerializeObject(saveData);
 
-        var response = await NetManager.Post<ResponseSavePacket>(new RequestSavePacket(jsonData));
+        var response = await NetManager.Post<ResponseBasketSavePacket>(new RequestBasketSavePacket(jsonData));
 
         if (response.Result)
         {
@@ -115,5 +83,50 @@ public class BasketManager : MonoBehaviour
         }
     }
 
-    */
+
+    public async UniTaskVoid BasketLoad()
+    {
+        var response = await NetManager.Post<ResponseBasketLoadPacket>(new RequestBasketLoadPacket());
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Category);
+                Debug.Log(data.Color);
+                Debug.Log(data.Title);
+                Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Brand);
+                Debug.Log(data.Price);
+
+                Make(data);
+            }
+        }
+    }
+
+
+
+    public void Make(BasketResponseData data)
+    {
+        var newItem = Instantiate<UI_BasketItem>(Prefab);
+        newItem.transform.SetParent(ParentTransform);
+        newItem.transform.localScale = new Vector3(1, 1, 1);
+        newItem.transform.position = new Vector3(0,0, 0);
+        newItem.gameObject.SetActive(true);
+
+        /*
+        newItem.m_NameText.text = data.Title;
+        newItem.m_PriceText.text = data.Price;
+        */
+
+
+    }
+
+
 }
