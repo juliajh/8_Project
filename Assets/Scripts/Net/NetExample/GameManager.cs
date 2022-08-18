@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             color.a -= Time.deltaTime / time;
             saveText.color = color;
             yield return null;
-            FurnitureManager.Instance.OnClickSaveButton();
+            
 
         }
     }
