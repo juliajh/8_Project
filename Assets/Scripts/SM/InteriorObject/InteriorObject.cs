@@ -75,6 +75,11 @@ public abstract class InteriorObject : MonoBehaviour
             worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.4, (float)4.4);
             worldPosition.y = Mathf.Clamp(worldPosition.y, (float)3.5, (float)3.85);
         }
+        else 
+        {
+            worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.44, (float)4.3);
+            worldPosition.y = Mathf.Clamp(worldPosition.y, (float)-1.3, (float)3.5);
+        }
 
         /*worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.39, (float)4.61);
         worldPosition.y = Mathf.Clamp(worldPosition.y, (float)-1.3, (float)3);

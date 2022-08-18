@@ -38,7 +38,7 @@ public class FurnitureManager : MonoBehaviour
 
         obj.direction = direction;
         obj.LoadTurnObject(direction);
-        InteriorObjects.Add(obj);
+        //InteriorObjects.Add(obj);
         obj.ColorChange();
     }
 
@@ -81,6 +81,7 @@ public class FurnitureManager : MonoBehaviour
         obj.transform.position = new Vector3(x, y, 0);
 
         obj.direction = direction;
+        print(obj.direction);
         obj.LoadTurnObject(direction);
         InteriorObjects.Add(obj);
 
@@ -148,10 +149,11 @@ public class FurnitureManager : MonoBehaviour
             int count = response.Data.Length;
 
             var responseData = response.Data;
-
+            
             var data = responseData[0];
             float p_X = float.Parse(data.PosX);
             float p_Y = float.Parse(data.PosY);
+            //if () { }
             RecommendMake(FurnitureType.Bed, 1, p_X, p_Y, Direction.Front);
 
 
@@ -204,11 +206,14 @@ public class FurnitureManager : MonoBehaviour
         int floorNum = 0;
         foreach(GameObject f in floors)
         {
-            if (gameObject.activeSelf == true)
+            if (f.activeSelf == true)
             {
                 floorNum = floors.IndexOf(f);
             }
         }
+
+        
+        Debug.Log("SSSSSSSSSSSSSSSS ===== " + floorNum);
         return floorNum;
     }
 

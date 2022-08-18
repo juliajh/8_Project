@@ -24,6 +24,38 @@ public class ChairObject : InteriorObject
     }
 
 
+    public override void LoadTurnObject(Direction dir)
+    {
+        //print("//////////" + dir);
+        switch (dir)
+        {
+            case Direction.Front:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    //direction = Direction.Right;
+                    m_SpriteRenderer.sprite = m_Chair.Data.FrontImage;
+                    //StartCoroutine(Spin());
+                    //Rortate();
+                }
+                break;
+            case Direction.Right:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    //direction = Direction.Left;
+                    m_SpriteRenderer.sprite = m_Chair.Data.RightImage;
+                }
+                break;
+            case Direction.Left:
+                {
+                    //transform.Rotate(0, 0, 90);
+                    direction = Direction.Front;
+                    m_SpriteRenderer.sprite = m_Chair.Data.LeftImage;
+                    //Rortate();
+                }
+                break;
+        }
+    }
+
     public override void RotationObject()
     {
         switch (direction)
