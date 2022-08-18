@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class UI_CarrotWrite : MonoBehaviour
 {
+    private void Awake()
+    {
+
+        gameObject.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
