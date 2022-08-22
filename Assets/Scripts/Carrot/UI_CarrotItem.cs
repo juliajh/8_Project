@@ -11,7 +11,10 @@ public class UI_CarrotItem : MonoBehaviour
     private RecommendResponseData m_Data;
 
     public RawImage m_IconImage;
-    public TextMeshProUGUI m_NameText;
+
+    public TextMeshProUGUI m_CategoryText;
+    public TextMeshProUGUI m_TitleText;
+    public TextMeshProUGUI m_DescribeText;
     public TextMeshProUGUI m_PriceText;
 
     public void Init(RecommendResponseData data)
@@ -23,7 +26,14 @@ public class UI_CarrotItem : MonoBehaviour
 
     private void Set()
     {
-        m_NameText.text = m_Data.Title;
+        if (m_Data == null)
+        {
+            return;
+        }
+
+        m_CategoryText.text = m_Data.Category;
+        m_TitleText.text = m_Data.Title;
+        //m_DescribeText.text = m_Data.Describe;
         m_PriceText.text = $"{Int32.Parse(m_Data.Price):N0}₩";
 
         StartCoroutine(DownloadImage(m_Data.Image));

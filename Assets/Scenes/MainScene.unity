@@ -17164,8 +17164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555a35493ed77c94998c9c85028a473e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentTransform: {fileID: 0}
-  Prefab: {fileID: 0}
 --- !u!1001 &1589152181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22389,6 +22387,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Carrot
       objectReference: {fileID: 0}
+    - target: {fileID: 1056235704025895939, guid: 8de85e2b78e2870489d04f586a9e9d2d, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1056235704025895997, guid: 8de85e2b78e2870489d04f586a9e9d2d, type: 3}
       propertyPath: writePanel
       value: 
@@ -22566,6 +22568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_CarrotWrite
       objectReference: {fileID: 0}
+    - target: {fileID: 1179498592665633967, guid: 22c47dfc64f4dbb4baca973c0cf65f1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22c47dfc64f4dbb4baca973c0cf65f1b, type: 3}
 --- !u!1001 &2869390596438309748
@@ -22575,6 +22581,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1836047577}
     m_Modifications:
+    - target: {fileID: 2869390594731562477, guid: 433a63a808d67d84d99ede0bc591b78f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 892.0001
+      objectReference: {fileID: 0}
     - target: {fileID: 2869390594845589192, guid: 433a63a808d67d84d99ede0bc591b78f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -22895,6 +22905,10 @@ PrefabInstance:
     - target: {fileID: 6691866021766406713, guid: d39e65676fbc3f441b3b3439c6c760d3, type: 3}
       propertyPath: m_Name
       value: UI_CarrotDetail
+      objectReference: {fileID: 0}
+    - target: {fileID: 6691866021766406713, guid: d39e65676fbc3f441b3b3439c6c760d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d39e65676fbc3f441b3b3439c6c760d3, type: 3}

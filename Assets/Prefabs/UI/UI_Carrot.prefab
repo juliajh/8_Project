@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 6069118933618964589}
   - component: {fileID: 1068774382038525804}
   m_Layer: 5
-  m_Name: Text_Price
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1800,7 +1800,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IconImage: {fileID: 4181660361969619033}
+  m_CategoryText: {fileID: 0}
   m_NameText: {fileID: 7893420289585518199}
+  m_DescribeText: {fileID: 0}
   m_PriceText: {fileID: 1068774382038525804}
 --- !u!114 &5395186733214600610
 MonoBehaviour:
@@ -2427,7 +2429,7 @@ GameObject:
   - component: {fileID: 4732825161141877271}
   - component: {fileID: 7893420289585518199}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2781,7 +2783,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IconImage: {fileID: 7677885837327188621}
+  m_CategoryText: {fileID: 0}
   m_NameText: {fileID: 9065922038658639955}
+  m_DescribeText: {fileID: 0}
   m_PriceText: {fileID: 4300881047538339080}
 --- !u!114 &5498508445162254589
 MonoBehaviour:
@@ -2935,7 +2939,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IconImage: {fileID: 8030303753593666789}
+  m_CategoryText: {fileID: 0}
   m_NameText: {fileID: 5283953968962620170}
+  m_DescribeText: {fileID: 0}
   m_PriceText: {fileID: 9033108268235131046}
 --- !u!114 &7763784704065676275
 MonoBehaviour:
