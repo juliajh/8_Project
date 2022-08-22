@@ -9,11 +9,10 @@ using Newtonsoft.Json;
 using TMPro;
 using System;
 
-public class BasketManager : MonoBehaviour
+public class CarrotManager : MonoBehaviour
 {
-    public static BasketManager Instance;
-    public GameObject shopContent;
-    public TextMeshProUGUI countText;
+    public static CarrotManager Instance;
+   // public GameObject shopContent;
     public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
     public Transform ParentTransform;
     public UI_BasketItem Prefab;
@@ -24,24 +23,14 @@ public class BasketManager : MonoBehaviour
         Instance = this;
     }
 
+    /*
     private void Start()
     {
         //Load();
         BasketLoad();
 
     }
-
-    private string splitId(String link)
-    {
-        string id = link.Substring(link.IndexOf("=") + 1).Trim();
-        return id;
-    }
-
-    private void CountBasket()
-    {
-        countText.text = BasketList.Count.ToString();
-    }
-
+    
     public void AddBasket(RecommendResponseData data)
     {
         if (!BasketList.Contains(data))
@@ -126,5 +115,7 @@ public class BasketManager : MonoBehaviour
             Debug.Log("장바구니 삭제 완료");
         }
     }
+
+    */
 
 }
