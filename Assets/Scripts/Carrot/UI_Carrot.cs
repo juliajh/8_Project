@@ -9,6 +9,7 @@ public class UI_Carrot : MonoBehaviour
     public Transform ParentTransform;
     public UI_CarrotItem Prefab;
     public UI_CarrotWrite writePanel;
+    public UI_CarrotDetail detailPanel;
     public List<UI_CarrotItem> Items;
     private void Awake()
     {
@@ -17,7 +18,7 @@ public class UI_Carrot : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-
+    /*
     public void Refresh()
     {
         var dataList = CarrotManager.Instance.BasketList;
@@ -68,6 +69,14 @@ public class UI_Carrot : MonoBehaviour
         Refresh();
 
     }
+
+    */
+
+    public void Open()
+    {
+        gameObject.SetActive(true);
+    }
+
     public void Close()
     {
         gameObject.SetActive(false);
@@ -78,4 +87,11 @@ public class UI_Carrot : MonoBehaviour
         gameObject.SetActive(false);
         writePanel.gameObject.SetActive(true);
     }
+
+    public void Detail()
+    {
+        gameObject.SetActive(false);
+        detailPanel.gameObject.SetActive(true);
+    }
+
 }

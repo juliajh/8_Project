@@ -212,8 +212,6 @@ public class FurnitureManager : MonoBehaviour
             }
         }
 
-        
-        Debug.Log("SSSSSSSSSSSSSSSS ===== " + floorNum);
         return floorNum;
     }
 

@@ -13,24 +13,23 @@ public class CarrotManager : MonoBehaviour
 {
     public static CarrotManager Instance;
    // public GameObject shopContent;
-    public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
+    //public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
     public Transform ParentTransform;
-    public UI_BasketItem Prefab;
-
+    public UI_CarrotItem Prefab;
 
     private void Awake()
     {
         Instance = this;
     }
 
-    /*
+    
     private void Start()
     {
         //Load();
-        BasketLoad();
-
+        //BasketLoad();
     }
-    
+
+    /*
     public void AddBasket(RecommendResponseData data)
     {
         if (!BasketList.Contains(data))
