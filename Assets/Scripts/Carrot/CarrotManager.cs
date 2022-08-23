@@ -12,10 +12,7 @@ using System;
 public class CarrotManager : MonoBehaviour
 {
     public static CarrotManager Instance;
-   // public GameObject shopContent;
-    public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
-    public Transform ParentTransform;
-    public UI_BasketItem Prefab;
+    public List<RecommendResponseData> CarrotList = new List<RecommendResponseData>();
 
 
     private void Awake()
@@ -23,14 +20,61 @@ public class CarrotManager : MonoBehaviour
         Instance = this;
     }
 
-    /*
+    
     private void Start()
     {
         //Load();
-        BasketLoad();
-
+        CarrotLoad();
     }
-    
+
+    public async UniTaskVoid CarrotSave()
+    {
+        List<String> saveData = new List<String>(CarrotList.Count);
+
+        foreach (RecommendResponseData item in CarrotList)
+        {
+            saveData.Add(item.Title);
+        }
+
+        string jsonData = JsonConvert.SerializeObject(saveData);
+
+        var response = await NetManager.Post<ResponseBasketSavePacket>(new RequestBasketSavePacket(jsonData));
+
+        if (response.Result)
+        {
+            UnityEngine.Debug.Log("저장 성공");
+        }
+    }
+
+
+    public async UniTaskVoid CarrotLoad()
+    {
+        //수정하기 
+        var response = await NetManager.Post<ResponseRecommendPacket>(new RequestBasketLoadPacket());
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Category);
+                Debug.Log(data.Color);
+                Debug.Log(data.Title);
+                Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Brand);
+                Debug.Log(data.Price);
+
+                CarrotList.Add(data);
+            }
+        }
+    }
+
+    /*
     public void AddBasket(RecommendResponseData data)
     {
         if (!BasketList.Contains(data))
@@ -52,53 +96,7 @@ public class CarrotManager : MonoBehaviour
         BasketSave();
     }
 
-    public async UniTaskVoid BasketSave()
-    {
-        List<String> saveData = new List<String>(BasketList.Count);
 
-        foreach(RecommendResponseData item in BasketList)
-        {
-            saveData.Add(splitId(item.Link));
-        }
-
-        string jsonData = JsonConvert.SerializeObject(saveData);
-
-        var response = await NetManager.Post<ResponseBasketSavePacket>(new RequestBasketSavePacket(jsonData));
-
-        if (response.Result)
-        {
-            UnityEngine.Debug.Log("저장 성공");
-        }
-    }
-
-
-    public async UniTaskVoid BasketLoad()
-    {
-         var response = await NetManager.Post<ResponseRecommendPacket>(new RequestBasketLoadPacket());
-
-        if (response.Result)
-        {
-            int count = response.Data.Length;
-
-            var responseData = response.Data;
-
-            for (int i = 0; i < count; ++i)
-            {
-                var data = responseData[i];
-                Debug.Log(data.Category);
-                Debug.Log(data.Color);
-                Debug.Log(data.Title);
-                Debug.Log(data.Link);
-                Debug.Log(data.Image);
-                Debug.Log(data.Brand);
-                Debug.Log(data.Price);
-
-                BasketList.Add(data);
-            }
-        }
-
-        CountBasket();
-    }
 
     public void OnClickBasketDeleteButton()
     {
