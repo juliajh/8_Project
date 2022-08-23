@@ -18,7 +18,6 @@ public class Test : MonoBehaviour
     {
         ImageUploader
             .Initialize()
-            .SetUrl(serverUrl)
             .SetTexture(imageSprite.sprite.texture)
             .SetFieldName("file")
             .SetFileName("file")

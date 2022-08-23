@@ -17,10 +17,14 @@ public class ImageUploader : MonoBehaviour
 	string fieldName;
 	string fileName = "defaultImageName";
 	ImageType imageType = ImageType.PNG;
-	string url = NetDefine.NET_SERVER_ADDR + "/InsertUsedBoard";
+	// 원래는 이거 써야 함
+	// string url = NetDefine.NET_SERVER_ADDR + "/InsertUsedBoard";
 
-	// 카테고리, 가구명, 사진, 가격, 게시판 제목, 내용, 등록자id
-	string category;
+	// 테스트용
+    string url = "http://192.168.0.37:5080/InsertUsedBoard";
+
+    // 카테고리, 가구명, 사진, 가격, 게시판 제목, 내용, 등록자id
+    string category;
 	string furnitureName;
 	string price;
 	string title;
