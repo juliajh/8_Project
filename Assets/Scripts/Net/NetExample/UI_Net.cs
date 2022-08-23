@@ -4,10 +4,14 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
+
 
 public class UI_Net : MonoBehaviour
 {
+    public SpriteRenderer imageSprite;
+
     /*
     public void OnClickLoginButton()
     {
@@ -202,5 +206,33 @@ public class UI_Net : MonoBehaviour
             }
         }
     }
+
+
+    // 이미지 파일 송신
+    public void OnClickSendFileButton()
+    {
+        SendImageFile();
+    }
+
+    public async UniTaskVoid SendImageFile()
+    {
+        ImageUploader
+            .Initialize()
+            .SetTexture(imageSprite.sprite.texture)
+            .SetFieldName("file")
+            .SetFileName("file")
+            .SetType(ImageType.JPG)
+            .SetCategory("Chair") // 카테고리
+            .SetFurnitureName("파란의자 ㅇㅁ") // 가구명
+            .SetPrice("10003") // 가격
+            .SetTitle("파란의자팝니다.") // 게시글 제목
+            .SetContext("상태좋아요.") // 게시글 내용
+            .SetUploaderId() // DeviceId (자동으로 불러옴)
+            .OnError(error => Debug.Log(error))
+            .OnComplete(text => Debug.Log(text))
+            .Upload();
+    }
+
+
 
 }

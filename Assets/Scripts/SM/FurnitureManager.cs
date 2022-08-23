@@ -154,7 +154,7 @@ public class FurnitureManager : MonoBehaviour
             float p_X = float.Parse(data.PosX);
             float p_Y = float.Parse(data.PosY);
             //if () { }
-            RecommendMake(FurnitureType.Bed, 1, p_X, p_Y, Direction.Front);
+            //RecommendMake(FurnitureType.Bed, 1, p_X, p_Y, Direction.Front);
 
 
             //allPos.RemoveAll();
