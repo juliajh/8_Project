@@ -578,8 +578,22 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Standalone: SUPER_TILEMAP_EDITOR
-    WebGL: SUPER_TILEMAP_EDITOR
+    Android: FG_WEBGLFB
+    CloudRendering: FG_WEBGLFB
+    EmbeddedLinux: FG_WEBGLFB
+    GameCoreScarlett: FG_WEBGLFB
+    GameCoreXboxOne: FG_WEBGLFB
+    Lumin: FG_WEBGLFB
+    Nintendo Switch: FG_WEBGLFB
+    PS4: FG_WEBGLFB
+    PS5: FG_WEBGLFB
+    Stadia: FG_WEBGLFB
+    Standalone: SUPER_TILEMAP_EDITOR;FG_WEBGLFB
+    WebGL: SUPER_TILEMAP_EDITOR;FG_WEBGLFB
+    Windows Store Apps: FG_WEBGLFB
+    XboxOne: FG_WEBGLFB
+    iPhone: FG_WEBGLFB
+    tvOS: FG_WEBGLFB
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

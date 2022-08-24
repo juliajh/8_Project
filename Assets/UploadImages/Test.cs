@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using check;
+
+using FrostweepGames.Plugins.WebGLFileBrowser;
+
+/*using WebGLFileUploader;
+using WebGLFileUploaderExample;*/
+//using AnotherFileBrowser.Windows;
+
 
 public class Test : MonoBehaviour
 {
@@ -11,8 +19,7 @@ public class Test : MonoBehaviour
 
 
     // 찾아보기 explorer
-    string path;
-    public SpriteRenderer image;
+    public SpriteRenderer showImage;
 
     public void StartBtn()
     {
@@ -20,6 +27,7 @@ public class Test : MonoBehaviour
             .Initialize()
             .SetUrl(serverUrl)
             .SetTexture(imageSprite.sprite.texture)
+            //.SetTexture(image.texture)
             .SetFieldName("file")
             .SetFileName("file")
             .SetType(ImageType.JPG)
@@ -36,27 +44,32 @@ public class Test : MonoBehaviour
     }
 
 
-    public void OpenExplorer() 
-    {
-       // path = EditorUtility.OpenFilePanel("Oberwrite with JPG", "", "jpg");
 
-        //GetImage();
+
+/*    public void OpenExplorer()
+    {
+        path = EditorUtility.OpenFilePanel("Oberwrite with JPG", "", "jpg");
+
+        GetImage();
     }
 
 
-    void GetImage() 
+    void GetImage()
     {
-        if (path != null) 
+        if (path != null)
         {
-            //UpdateImage();
+            UpdateImage();
         }
     }
-
-   /* void UpdateImage()
+    //.RawImage sprite1;
+    void UpdateImage()
     {
         WWW www = new WWW("file://" + path);
-        Rect rect = new Rect(0, 0, image.width, image.height);
-        image.sprite = Sprite.Create(www.texture, rect, new Vector2(0.5f, 0.5f));
+
+        Rect rect = new Rect(0, 0, www.texture.width, www.texture.height);
+        showImage.GetComponent<SpriteRenderer>().sprite = Sprite.Create(www.texture, rect, new Vector2(0.5f, 0.5f));
+
+        //showImage.sprite.texture = www.texture;
     }*/
 
 }
