@@ -102,12 +102,12 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
             {
                 var file = _loadedFiles[0];
 
-                fileNameText.text = file.fileInfo.name;
-                fileInfoText.text = $"File name: {file.fileInfo.name}\nFile extension: {file.fileInfo.extension}\nFile size: {file.fileInfo.SizeToString()}";
-                fileInfoText.text += $"\nLoaded files amount: {files.Length}";
+                //fileNameText.text = file.fileInfo.name;
+                //fileInfoText.text = $"File name: {file.fileInfo.name}\nFile extension: {file.fileInfo.extension}\nFile size: {file.fileInfo.SizeToString()}";
+                //fileInfoText.text += $"\nLoaded files amount: {files.Length}";
 
-                saveOpenedFileButton.gameObject.SetActive(true);
-                cleanupButton.gameObject.SetActive(true);
+                //saveOpenedFileButton.gameObject.SetActive(true);
+                //cleanupButton.gameObject.SetActive(true);
 
                 if (file.IsImage())
                 {
@@ -124,7 +124,7 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
                 if (file.IsText())
                 {
                     string content = file.ToStringContent();
-                    fileInfoText.text += $"\nFile content: {content.Substring(0, Mathf.Min(30, content.Length))}";
+                    //fileInfoText.text += $"\nFile content: {content.Substring(0, Mathf.Min(30, content.Length))}";
                 }
             }
         }
