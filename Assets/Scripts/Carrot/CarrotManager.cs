@@ -8,13 +8,14 @@ using UnityEngine.UI;
 using Newtonsoft.Json;
 using TMPro;
 using System;
+using check;
 
 public class CarrotManager : MonoBehaviour
 {
     public static CarrotManager Instance;
-    public List<RecommendResponseData> CarrotList = new List<RecommendResponseData>();
+    public List<Packet_Carrot> CarrotList = new List<Packet_Carrot>();
 
-
+    public SpriteRenderer imageSprite;
     private void Awake()
     {
         Instance = this;
@@ -24,33 +25,48 @@ public class CarrotManager : MonoBehaviour
     private void Start()
     {
         //Load();
-        CarrotLoad();
+        //CarrotLoad();
+    }
+
+    public void OnClickSaveButton()
+    {
+        CarrotSave();
     }
 
     public async UniTaskVoid CarrotSave()
     {
-        List<String> saveData = new List<String>(CarrotList.Count);
-
-        foreach (RecommendResponseData item in CarrotList)
+        foreach(Packet_Carrot data in CarrotList)
         {
-            saveData.Add(item.Title);
+            ImageUploader
+                .Initialize()
+                .SetTexture(imageSprite.sprite.texture)
+                .SetFieldName("file")
+                .SetFileName("file")
+                .SetType(ImageType.JPG)
+                .SetCategory(data.category) // 카테고리
+                .SetFurnitureName(data.furnitureName) // 가구명 (상품명이므로 아무거나)
+                .SetPrice(data.price) // 가격
+                .SetTitle(data.title) // 게시글 제목
+                .SetContext(data.context) // 게시글 내용
+                .SetUploaderId() // DeviceId (자동으로 불러옴)
+                .OnError(error => Debug.Log(error))
+                .OnComplete(text => Debug.Log(text))
+                .Upload();
         }
-
-        string jsonData = JsonConvert.SerializeObject(saveData);
-
-        var response = await NetManager.Post<ResponseBasketSavePacket>(new RequestBasketSavePacket(jsonData));
-
-        if (response.Result)
-        {
-            UnityEngine.Debug.Log("저장 성공");
-        }
+        
     }
 
 
+    public void RemoveCarrot(Packet_Carrot data)
+    {
+        CarrotList.Remove(data);
+    }
+
+    /*
     public async UniTaskVoid CarrotLoad()
     {
         //수정하기 
-        var response = await NetManager.Post<ResponseRecommendPacket>(new RequestBasketLoadPacket());
+        var response = await NetManager.Post<Packet_Carrot>(new Packet_Carrot());
 
         if (response.Result)
         {
@@ -74,22 +90,7 @@ public class CarrotManager : MonoBehaviour
         }
     }
 
-    /*
-    public void AddBasket(RecommendResponseData data)
-    {
-        if (!BasketList.Contains(data))
-        {
-            BasketList.Add(data);
-        }
-        CountBasket();
-
-    }
-    
-    public void RemoveBasket(RecommendResponseData data)
-    {
-        BasketList.Remove(data);
-        CountBasket();
-    }
+   
 
     public void SaveBtnClick()
     {

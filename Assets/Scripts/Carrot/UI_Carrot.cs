@@ -84,8 +84,11 @@ public class UI_Carrot : MonoBehaviour
 
     public void Detail()
     {
+        var dataList = CarrotManager.Instance.CarrotList;
+
         gameObject.SetActive(false);
         detailPanel.gameObject.SetActive(true);
+
     }
 
 }

@@ -8,16 +8,18 @@ using System;
 
 public class UI_CarrotItem : MonoBehaviour
 {
-    private RecommendResponseData m_Data;
+    private Packet_Carrot m_Data;
 
     public RawImage m_IconImage;
 
     public TextMeshProUGUI m_CategoryText;
-    public TextMeshProUGUI m_TitleText;
-    public TextMeshProUGUI m_DescribeText;
+    public TextMeshProUGUI m_FurnitureNameText;
     public TextMeshProUGUI m_PriceText;
+    public TextMeshProUGUI m_TitleText;  
+    public TextMeshProUGUI m_ContextText;
 
-    public void Init(RecommendResponseData data)
+
+    public void Init(Packet_Carrot data)
     {
         m_Data = data;
 
@@ -31,14 +33,16 @@ public class UI_CarrotItem : MonoBehaviour
             return;
         }
 
-        m_CategoryText.text = m_Data.Category;
-        m_TitleText.text = m_Data.Title;
-        //m_DescribeText.text = m_Data.Describe;
-        m_PriceText.text = $"{Int32.Parse(m_Data.Price):N0}₩";
+        m_CategoryText.text = m_Data.category;
+        m_FurnitureNameText.text = m_Data.furnitureName;
+        m_TitleText.text = m_Data.title;
+        m_ContextText.text = m_Data.context;
+        m_PriceText.text = $"{Int32.Parse(m_Data.price):N0}₩";
 
-        StartCoroutine(DownloadImage(m_Data.Image));
+        //StartCoroutine(DownloadImage(m_Data.Image));
     }
 
+    /*
     IEnumerator DownloadImage(string MediaUrl)
     {
         string url = MediaUrl.Replace("https://", "http://");
@@ -53,6 +57,6 @@ public class UI_CarrotItem : MonoBehaviour
             m_IconImage.texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
         }
     } 
-    
+    */
 
 }

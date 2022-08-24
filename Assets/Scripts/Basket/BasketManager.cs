@@ -24,11 +24,6 @@ public class BasketManager : MonoBehaviour
         BasketLoad();
     }
 
-    private void Start()
-    {
-        //Load();
-
-    }
 
     private string splitId(String link)
     {

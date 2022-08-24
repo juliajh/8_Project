@@ -165,13 +165,13 @@ namespace check
 			form.AddBinaryData(fieldName, textureBytes, fileName + "." + extension, "image/" + extension);
 
 			// 게시글 정보 추가
-			/*form.AddField("category", category);
+			form.AddField("category", category);
 			form.AddField("furnitureName", furnitureName);
 			form.AddField("price", price);
 			form.AddField("title", title);
 			form.AddField("context", context);
 			form.AddField("uploaderId", uploaderId);
-*/
+
 			UnityWebRequest w = UnityWebRequest.Post(url, form);
 
 			yield return w.SendWebRequest();
