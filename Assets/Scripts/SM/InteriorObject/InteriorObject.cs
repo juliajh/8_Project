@@ -118,15 +118,18 @@ public abstract class InteriorObject : MonoBehaviour
 
         m_Material.DisableKeyword("OUTBASE_ON");
 
+        if (gameObject.tag != "RecommendFurniture") 
+        {
+            if (FurnitureManager.Instance.recommendFurniture.Count >= 1)
+            {
+                Destroy(FurnitureManager.Instance.recommendFurniture[0].gameObject);
+                FurnitureManager.Instance.recommendFurniture.RemoveAt(0);
+            }
+            else
+            {
+                return;
+            }
 
-        if (FurnitureManager.Instance.recommendFurniture.Count >= 1)
-        {
-            Destroy(FurnitureManager.Instance.recommendFurniture[0].gameObject);
-            FurnitureManager.Instance.recommendFurniture.RemoveAt(0);
-        }
-        else
-        {
-            return;
         }
 
         //FurnitureManager.Instance.SetCurrentInterObject(null);
