@@ -37,6 +37,7 @@ public class FurnitureManager : MonoBehaviour
     public void RecommendMake(FurnitureType furnitureType, int index, float x, float y, Direction direction) 
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
+        obj.gameObject.SetActive(false);
         obj.SetIndex(index);
         //obj.transform.position = new Vector3(x, y, 0);
 
@@ -46,18 +47,22 @@ public class FurnitureManager : MonoBehaviour
         obj.ColorChange();
 
 
+        if (recommendFurniture.Count == 0)
+        {
+            print("recommendCount" + recommendFurniture.Count);
+            recommendFurniture.Add(obj.gameObject);
 
-        if (recommendFurniture.Count > 0)
-        {
-            recommendFurniture.Add(obj.gameObject);
-            recommendFurniture[0].transform.position = new Vector2(x, y);
         }
-        else
+        else 
         {
+            print("recommendCount" + recommendFurniture.Count);
             Destroy(recommendFurniture[0]);
+            recommendFurniture.RemoveAt(0);
             recommendFurniture.Add(obj.gameObject);
-            recommendFurniture[1].transform.position = new Vector2(x, y);
         }
+        
+            recommendFurniture[0].transform.position = new Vector2(x, y);
+            obj.gameObject.SetActive(true);
     }
 
 
