@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 public class UI_Net : MonoBehaviour
 {
+    public SpriteRenderer imageSprite;
+
     /*
     public void OnClickLoginButton()
     {
@@ -202,5 +207,44 @@ public class UI_Net : MonoBehaviour
             }
         }
     }
+
+
+    // 이미지 파일 송신
+    public void OnClickSendFileButton()
+    {
+        SendImageFile();
+    }
+
+    public async UniTaskVoid SendImageFile()
+    {
+        // 이 부분 변경
+        Packet_Carrot data = new Packet_Carrot()
+        {
+            category = "Chair",
+            furnitureName = "럭셔리한 파란의자",
+            price = "19412",
+            title = "파란의자 팝니다.",
+            context = "거의 새겁니다."
+        };
+
+
+        ImageUploader
+            .Initialize()
+            .SetTexture(imageSprite.sprite.texture)
+            .SetFieldName("file")
+            .SetFileName("file")
+            .SetType(ImageType.JPG)
+            .SetCategory(data.category) // 카테고리
+            .SetFurnitureName(data.furnitureName) // 가구명 (상품명이므로 아무거나)
+            .SetPrice(data.price) // 가격
+            .SetTitle(data.title) // 게시글 제목
+            .SetContext(data.context) // 게시글 내용
+            .SetUploaderId() // DeviceId (자동으로 불러옴)
+            .OnError(error => Debug.Log(error))
+            .OnComplete(text => Debug.Log(text))
+            .Upload();
+    }
+
+
 
 }

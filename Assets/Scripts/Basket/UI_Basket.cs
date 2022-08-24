@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_Basket : MonoBehaviour
@@ -9,13 +10,18 @@ public class UI_Basket : MonoBehaviour
     public Transform ParentTransform;
 
     public UI_BasketItem Prefab;
-
+    public TextMeshProUGUI countText;
     public List<UI_BasketItem> Items;
     private void Awake()
     {
         Instance = this;
 
         gameObject.SetActive(false);
+    }
+
+    private void Start()
+    {
+        Refresh();
     }
 
 
@@ -67,10 +73,11 @@ public class UI_Basket : MonoBehaviour
     {
         gameObject.SetActive(true);
         Refresh();
-
+        BasketManager.Instance.OnChangeCallback += Refresh;
     }
     public void Close()
     {
         gameObject.SetActive(false);
+        BasketManager.Instance.OnChangeCallback -= Refresh;
     }
 }

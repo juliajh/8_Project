@@ -13,21 +13,20 @@ public class BasketManager : MonoBehaviour
 {
     public static BasketManager Instance;
    // public GameObject shopContent;
-    public TextMeshProUGUI countText;
     public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
     public Transform ParentTransform;
     public UI_BasketItem Prefab;
-
+    public Action OnChangeCallback;
 
     private void Awake()
     {
         Instance = this;
+        BasketLoad();
     }
 
     private void Start()
     {
         //Load();
-        BasketLoad();
 
     }
 
@@ -37,10 +36,6 @@ public class BasketManager : MonoBehaviour
         return id;
     }
 
-    private void CountBasket()
-    {
-        countText.text = BasketList.Count.ToString();
-    }
 
     public void AddBasket(RecommendResponseData data)
     {
@@ -48,14 +43,15 @@ public class BasketManager : MonoBehaviour
         {
             BasketList.Add(data);
         }
-        CountBasket();
 
+        OnChangeCallback?.Invoke();
     }
     
     public void RemoveBasket(RecommendResponseData data)
     {
         BasketList.Remove(data);
-        CountBasket();
+
+        OnChangeCallback?.Invoke();
     }
 
     public void SaveBtnClick()
@@ -107,8 +103,8 @@ public class BasketManager : MonoBehaviour
                 BasketList.Add(data);
             }
         }
+        OnChangeCallback?.Invoke();
 
-        CountBasket();
     }
 
     public void OnClickBasketDeleteButton()
@@ -120,7 +116,6 @@ public class BasketManager : MonoBehaviour
     {
         var response = await NetManager.Post<ResponseBasketDeletePacket>(new RequestBasketDeletePacket());
         BasketList.Clear();
-        CountBasket();
         if (response.Result)
         {
             Debug.Log("장바구니 삭제 완료");
