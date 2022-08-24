@@ -8,8 +8,6 @@ public class UI_Carrot : MonoBehaviour
 
     public Transform ParentTransform;
     public UI_CarrotItem Prefab;
-    public UI_CarrotWrite writePanel;
-    public UI_CarrotDetail detailPanel;
     public List<UI_CarrotItem> Items;
 
     private void Awake()
@@ -79,16 +77,8 @@ public class UI_Carrot : MonoBehaviour
     public void Write()
     {
         gameObject.SetActive(false);
-        writePanel.gameObject.SetActive(true);
+        UI_CarrotWrite.Instance.gameObject.SetActive(true);
     }
 
-    public void Detail()
-    {
-        var dataList = CarrotManager.Instance.CarrotList;
-
-        gameObject.SetActive(false);
-        detailPanel.gameObject.SetActive(true);
-
-    }
 
 }

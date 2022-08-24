@@ -14,8 +14,10 @@ public class CarrotManager : MonoBehaviour
 {
     public static CarrotManager Instance;
     public List<Packet_Carrot> CarrotList = new List<Packet_Carrot>();
-
     public SpriteRenderer imageSprite;
+
+    public Action OnChangeCallback;
+
     private void Awake()
     {
         Instance = this;
@@ -28,37 +30,7 @@ public class CarrotManager : MonoBehaviour
         //CarrotLoad();
     }
 
-    public void OnClickSaveButton()
-    {
-        CarrotSave();
-    }
-
-    public async UniTaskVoid CarrotSave()
-    {
-        foreach(Packet_Carrot data in CarrotList)
-        {
-            Debug.Log("TEST=="+data);
-
-            ImageUploader
-                .Initialize()
-                .SetTexture(imageSprite.sprite.texture)
-                .SetFieldName("file")
-                .SetFileName("file")
-                .SetType(ImageType.JPG)
-                .SetCategory(data.category) // 카테고리
-                .SetFurnitureName(data.furnitureName) // 가구명 (상품명이므로 아무거나)
-                .SetPrice(data.price) // 가격
-                .SetTitle(data.title) // 게시글 제목
-                .SetContext(data.context) // 게시글 내용
-                .SetUploaderId() // DeviceId (자동으로 불러옴)
-                .OnError(error => Debug.Log(error))
-                .OnComplete(text => Debug.Log(text))
-                .Upload();
-        }
-        
-    }
-
-
+    
     public void RemoveCarrot(Packet_Carrot data)
     {
         CarrotList.Remove(data);
@@ -91,14 +63,6 @@ public class CarrotManager : MonoBehaviour
             }
         }
     }
-
-   
-
-    public void SaveBtnClick()
-    {
-        BasketSave();
-    }
-
 
 
     public void OnClickBasketDeleteButton()
