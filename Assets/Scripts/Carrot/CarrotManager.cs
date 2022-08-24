@@ -37,6 +37,8 @@ public class CarrotManager : MonoBehaviour
     {
         foreach(Packet_Carrot data in CarrotList)
         {
+            Debug.Log("TEST=="+data);
+
             ImageUploader
                 .Initialize()
                 .SetTexture(imageSprite.sprite.texture)

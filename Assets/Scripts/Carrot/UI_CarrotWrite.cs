@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_CarrotWrite : MonoBehaviour
 {
-
-    public TextMeshProUGUI m_CategoryText;
-    public TextMeshProUGUI m_FurnitureNameText;
-    public TextMeshProUGUI m_PriceText;
-    public TextMeshProUGUI m_TitleText;
-    public TextMeshProUGUI m_ContextText;
+    public InputField m_FurnitureNameText;
+    public InputField m_PriceText;
+    public InputField m_TitleText;
+    public InputField m_ContextText;
+    public Dropdown m_CategoryText;
 
     private void Awake()
     {
@@ -32,11 +32,11 @@ public class UI_CarrotWrite : MonoBehaviour
     {
         Packet_Carrot data = new Packet_Carrot()
         {
-            category = m_CategoryText.text,
-            furnitureName = m_FurnitureNameText.text,
-            price = m_PriceText.text,
-            title = m_TitleText.text,
-            context = m_ContextText.text
+            category = m_CategoryText.value.ToString(),
+            furnitureName = m_FurnitureNameText.text.ToString(),
+            price = m_PriceText.text.ToString(),
+            title = m_TitleText.text.ToString(),
+            context = m_ContextText.text.ToString()
         };
 
         CarrotManager.Instance.CarrotList.Add(data);

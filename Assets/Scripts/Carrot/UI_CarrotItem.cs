@@ -37,7 +37,7 @@ public class UI_CarrotItem : MonoBehaviour
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
         m_ContextText.text = m_Data.context;
-        m_PriceText.text = $"{Int32.Parse(m_Data.price):N0}₩";
+        m_PriceText.text = m_Data.price;
 
         //StartCoroutine(DownloadImage(m_Data.Image));
     }
