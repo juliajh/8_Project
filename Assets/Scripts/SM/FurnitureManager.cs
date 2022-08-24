@@ -45,8 +45,7 @@ public class FurnitureManager : MonoBehaviour
         obj.LoadTurnObject(direction);
         //InteriorObjects.Add(obj);
         obj.ColorChange();
-
-
+        obj.tag = "RecommendFurniture";
         if (recommendFurniture.Count == 0)
         {
             print("recommendCount" + recommendFurniture.Count);
@@ -61,8 +60,8 @@ public class FurnitureManager : MonoBehaviour
             recommendFurniture.Add(obj.gameObject);
         }
         
-            recommendFurniture[0].transform.position = new Vector2(x, y);
-            obj.gameObject.SetActive(true);
+        recommendFurniture[0].transform.position = new Vector2(x, y);
+        obj.gameObject.SetActive(true);
     }
 
 

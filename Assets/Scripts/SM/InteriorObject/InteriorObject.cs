@@ -29,7 +29,7 @@ public abstract class InteriorObject : MonoBehaviour
     public BoxCollider2D furnitureCollider;
     public Rigidbody2D furnitureRigidBody;
 
-    
+    float distance;
 
     public Direction direction = Direction.Front;
 
@@ -55,13 +55,20 @@ public abstract class InteriorObject : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Down");      
-        isSelected = true;
-        m_Material.EnableKeyword("OUTBASE_ON");
-        gameObject.tag = "Furniture";
+        if (gameObject.tag != "RecommendFurniture")
+        {
+            Debug.Log("Down");
+            isSelected = true;
+            m_Material.EnableKeyword("OUTBASE_ON");
+            gameObject.tag = "Furniture";
 
-        FurnitureManager.Instance.SetCurrentInterObject(this);
-        //UI_RotateButton.Instance.Show();
+            FurnitureManager.Instance.SetCurrentInterObject(this);
+            //UI_RotateButton.Instance.Show();
+
+
+            
+        }
+        
     }
 
     private void OnMouseDrag()
@@ -87,6 +94,22 @@ public abstract class InteriorObject : MonoBehaviour
 
 
         transform.position = worldPosition;
+
+
+        if (FurnitureManager.Instance.recommendFurniture.Count >= 1)
+        {
+            distance = Vector2.Distance(gameObject.transform.position, FurnitureManager.Instance.recommendFurniture[0].transform.position);
+            if (distance < 0.2f)
+            {
+                Destroy(FurnitureManager.Instance.recommendFurniture[0].gameObject);
+                FurnitureManager.Instance.recommendFurniture.RemoveAt(0);
+            }
+        }
+        else 
+        {
+            return;
+        }
+
     }
 
     private void OnMouseUp()
@@ -94,6 +117,17 @@ public abstract class InteriorObject : MonoBehaviour
         isSelected = false;
 
         m_Material.DisableKeyword("OUTBASE_ON");
+
+
+        if (FurnitureManager.Instance.recommendFurniture.Count >= 1)
+        {
+            Destroy(FurnitureManager.Instance.recommendFurniture[0].gameObject);
+            FurnitureManager.Instance.recommendFurniture.RemoveAt(0);
+        }
+        else
+        {
+            return;
+        }
 
         //FurnitureManager.Instance.SetCurrentInterObject(null);
     }

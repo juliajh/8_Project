@@ -13,6 +13,7 @@ TagManager:
   - Furniture
   - RightWall
   - LeftWall
+  - RecommendFurniture
   layers:
   - Default
   - TransparentFX
