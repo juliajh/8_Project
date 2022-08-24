@@ -9,11 +9,19 @@ public class UI_CarrotDetail : MonoBehaviour
 {
     private Packet_Carrot m_Data;
 
+    public Image m_Image;
     public Text m_CategoryText;
     public Text m_FurnitureNameText;
     public TextMeshProUGUI m_PriceText;
     public Text m_TitleText;
     public Text m_ContextText;
+
+    public static UI_CarrotDetail Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Init(Packet_Carrot data)
     {
@@ -29,6 +37,7 @@ public class UI_CarrotDetail : MonoBehaviour
             return;
         }
 
+        m_Image.sprite = m_Data.imageSprite;
         m_CategoryText.text = m_Data.category;
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
@@ -42,13 +51,24 @@ public class UI_CarrotDetail : MonoBehaviour
     void Start()
     {
         this.gameObject.SetActive(false);
+       
+    }
+
+    public void Open()
+    {
+        gameObject.SetActive(true);
     }
 
     public void Close()
     {
         gameObject.SetActive(false);
+        m_Data = null;
     }
 
+    public void Delete()
+    {
+        CarrotManager.Instance.RemoveCarrot(m_Data);
+    }
 
 
 }

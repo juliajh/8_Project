@@ -10,8 +10,7 @@ public class UI_CarrotItem : MonoBehaviour
 {
     private Packet_Carrot m_Data;
 
-    public RawImage m_IconImage;
-
+    public Image m_Image;
     public TextMeshProUGUI m_CategoryText;
     public TextMeshProUGUI m_FurnitureNameText;
     public TextMeshProUGUI m_PriceText;
@@ -33,6 +32,7 @@ public class UI_CarrotItem : MonoBehaviour
             return;
         }
 
+        m_Image.sprite = m_Data.imageSprite;
         m_CategoryText.text = m_Data.category;
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
@@ -59,4 +59,9 @@ public class UI_CarrotItem : MonoBehaviour
     } 
     */
 
+    public void itemClick()
+    {
+        UI_CarrotDetail.Instance.Init(m_Data);
+        UI_CarrotDetail.Instance.Open();
+    }
 }
