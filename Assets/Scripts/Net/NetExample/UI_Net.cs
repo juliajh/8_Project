@@ -9,6 +9,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 using check;
+using UnityEditor.VersionControl;
 
 public class UI_Net : MonoBehaviour
 {
@@ -248,4 +249,34 @@ public class UI_Net : MonoBehaviour
 
 
 
+    // 중고거래 게시판 로드
+    public void OnClickLoadCarrotButton()
+    {
+        CarrotLoad();
+    }
+
+    public async UniTaskVoid CarrotLoad()
+    {
+        var response = await NetManager.Post<ResponseCarrotListPacket>(new RequestCarrotListPacket());
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.category);
+                Debug.Log(data.furnitureName);
+                Debug.Log(data.price);
+                Debug.Log(data.title);
+                Debug.Log(data.context);
+                Debug.Log(data.uploaderId);
+                Debug.Log(data.index);
+                Debug.Log(data.imgName);
+            }
+        }
+    }
 }

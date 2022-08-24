@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
 using UnityEngine.Networking;
+using Newtonsoft.Json;
 
 public enum ImageType
 {
@@ -25,12 +26,12 @@ namespace check
 		string url = "http://192.168.0.37:5080/InsertUsedBoard";
 
 		// 카테고리, 가구명, 사진, 가격, 게시판 제목, 내용, 등록자id
-		string category;
-		string furnitureName;
-		string price;
-		string title;
-		string context;
-		string uploaderId;
+		string category = "1";
+		string furnitureName = "1";
+		string price = "1";
+		string title = "1";
+		string context = "1";
+		string uploaderId = "1";
 
 
 		//Events
@@ -103,6 +104,12 @@ namespace check
 			return this;
 		}
 
+		public ImageUploader SetUrl(string url)
+		{
+			this.url = url;
+			return this;
+        }
+
 
 		//events
 		public ImageUploader OnError(UnityAction<string> action)
@@ -164,13 +171,13 @@ namespace check
 			// 이미지 파일
 			form.AddBinaryData(fieldName, textureBytes, fileName + "." + extension, "image/" + extension);
 
-			// 게시글 정보 추가
-			form.AddField("category", category);
-			form.AddField("furnitureName", furnitureName);
-			form.AddField("price", price);
-			form.AddField("title", title);
-			form.AddField("context", context);
-			form.AddField("uploaderId", uploaderId);
+            // 게시글 정보 추가
+            form.AddField("category", category);
+            form.AddField("furnitureName", furnitureName);
+            form.AddField("price", price);
+            form.AddField("title", title);
+            form.AddField("context", context);
+            form.AddField("uploaderId", uploaderId);
 
 			UnityWebRequest w = UnityWebRequest.Post(url, form);
 
@@ -182,8 +189,12 @@ namespace check
 			}
 			else
 			{
-				//success
-				if (OnCompleteAction != null)
+                //success
+                var text = w.downloadHandler.text;
+                Debug.Log($"[Network|Recv|{url}]\n{text}");
+				print(text);
+
+                if (OnCompleteAction != null)
 					OnCompleteAction(w.downloadHandler.text); //or OnCompleteAction.Invoke (w.error);
 			}
 
