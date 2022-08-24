@@ -16,6 +16,10 @@ public class FurnitureManager : MonoBehaviour
 
     public List<InteriorObject> InteriorObjects = new List<InteriorObject>(64);
 
+
+
+    public List<GameObject> recommendFurniture = new List<GameObject>();
+
     private InteriorObject m_CurrentInterObject;
     public InteriorObject CurrentInterObject => m_CurrentInterObject;
 
@@ -34,12 +38,26 @@ public class FurnitureManager : MonoBehaviour
     {
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
         obj.SetIndex(index);
-        obj.transform.position = new Vector3(x, y, 0);
+        //obj.transform.position = new Vector3(x, y, 0);
 
         obj.direction = direction;
         obj.LoadTurnObject(direction);
         //InteriorObjects.Add(obj);
         obj.ColorChange();
+
+
+
+        if (recommendFurniture.Count > 0)
+        {
+            recommendFurniture.Add(obj.gameObject);
+            recommendFurniture[0].transform.position = new Vector2(x, y);
+        }
+        else
+        {
+            Destroy(recommendFurniture[0]);
+            recommendFurniture.Add(obj.gameObject);
+            recommendFurniture[1].transform.position = new Vector2(x, y);
+        }
     }
 
 
@@ -149,12 +167,16 @@ public class FurnitureManager : MonoBehaviour
             int count = response.Data.Length;
 
             var responseData = response.Data;
-            
+
+            print(responseData);
+
             var data = responseData[0];
             float p_X = float.Parse(data.PosX);
             float p_Y = float.Parse(data.PosY);
+
+
             //if () { }
-            //RecommendMake(FurnitureType.Bed, 1, p_X, p_Y, Direction.Front);
+            RecommendMake(FurnitureType.Bed, 1, p_X, p_Y, Direction.Front);
 
 
             //allPos.RemoveAll();
