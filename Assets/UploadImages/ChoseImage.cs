@@ -131,10 +131,10 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
 
         public void StartBtn()
         {
-            print("aa");
+            //print("aa");
             ImageUploader
                 .Initialize()
-                .SetUrl(serverUrl)
+                //.SetUrl(serverUrl)
                 //.SetTexture(imageSprite.sprite.texture)
                 .SetTexture(contentImage.sprite.texture)
                 .SetFieldName("file")

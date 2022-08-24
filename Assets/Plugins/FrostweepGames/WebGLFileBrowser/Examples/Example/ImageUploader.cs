@@ -2,21 +2,36 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
 public enum ImageType
 {
 	PNG,
 	JPG
 }
-namespace check 
+namespace check
 {
 	public class ImageUploader : MonoBehaviour
 	{
+		// 이미지
 		Texture2D imageTexture;
 		string fieldName;
 		string fileName = "defaultImageName";
 		ImageType imageType = ImageType.PNG;
-		string url;
+		// 원래는 이거 써야 함
+		// string url = NetDefine.NET_SERVER_ADDR + "/InsertUsedBoard";
+
+		// 테스트용
+		string url = "http://192.168.0.37:5080/InsertUsedBoard";
+
+		// 카테고리, 가구명, 사진, 가격, 게시판 제목, 내용, 등록자id
+		string category;
+		string furnitureName;
+		string price;
+		string title;
+		string context;
+		string uploaderId;
+
 
 		//Events
 		UnityAction<string> OnErrorAction;
@@ -26,12 +41,6 @@ namespace check
 		public static ImageUploader Initialize()
 		{
 			return new GameObject("ImageUploader").AddComponent<ImageUploader>();
-		}
-
-		public ImageUploader SetUrl(string serverUrl)
-		{
-			this.url = serverUrl;
-			return this;
 		}
 
 		public ImageUploader SetTexture(Texture2D texture)
@@ -57,6 +66,44 @@ namespace check
 			this.imageType = type;
 			return this;
 		}
+
+		public ImageUploader SetCategory(string category)
+		{
+			this.category = category;
+			return this;
+		}
+
+		public ImageUploader SetFurnitureName(string furnitureName)
+		{
+			this.furnitureName = furnitureName;
+			return this;
+		}
+
+		public ImageUploader SetPrice(string price)
+		{
+			this.price = price;
+			return this;
+		}
+
+		public ImageUploader SetTitle(string title)
+		{
+			this.title = title;
+			return this;
+		}
+
+		public ImageUploader SetContext(string context)
+		{
+			this.context = context;
+			return this;
+		}
+
+		public ImageUploader SetUploaderId()
+		{
+			this.uploaderId = UnityEngine.SystemInfo.deviceUniqueIdentifier;
+			return this;
+		}
+
+
 		//events
 		public ImageUploader OnError(UnityAction<string> action)
 		{
@@ -70,6 +117,14 @@ namespace check
 			return this;
 		}
 
+		public void Start()
+		{
+			if (url == null)
+				Debug.LogError("Url is not assigned, use SetUrl( url ) to set it. ");
+
+			StartCoroutine(StartUploading());
+		}
+
 		public void Upload()
 
 		{
@@ -79,8 +134,8 @@ namespace check
 			//...other checks...
 			//...
 
-			StopAllCoroutines();
-			StartCoroutine(StartUploading());
+			// StopAllCoroutines();
+			// StartCoroutine(StartUploading());
 		}
 
 
@@ -106,24 +161,32 @@ namespace check
 			//image file extension
 			string extension = imageType.ToString().ToLower();
 
-			print(fieldName);
+			// 이미지 파일
 			form.AddBinaryData(fieldName, textureBytes, fileName + "." + extension, "image/" + extension);
-			WWW w = new WWW(url, form);
 
-			yield return w;
+			// 게시글 정보 추가
+			/*form.AddField("category", category);
+			form.AddField("furnitureName", furnitureName);
+			form.AddField("price", price);
+			form.AddField("title", title);
+			form.AddField("context", context);
+			form.AddField("uploaderId", uploaderId);
+*/
+			UnityWebRequest w = UnityWebRequest.Post(url, form);
+
+			yield return w.SendWebRequest();
 
 			if (w.error != null)
 			{
-				//error : 
-				if (OnErrorAction != null)
-					OnErrorAction(w.error); //or OnErrorAction.Invoke (w.error);
+				Debug.Log(w.downloadHandler.text);
 			}
 			else
 			{
 				//success
 				if (OnCompleteAction != null)
-					OnCompleteAction(w.text); //or OnCompleteAction.Invoke (w.error);
+					OnCompleteAction(w.downloadHandler.text); //or OnCompleteAction.Invoke (w.error);
 			}
+
 			w.Dispose();
 			Destroy(this.gameObject);
 		}
@@ -157,6 +220,6 @@ namespace check
 
 			return readableTexture;
 		}
-	}
 
+	}
 }
