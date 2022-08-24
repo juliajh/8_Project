@@ -1081,6 +1081,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1128164952351763132, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4665529065303589750}
+    - target: {fileID: 1128164952351763132, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: itemClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1128164952351763132, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_CarrotItem, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1128164952351763133, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
       propertyPath: m_Image
       value: 
@@ -1130,7 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1274,6 +1286,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1128164952351763132, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5994415917531367058}
+    - target: {fileID: 1128164952351763132, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: itemClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1128164952351763132, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UI_CarrotItem, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1128164952351763133, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
       propertyPath: m_Image
       value: 
@@ -1294,6 +1318,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1032542697531486367, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
   m_PrefabInstance: {fileID: 6672220872773692463}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5994415917531367058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1128164952351763133, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
+  m_PrefabInstance: {fileID: 6672220872773692463}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1076ccc2bc7678488d36a9601308867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6340978381965367683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 821858237700994476, guid: adc3b7996e525014cbe59b4bbc50e4e3, type: 3}
@@ -1312,7 +1347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

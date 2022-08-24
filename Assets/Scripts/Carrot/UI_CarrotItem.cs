@@ -62,5 +62,6 @@ public class UI_CarrotItem : MonoBehaviour
     public void itemClick()
     {
         UI_CarrotDetail.Instance.Init(m_Data);
+        UI_CarrotDetail.Instance.Open();
     }
 }
