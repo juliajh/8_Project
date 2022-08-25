@@ -18,7 +18,7 @@ public class RecieveImage : MonoBehaviour
 
     IEnumerator GetTexture(RawImage img)
     {
-        var url = "http://www.mongilmongilgames.com/image/" + $".{1}jpg";
+        var url = "https://cdn.searchenginejournal.com/wp-content/uploads/2022/04/reverse-image-search-627b7e49986b0-sej-760x400.png";
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
