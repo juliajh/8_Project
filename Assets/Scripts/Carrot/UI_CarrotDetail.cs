@@ -87,6 +87,12 @@ public class UI_CarrotDetail : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void Back()
+    {
+        Close();
+        UI_Carrot.Instance.Open();
+    }
+
     public void Close()
     {
         gameObject.SetActive(false);    

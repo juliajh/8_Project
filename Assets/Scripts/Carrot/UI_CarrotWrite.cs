@@ -32,6 +32,12 @@ public class UI_CarrotWrite : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void Back()
+    {
+        Close();
+        UI_Carrot.Instance.Open();
+    }
+
     public void Open()
     {
         gameObject.SetActive(true);

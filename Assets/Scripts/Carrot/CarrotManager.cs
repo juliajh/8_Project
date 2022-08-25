@@ -64,20 +64,6 @@ public class CarrotManager : MonoBehaviour
         }
     }
 
-    public IEnumerator GetTexture(RawImage img, string image_name)
-    {
-        var url = "http://www.mongilmongilgames.com/image/" + image_name;
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
-        yield return www.SendWebRequest();
-        if (www.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-           img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
 
-        }
-    }
 
 }
