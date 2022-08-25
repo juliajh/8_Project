@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using check;
 using System;
+using Cysharp.Threading.Tasks;
 
 public class UI_CarrotWrite : MonoBehaviour
 {
@@ -60,18 +61,20 @@ public class UI_CarrotWrite : MonoBehaviour
         }
 
         //m_Image.sprite = m_Data.imageSprite;
-        m_CategoryText.value = Int32.Parse(m_Data.category);
+        m_CategoryText.value = int.Parse(m_Data.category);
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
         m_ContextText.text = m_Data.context;
-
-        Debug.Log(m_ContextText.text);
-
         m_PriceText.text = m_Data.price;
 
     }
 
-    public void SaveCarrot()
+    public void AddCarrot()
+    {
+        SaveCarrot();
+    }
+
+    public async UniTaskVoid SaveCarrot()
     {
         CarrotResponseData data = new CarrotResponseData()
         {
@@ -81,7 +84,7 @@ public class UI_CarrotWrite : MonoBehaviour
             title = m_TitleText.text.ToString(),
             context = m_ContextText.text.ToString(),
         };
-        ImageUploader
+        var response = await ImageUploader
                 .Initialize()
                 .SetTexture(m_image.sprite.texture)
                 .SetFieldName("file")
@@ -93,9 +96,10 @@ public class UI_CarrotWrite : MonoBehaviour
                 .SetTitle(data.title) // 게시글 제목
                 .SetContext(data.context) // 게시글 내용
                 .SetUploaderId() // DeviceId (자동으로 불러옴)
+                .SetUrl("/InsertUsedBoard")
                 .OnError(error => Debug.Log(error))
                 .OnComplete(text => Debug.Log(text))
-                .Upload();
+                .StartUploading();
 
         CarrotManager.Instance.CarrotList.Add(data);
         Close();

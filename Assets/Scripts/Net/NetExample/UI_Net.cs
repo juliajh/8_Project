@@ -252,7 +252,7 @@ public class UI_Net : MonoBehaviour
         };
 
 
-        ImageUploader
+        var response = await ImageUploader
             .Initialize()
             .SetTexture(imageSprite.sprite.texture)
             .SetFieldName("file")
@@ -267,7 +267,7 @@ public class UI_Net : MonoBehaviour
             .SetUploaderId() // DeviceId (자동으로 불러옴)
             .OnError(error => Debug.Log(error))
             .OnComplete(text => Debug.Log(text))
-            .Upload();
+            .StartUploading();
     }
 
 

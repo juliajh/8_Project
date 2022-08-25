@@ -16,9 +16,28 @@ using check;
 public class RecieveImage : MonoBehaviour
 {
     public RawImage image;
+    public TextMeshProUGUI m_CategoryText;
+    public TextMeshProUGUI m_FurnitureNameText;
+    public TextMeshProUGUI m_PriceText;
+    public TextMeshProUGUI m_TitleText;
+    public TextMeshProUGUI m_ContextText;
 
 
+    private CarrotResponseData m_Data;
+    private void Set()
+    {
+        if (m_Data == null)
+        {
+            return;
+        }
 
+        m_CategoryText.text = m_Data.category;
+        m_FurnitureNameText.text = m_Data.furnitureName;
+        m_TitleText.text = m_Data.title;
+        m_ContextText.text = m_Data.context;
+        m_PriceText.text = m_Data.price;
+        //StartCoroutine(GetTexture(image, m_Data.imgName));
+    }
     public void DownloadImage() 
     {
         StartCoroutine(GetTexture(image));
