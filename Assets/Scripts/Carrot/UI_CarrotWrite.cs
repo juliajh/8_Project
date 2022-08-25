@@ -17,6 +17,12 @@ public class UI_CarrotWrite : MonoBehaviour
     public InputField m_ContextText;
     public Dropdown m_CategoryText;
     public static UI_CarrotWrite Instance;
+    public String image_Name;
+
+
+
+
+
 
     private void Awake()
     {

@@ -10,7 +10,9 @@ public class UI_CarrotItem : MonoBehaviour
 {
     private CarrotResponseData m_Data;
 
-    public Image m_Image;
+
+    //public List<RawImage> m_imageList = new List<RawImage>();
+    public RawImage m_Image;
     public TextMeshProUGUI m_CategoryText;
     public TextMeshProUGUI m_FurnitureNameText;
     public TextMeshProUGUI m_PriceText;
@@ -32,14 +34,29 @@ public class UI_CarrotItem : MonoBehaviour
             return;
         }
 
-        //m_Image.sprite = m_Data.imageSprite;
+
         m_CategoryText.text = m_Data.category;
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
         m_ContextText.text = m_Data.context;
         m_PriceText.text = m_Data.price;
+        StartCoroutine(GetTexture(m_Image,m_Data.imgName));
+    }
 
-        //StartCoroutine(DownloadImage(m_Data.Image));
+    IEnumerator GetTexture(RawImage img, string image_name)
+    {
+        var url = image_name;
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            m_Image.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            
+        }
     }
 
     /*

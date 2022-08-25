@@ -5,6 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 
 
+using Cysharp.Threading.Tasks;
+using UniRx;
+using Newtonsoft.Json;
+using TMPro;
+using System;
+using check;
+
+
 public class RecieveImage : MonoBehaviour
 {
     public RawImage image;
@@ -27,7 +35,55 @@ public class RecieveImage : MonoBehaviour
         }
         else
         {
-            img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            CarrotImage.Add(img);
+            CarrotImage[0].texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+        }
+    }
+
+
+
+
+
+
+    public static CarrotManager Instance;
+    public List<CarrotResponseData> CarrotList = new List<CarrotResponseData>();
+
+
+    public List<RawImage> CarrotImage = new List<RawImage>();
+    public SpriteRenderer imageSprite;
+
+    public Action OnChangeCallback;
+    public void RemoveCarrot(CarrotResponseData data)
+    {
+        CarrotList.Remove(data);
+    }
+
+    public async UniTaskVoid CarrotLoad()
+    {
+        var response = await NetManager.Post<ResponseCarrotListPacket>(new RequestCarrotListPacket());
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            DownloadImage();
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.category);
+                Debug.Log(data.furnitureName);
+                Debug.Log(data.price);
+                Debug.Log(data.title);
+                Debug.Log(data.context);
+                Debug.Log(data.uploaderId);
+                Debug.Log(data.index);
+                Debug.Log(data.imgName);
+
+                CarrotList.Add(data);
+            }
         }
     }
 }
