@@ -235,6 +235,7 @@ public class UI_Net : MonoBehaviour
             .SetTexture(imageSprite.sprite.texture)
             .SetFieldName("file")
             .SetFileName("file")
+            .SetUrl("/InsertUsedBoard")
             .SetType(ImageType.JPG)
             .SetCategory(data.category) // 카테고리
             .SetFurnitureName(data.furnitureName) // 가구명 (상품명이므로 아무거나)

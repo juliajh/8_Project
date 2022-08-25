@@ -20,10 +20,10 @@ namespace check
 		string fileName = "defaultImageName";
 		ImageType imageType = ImageType.PNG;
 		// 원래는 이거 써야 함
-		// string url = NetDefine.NET_SERVER_ADDR + "/InsertUsedBoard";
+		// string url = NetDefine.NET_SERVER_ADDR;
 
 		// 테스트용
-		string url = "http://192.168.0.37:5080/InsertUsedBoard";
+		string url = "http://192.168.0.37:5080";
 
 		// 카테고리, 가구명, 사진, 가격, 게시판 제목, 내용, 등록자id
 		string category = "1";
@@ -32,6 +32,7 @@ namespace check
 		string title = "1";
 		string context = "1";
 		string uploaderId = "1";
+		string index = "-1";
 
 
 		//Events
@@ -106,13 +107,19 @@ namespace check
 
 		public ImageUploader SetUrl(string url)
 		{
-			this.url = url;
+			this.url += url;
 			return this;
         }
 
+        public ImageUploader SetIndex(string index)
+        {
+            this.index = index;
+            return this;
+        }
 
-		//events
-		public ImageUploader OnError(UnityAction<string> action)
+
+        //events
+        public ImageUploader OnError(UnityAction<string> action)
 		{
 			this.OnErrorAction = action;
 			return this;
@@ -178,6 +185,8 @@ namespace check
             form.AddField("title", title);
             form.AddField("context", context);
             form.AddField("uploaderId", uploaderId);
+			// 글 등록일 땐 index는 "-1"임
+			form.AddField("index", index);
 
 			UnityWebRequest w = UnityWebRequest.Post(url, form);
 
