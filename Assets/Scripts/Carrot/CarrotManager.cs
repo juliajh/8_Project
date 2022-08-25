@@ -58,30 +58,12 @@ public class CarrotManager : MonoBehaviour
                 Debug.Log(data.context);
                 Debug.Log(data.uploaderId);
                 Debug.Log(data.index);
-                Debug.Log(data.imgName);
 
                 CarrotList.Add(data);
             }
         }
     }
 
-    /*
-    public void OnClickBasketDeleteButton()
-    {
-        BasketDelete();
-    }
 
-    public async UniTaskVoid BasketDelete()
-    {
-        var response = await NetManager.Post<ResponseBasketDeletePacket>(new RequestBasketDeletePacket());
-        BasketList.Clear();
-        CountBasket();
-        if (response.Result)
-        {
-            Debug.Log("장바구니 삭제 완료");
-        }
-    }
-
-    */
 
 }

@@ -53,7 +53,7 @@ public class UI_CarrotItem : MonoBehaviour
         }
         else
         {
-            m_Image.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             
         }
     }
@@ -77,7 +77,8 @@ public class UI_CarrotItem : MonoBehaviour
 
     public void itemClick()
     {
-        UI_CarrotDetail.Instance.Init(m_Data);
         UI_CarrotDetail.Instance.Open();
+        UI_CarrotDetail.Instance.Init(m_Data);
+        
     }
 }

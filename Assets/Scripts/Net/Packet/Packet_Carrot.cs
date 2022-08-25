@@ -44,4 +44,22 @@ public class ResponseCarrotListPacket : ResponsePacket
 }
 
 
+// 게시판 삭제
+// 요청 패킷 (index만 넘김)
+public class RequestCarrotDeletePacket : IRequestPacket
+{
+    public string index { get; private set; }
+
+    public RequestCarrotDeletePacket(string index) : base("/DeleteUsed")
+    {
+        this.index = index;
+    }
+}
+
+// 수신 패킷
+// 성공여부만 저장
+public class ResponseCarrotDeletePacket : ResponsePacket
+{
+}
+
 // update list delete write

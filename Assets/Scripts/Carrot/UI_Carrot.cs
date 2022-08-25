@@ -70,7 +70,6 @@ public class UI_Carrot : MonoBehaviour
         Refresh();
         
     }
-
     public void Close()
     {
         gameObject.SetActive(false);
@@ -78,7 +77,7 @@ public class UI_Carrot : MonoBehaviour
 
     public void Write()
     {
-        gameObject.SetActive(false);
+        Close();
         UI_CarrotWrite.Instance.Open();
     }
 
