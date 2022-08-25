@@ -34,7 +34,6 @@ public class UI_CarrotItem : MonoBehaviour
             return;
         }
 
-
         m_CategoryText.text = m_Data.category;
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
@@ -54,7 +53,7 @@ public class UI_CarrotItem : MonoBehaviour
         }
         else
         {
-            m_Image.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             
         }
     }
@@ -78,7 +77,8 @@ public class UI_CarrotItem : MonoBehaviour
 
     public void itemClick()
     {
-        UI_CarrotDetail.Instance.Init(m_Data);
         UI_CarrotDetail.Instance.Open();
+        UI_CarrotDetail.Instance.Init(m_Data);
+        
     }
 }

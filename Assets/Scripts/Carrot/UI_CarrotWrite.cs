@@ -6,12 +6,13 @@ using UnityEngine.UI;
 using check;
 using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Networking;
 
 public class UI_CarrotWrite : MonoBehaviour
 {
     private CarrotResponseData m_Data;
 
-    public Image m_image;
+    public RawImage m_Image;
     public InputField m_FurnitureNameText;
     public InputField m_PriceText;
     public InputField m_TitleText;
@@ -19,10 +20,6 @@ public class UI_CarrotWrite : MonoBehaviour
     public Dropdown m_CategoryText;
     public static UI_CarrotWrite Instance;
     public String image_Name;
-
-
-
-
 
 
     private void Awake()
@@ -60,13 +57,15 @@ public class UI_CarrotWrite : MonoBehaviour
             return;
         }
 
-        //m_Image.sprite = m_Data.imageSprite;
-        m_CategoryText.value = int.Parse(m_Data.category);
+        int index = m_CategoryText.options.FindIndex((i) => { return i.text.Equals(m_Data.category); });
+
+        m_CategoryText.value = index;
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
         m_ContextText.text = m_Data.context;
         m_PriceText.text = m_Data.price;
 
+        StartCoroutine(GetTexture(m_Image, m_Data.imgName));
     }
 
     public void AddCarrot()
@@ -78,7 +77,7 @@ public class UI_CarrotWrite : MonoBehaviour
     {
         CarrotResponseData data = new CarrotResponseData()
         {
-            category = m_CategoryText.value.ToString(),//m_CategoryText.options[m_CategoryText.value].text,
+            category = m_CategoryText.options[m_CategoryText.value].text,
             furnitureName = m_FurnitureNameText.text.ToString(),
             price = m_PriceText.text.ToString(),
             title = m_TitleText.text.ToString(),
@@ -86,7 +85,7 @@ public class UI_CarrotWrite : MonoBehaviour
         };
         var response = await ImageUploader
                 .Initialize()
-                .SetTexture(m_image.sprite.texture)
+                .SetTexture(m_Image.texture)
                 .SetFieldName("file")
                 .SetFileName("file")
                 .SetType(ImageType.JPG)
@@ -106,6 +105,24 @@ public class UI_CarrotWrite : MonoBehaviour
         UI_Carrot.Instance.Open();
     }
 
+    /*
+    IEnumerator GetTexture(RawImage img, string image_name)
+    {
+        var url = "http://www.mongilmongilgames.com/image/" + image_name;
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            m_Image.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+
+        }
+    }
+    */
+
     private void Clear()
     {
         m_FurnitureNameText.text = "";
@@ -113,5 +130,21 @@ public class UI_CarrotWrite : MonoBehaviour
         m_TitleText.text = "";
         m_ContextText.text = "";
         m_CategoryText.value = 0;
+    }
+
+    public IEnumerator GetTexture(RawImage img, string image_name)
+    {
+        var url = "http://www.mongilmongilgames.com/image/" + image_name;
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+
+        }
     }
 }
