@@ -52,10 +52,10 @@ public class UI_Net : MonoBehaviour
 
     public void OnClickRecommendButton()
     {
-       Recommend();
+        Recommend();
     }
 
-    public  async UniTaskVoid Recommend()
+    public async UniTaskVoid Recommend()
     {
         // 가구 타입
         // 가구 아이디
@@ -66,7 +66,7 @@ public class UI_Net : MonoBehaviour
             FurnitureType = FurnitureType.Chair.ToString(),
             ColorType = ColorType.Blue.ToString()
         };
-        
+
         var response = await NetManager.Post<ResponseRecommendPacket>(new RequestRecommendPacket(recommendRequestData));
 
         if (response.Result)
@@ -74,7 +74,7 @@ public class UI_Net : MonoBehaviour
             int count = response.Data.Length;
 
             var responseData = response.Data;
-            
+
             for (int i = 0; i < count; ++i)
             {
                 var data = responseData[i];
@@ -129,15 +129,15 @@ public class UI_Net : MonoBehaviour
     // furnitureType, colorType을 보내고
     // 추천 위치인 pos_x, pos_y값을 받는다
 
-/*    public void OnClickPosRecommendButton()
-    {
-        PosRecommend();
-        
-    }*/
-/*    private void Start()
-    {
-        PosRecommend();
-    }*/
+    /*    public void OnClickPosRecommendButton()
+        {
+            PosRecommend();
+
+        }*/
+    /*    private void Start()
+        {
+            PosRecommend();
+        }*/
 
     /*public async UniTaskVoid PosRecommend()
     {
@@ -304,6 +304,21 @@ public class UI_Net : MonoBehaviour
     }
 
 
+    // 중고거래 게시판 삭제
+    public void OnClickCarrotDeleteButton()
+    {
+        CarrotDelete();
+    }
 
+    public async UniTaskVoid CarrotDelete()
+    {
+        string index = "2";
+        var response = await NetManager.Post<ResponseCarrotDeletePacket>(new RequestCarrotDeletePacket(index));
+
+        if (response.Result)
+        {
+            UnityEngine.Debug.Log("삭제 성공");
+        }
+    }
 
 }
