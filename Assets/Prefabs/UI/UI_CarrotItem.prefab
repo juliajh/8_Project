@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1076ccc2bc7678488d36a9601308867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IconImage: {fileID: 821858237700994474}
+  m_Image: {fileID: 0}
   m_CategoryText: {fileID: 8387036563602151532}
   m_FurnitureNameText: {fileID: 7691600362077558510}
   m_PriceText: {fileID: 1822410963451003369}
@@ -219,9 +219,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_Carrot, Assembly-CSharp
-        m_MethodName: Detail
+      - m_Target: {fileID: 1128164952351763133}
+        m_TargetAssemblyTypeName: UI_CarrotItem, Assembly-CSharp
+        m_MethodName: itemClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

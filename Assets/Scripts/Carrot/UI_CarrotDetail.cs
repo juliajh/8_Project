@@ -10,7 +10,7 @@ public class UI_CarrotDetail : MonoBehaviour
     private CarrotResponseData m_Data;
 
     public Image m_Image;
-    public Text m_CategoryText;
+    public Dropdown m_CategoryText;
     public Text m_FurnitureNameText;
     public TextMeshProUGUI m_PriceText;
     public Text m_TitleText;
@@ -41,7 +41,7 @@ public class UI_CarrotDetail : MonoBehaviour
         }
 
         //m_Image.sprite = m_Data.imageSprite;
-        m_CategoryText.text = m_Data.category;
+        m_CategoryText.value = int.Parse(m_Data.category);
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
         m_ContextText.text = m_Data.context;

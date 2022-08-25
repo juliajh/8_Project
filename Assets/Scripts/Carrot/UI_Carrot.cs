@@ -65,8 +65,9 @@ public class UI_Carrot : MonoBehaviour
 
     public void Open()
     {
-        Refresh();
         gameObject.SetActive(true);
+
+        Refresh();
         
     }
 
