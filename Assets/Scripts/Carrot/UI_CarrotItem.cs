@@ -8,7 +8,7 @@ using System;
 
 public class UI_CarrotItem : MonoBehaviour
 {
-    private Packet_Carrot m_Data;
+    private CarrotResponseData m_Data;
 
     public Image m_Image;
     public TextMeshProUGUI m_CategoryText;
@@ -18,7 +18,7 @@ public class UI_CarrotItem : MonoBehaviour
     public TextMeshProUGUI m_ContextText;
 
 
-    public void Init(Packet_Carrot data)
+    public void Init(CarrotResponseData data)
     {
         m_Data = data;
 
@@ -32,7 +32,7 @@ public class UI_CarrotItem : MonoBehaviour
             return;
         }
 
-        m_Image.sprite = m_Data.imageSprite;
+        //m_Image.sprite = m_Data.imageSprite;
         m_CategoryText.text = m_Data.category;
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;

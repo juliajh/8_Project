@@ -31,7 +31,6 @@ public class UI_Buttons : MonoBehaviour
     private void CountBasket()
     {
         int count= BasketManager.Instance.BasketList.Count;
-        Debug.Log("COUNT=========="+count);
         BasketCountText.text = count.ToString();
     }
 

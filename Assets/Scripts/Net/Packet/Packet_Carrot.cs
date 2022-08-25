@@ -6,7 +6,6 @@ public class Packet_Carrot
 {
     public int id;
     public int userId;
-    public Sprite imageSprite;
     public string category;
     public string furnitureName;
     public string price;

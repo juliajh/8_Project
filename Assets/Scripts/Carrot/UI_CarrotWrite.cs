@@ -4,9 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using check;
+using System;
 
 public class UI_CarrotWrite : MonoBehaviour
 {
+    private CarrotResponseData m_Data;
+
     public Image m_image;
     public InputField m_FurnitureNameText;
     public InputField m_PriceText;
@@ -25,22 +28,52 @@ public class UI_CarrotWrite : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void Close()
+    public void Open()
     {
-        gameObject.SetActive(false);
-        Clear();
+        gameObject.SetActive(true);
     }
 
-    public void AddCarrot()
+    public void Close()
     {
-        Packet_Carrot data = new Packet_Carrot()
+        Clear();
+        gameObject.SetActive(false);
+    }
+
+    //Edit½Ã ÇÊ¿ä
+    public void Init(CarrotResponseData data)
+    {
+        m_Data = data;
+        Set();
+    }
+
+    private void Set()
+    {
+        if (m_Data == null)
         {
-            category = m_CategoryText.options[m_CategoryText.value].text,
+            return;
+        }
+
+        //m_Image.sprite = m_Data.imageSprite;
+        m_CategoryText.value = Int32.Parse(m_Data.category);
+        m_FurnitureNameText.text = m_Data.furnitureName;
+        m_TitleText.text = m_Data.title;
+        m_ContextText.text = m_Data.context;
+
+        Debug.Log(m_ContextText.text);
+
+        m_PriceText.text = m_Data.price;
+
+    }
+
+    public void SaveCarrot()
+    {
+        CarrotResponseData data = new CarrotResponseData()
+        {
+            category = m_CategoryText.value.ToString(),//m_CategoryText.options[m_CategoryText.value].text,
             furnitureName = m_FurnitureNameText.text.ToString(),
             price = m_PriceText.text.ToString(),
             title = m_TitleText.text.ToString(),
             context = m_ContextText.text.ToString(),
-            imageSprite = m_image.sprite
         };
         ImageUploader
                 .Initialize()
@@ -59,8 +92,7 @@ public class UI_CarrotWrite : MonoBehaviour
                 .Upload();
 
         CarrotManager.Instance.CarrotList.Add(data);
-        this.gameObject.SetActive(false);
-
+        Close();
         UI_Carrot.Instance.Open();
     }
 
