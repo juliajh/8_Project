@@ -13,7 +13,7 @@ using check;
 public class CarrotManager : MonoBehaviour
 {
     public static CarrotManager Instance;
-    public List<Packet_Carrot> CarrotList = new List<Packet_Carrot>();
+    public List<CarrotResponseData> CarrotList = new List<CarrotResponseData>();
     public SpriteRenderer imageSprite;
 
     public Action OnChangeCallback;
@@ -26,21 +26,18 @@ public class CarrotManager : MonoBehaviour
     
     private void Start()
     {
-        //Load();
-        //CarrotLoad();
+        CarrotLoad();
     }
 
     
-    public void RemoveCarrot(Packet_Carrot data)
+    public void RemoveCarrot(CarrotResponseData data)
     {
         CarrotList.Remove(data);
     }
 
-    /*
     public async UniTaskVoid CarrotLoad()
     {
-        //수정하기 
-        var response = await NetManager.Post<Packet_Carrot>(new Packet_Carrot());
+        var response = await NetManager.Post<ResponseCarrotListPacket>(new RequestCarrotListPacket());
 
         if (response.Result)
         {
@@ -51,20 +48,21 @@ public class CarrotManager : MonoBehaviour
             for (int i = 0; i < count; ++i)
             {
                 var data = responseData[i];
-                Debug.Log(data.Category);
-                Debug.Log(data.Color);
-                Debug.Log(data.Title);
-                Debug.Log(data.Link);
-                Debug.Log(data.Image);
-                Debug.Log(data.Brand);
-                Debug.Log(data.Price);
+                Debug.Log(data.category);
+                Debug.Log(data.furnitureName);
+                Debug.Log(data.price);
+                Debug.Log(data.title);
+                Debug.Log(data.context);
+                Debug.Log(data.uploaderId);
+                Debug.Log(data.index);
+                Debug.Log(data.imgName);
 
                 CarrotList.Add(data);
             }
         }
     }
 
-
+    /*
     public void OnClickBasketDeleteButton()
     {
         BasketDelete();
