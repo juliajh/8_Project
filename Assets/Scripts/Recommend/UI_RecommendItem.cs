@@ -61,6 +61,8 @@ public class UI_RecommendItem : MonoBehaviour
 
         BasketManager.Instance.AddBasket(m_Data);
 
+        Instantiate(FurnitureManager.Instance.putButton);
+
         //basketImage.texture = ((DownloadHandler)request.downloadHandler)m_Data.Image;
     }
     

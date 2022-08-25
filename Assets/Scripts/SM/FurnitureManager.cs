@@ -23,6 +23,10 @@ public class FurnitureManager : MonoBehaviour
     private InteriorObject m_CurrentInterObject;
     public InteriorObject CurrentInterObject => m_CurrentInterObject;
 
+
+    public GameObject putButton;
+    public GameObject destroyParticle;
+
     private void Awake()
     {
         Instance = this;
@@ -31,6 +35,7 @@ public class FurnitureManager : MonoBehaviour
     private void Start()
     {
         Load();
+        //destroyParticle.SetActive(false);
     }
 
 
