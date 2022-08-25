@@ -31,6 +31,7 @@ public abstract class InteriorObject : MonoBehaviour
 
     float distance;
 
+
     public Direction direction = Direction.Front;
 
     public abstract void SetIndex(int index);
@@ -70,6 +71,7 @@ public abstract class InteriorObject : MonoBehaviour
         }
         
     }
+    Vector3 position;
 
     private void OnMouseDrag()
     {
@@ -101,8 +103,12 @@ public abstract class InteriorObject : MonoBehaviour
             distance = Vector2.Distance(gameObject.transform.position, FurnitureManager.Instance.recommendFurniture[0].transform.position);
             if (distance < 0.2f)
             {
+                FurnitureManager.Instance.destroyParticle.transform.position = FurnitureManager.Instance.recommendFurniture[0].transform.position;
+                Instantiate(FurnitureManager.Instance.destroyParticle);
                 Destroy(FurnitureManager.Instance.recommendFurniture[0].gameObject);
                 FurnitureManager.Instance.recommendFurniture.RemoveAt(0);
+               
+
             }
         }
         else 
@@ -112,14 +118,17 @@ public abstract class InteriorObject : MonoBehaviour
 
     }
 
+
+
     private void OnMouseUp()
     {
         isSelected = false;
 
         m_Material.DisableKeyword("OUTBASE_ON");
-
         if (gameObject.tag != "RecommendFurniture") 
         {
+            /*FurnitureManager.Instance.putObject.transform.position= FurnitureManager.Instance.gameObject.transform.position;
+            Instantiate(FurnitureManager.Instance.putObject);*/
             if (FurnitureManager.Instance.recommendFurniture.Count >= 1)
             {
                 Destroy(FurnitureManager.Instance.recommendFurniture[0].gameObject);

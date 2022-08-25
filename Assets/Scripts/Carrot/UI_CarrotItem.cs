@@ -34,7 +34,6 @@ public class UI_CarrotItem : MonoBehaviour
             return;
         }
 
-
         m_CategoryText.text = m_Data.category;
         m_FurnitureNameText.text = m_Data.furnitureName;
         m_TitleText.text = m_Data.title;
