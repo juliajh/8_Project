@@ -210,14 +210,36 @@ public class UI_Net : MonoBehaviour
         }
     }
 
-
-    // 이미지 파일 송신
+    // 파일 보내고 가구 분류 결과값 받기
     public void OnClickSendFileButton()
     {
-        SendImageFile();
+        SendFile();
     }
 
-    public async UniTaskVoid SendImageFile()
+    public async UniTaskVoid SendFile()
+    {
+        var response = await ImageUploader
+            .Initialize()
+            .SetTexture(imageSprite.sprite.texture)
+            .SetFieldName("file")
+            .SetFileName("file")
+            .SetUrl("/ReturnFurnitureClass")
+            .SetType(ImageType.JPG)
+            .OnError(error => Debug.Log(error))
+            .OnComplete(text => Debug.Log(text))
+            .StartUploading();
+
+        print(response["Data"]);
+    }
+
+
+    // 중고거래 글 작성
+    public void OnClickSaveCarrotButton()
+    {
+        SaveCarrot();
+    }
+
+    public async UniTaskVoid SaveCarrot()
     {
         // 이 부분 변경
         Packet_Carrot data = new Packet_Carrot()
@@ -280,4 +302,8 @@ public class UI_Net : MonoBehaviour
             }
         }
     }
+
+
+
+
 }

@@ -4,6 +4,9 @@ using System.Collections;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public enum ImageType
 {
@@ -136,7 +139,7 @@ namespace check
 			if (url == null)
 				Debug.LogError("Url is not assigned, use SetUrl( url ) to set it. ");
 
-			StartCoroutine(StartUploading());
+			// StartCoroutine(StartUploading());
 		}
 
 		public void Upload()
@@ -154,7 +157,7 @@ namespace check
 
 
 
-		IEnumerator StartUploading()
+		public async Task<Dictionary<string,string>> StartUploading()
 		{
 			WWWForm form = new WWWForm();
 			byte[] textureBytes = null;
@@ -190,7 +193,7 @@ namespace check
 
 			UnityWebRequest w = UnityWebRequest.Post(url, form);
 
-			yield return w.SendWebRequest();
+			await w.SendWebRequest();
 
 			if (w.error != null)
 			{
@@ -201,7 +204,14 @@ namespace check
                 //success
                 var text = w.downloadHandler.text;
                 Debug.Log($"[Network|Recv|{url}]\n{text}");
-				print(text);
+
+				var obj = JsonConvert.DeserializeObject<Dictionary<string, string>>(text);
+
+                print("°á°ú-------------");
+                //print(text);
+                w.Dispose();
+                Destroy(this.gameObject);
+                return obj;
 
                 if (OnCompleteAction != null)
 					OnCompleteAction(w.downloadHandler.text); //or OnCompleteAction.Invoke (w.error);
@@ -209,7 +219,9 @@ namespace check
 
 			w.Dispose();
 			Destroy(this.gameObject);
-		}
+
+			return new Dictionary<string, string>();
+        }
 
 		Texture2D GetTextureCopy(Texture2D source)
 		{
