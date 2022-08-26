@@ -12,10 +12,9 @@ public class UI_CarrotWrite : MonoBehaviour
 {
     private CarrotResponseData m_Data;
 
-    public RawImage m_RawImage;
+    public Image m_Image;
     public SpriteRenderer m_Rawimage1;
 
-    public Image m_Image;
     public InputField m_FurnitureNameText;
     public InputField m_PriceText;
     public InputField m_TitleText;
@@ -44,8 +43,6 @@ public class UI_CarrotWrite : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
-        m_RawImage.gameObject.SetActive(false);
-        m_Image.gameObject.SetActive(true);
     }
 
     public void Close()
@@ -63,8 +60,6 @@ public class UI_CarrotWrite : MonoBehaviour
 
     private void Set()
     {
-        m_RawImage.gameObject.SetActive(true);
-        m_Image.gameObject.SetActive(false);
 
         if (m_Data == null)
         {
@@ -79,7 +74,7 @@ public class UI_CarrotWrite : MonoBehaviour
         m_ContextText.text = m_Data.context;
         m_PriceText.text = m_Data.price;
 
-        StartCoroutine(GetTexture(m_RawImage, m_Data.imgName));
+        StartCoroutine(GetTexture(m_Image, m_Data.imgName));
     }
 
     public void AddCarrot()
@@ -146,7 +141,7 @@ public class UI_CarrotWrite : MonoBehaviour
         m_CategoryText.value = 0;
     }
     Texture2D convertForTexture;
-    public IEnumerator GetTexture(RawImage img, string image_name)
+    public IEnumerator GetTexture(Image img, string image_name)
     {
         var url = "http://www.mongilmongilgames.com/image/" + image_name;
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);

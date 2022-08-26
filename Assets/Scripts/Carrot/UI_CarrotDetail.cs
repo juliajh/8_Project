@@ -10,7 +10,7 @@ public class UI_CarrotDetail : MonoBehaviour
 {
     private CarrotResponseData m_Data;
 
-    public RawImage m_Image;
+    public Image m_Image;
     public Text m_CategoryText;
     public Text m_FurnitureNameText;
     public TextMeshProUGUI m_PriceText;
@@ -57,8 +57,8 @@ public class UI_CarrotDetail : MonoBehaviour
         StartCoroutine(GetTexture(m_Image, m_Data.imgName));
 
     }
-
-    IEnumerator GetTexture(RawImage img, string image_name)
+    Texture2D convertForTexture;
+    IEnumerator GetTexture(Image img, string image_name)
     {
         var url = "http://www.mongilmongilgames.com/image/" + image_name;
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
@@ -69,7 +69,10 @@ public class UI_CarrotDetail : MonoBehaviour
         }
         else
         {
-            img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            convertForTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Rect rect = new Rect(0, 0, convertForTexture.width, convertForTexture.height);
+            img.GetComponent<SpriteRenderer>().sprite = Sprite.Create(convertForTexture, rect, new Vector2(0.5f, 0.5f));
+            Debug.Log("");
 
         }
     }
