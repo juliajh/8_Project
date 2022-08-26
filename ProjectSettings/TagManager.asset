@@ -52,6 +52,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: furniture
+    uniqueID: 3781980555
+    locked: 0
   - name: 1
     uniqueID: 3981440079
     locked: 0

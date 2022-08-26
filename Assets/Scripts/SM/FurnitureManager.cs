@@ -11,6 +11,9 @@ public class FurnitureManager : MonoBehaviour
 {
     public static FurnitureManager Instance;
 
+    public Transform m_Parent;
+
+
     public List<InteriorObject> Prefabs;
     public List<GameObject> floors;
 
@@ -24,6 +27,8 @@ public class FurnitureManager : MonoBehaviour
     public InteriorObject CurrentInterObject => m_CurrentInterObject;
 
 
+
+    public GameObject recommendParticle;
     public GameObject putButton;
     public GameObject destroyParticle;
 
@@ -34,6 +39,7 @@ public class FurnitureManager : MonoBehaviour
 
     private void Start()
     {
+        //m_Parent = transform;
         Load();
         //destroyParticle.SetActive(false);
     }
@@ -67,13 +73,19 @@ public class FurnitureManager : MonoBehaviour
         
         recommendFurniture[0].transform.position = new Vector2(x, y);
         obj.gameObject.SetActive(true);
+        Vector3 particlePos = new Vector3(obj.transform.position.x, obj.transform.position.y, 60);
+        GameObject forRecommend = Instantiate(recommendParticle, particlePos, Quaternion.identity);
+        forRecommend.transform.SetParent(obj.transform);
     }
 
-
+    int sortOrder = 5;
     public void Make(FurnitureType furnitureType, int index)
     {
-        InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
+        InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType], m_Parent);
         obj.SetIndex(index);
+        sortOrder += 1;
+        print("sir" + sortOrder);
+        obj.m_SpriteRenderer.sortingOrder = sortOrder; 
         if (furnitureType == FurnitureType.PhotoFrame) 
         {
             obj.transform.position = new Vector3(0, 3.8f, 0);
@@ -186,6 +198,8 @@ public class FurnitureManager : MonoBehaviour
 
             //if () { }
             RecommendMake(furnitureType, 1, p_X, p_Y, Direction.Front);
+            
+
 
             //allPos.RemoveAll();
             /*for (int i = 0; i < count; ++i)
