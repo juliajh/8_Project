@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22007456, y: -0.28614694}
+  m_Offset: {x: -0.0034337342, y: 0.0156897}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3776185, y: 0.43521428}
+  m_Size: {x: 0.40196013, y: 0.4546876}
   m_EdgeRadius: 0
 --- !u!114 &4400992579648829877
 MonoBehaviour:
@@ -176,10 +176,10 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22083996, y: -0.29457074}
+  m_Offset: {x: 0.005537525, y: 0.014568418}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    border: {x: 0.06, y: 0.21, z: 0.51, w: 0.78}
+    pivot: {x: 0.26728722, y: 0.28871167}
     oldSize: {x: 0.96, y: 1.44}
     newSize: {x: 0.96, y: 1.44}
     adaptiveTilingThreshold: 0.5
@@ -187,7 +187,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.34638658, y: 0.4230924}
+  m_Size: {x: 0.39020154, y: 0.42796063}
   m_EdgeRadius: 0
 --- !u!50 &4400992581545465291
 Rigidbody2D:
@@ -229,4 +229,6 @@ MonoBehaviour:
   canArrangeMent: 1
   m_Material: {fileID: 0}
   m_SpriteRenderer: {fileID: 0}
+  furnitureCollider: {fileID: 0}
+  furnitureRigidBody: {fileID: 0}
   direction: 0

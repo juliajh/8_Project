@@ -87,7 +87,7 @@ public class FurnitureManager : MonoBehaviour
         }
 
         InteriorObjects.Add(obj);
-        PosRecommend();
+        PosRecommend(obj.FurnitureType);
 
         
     }
@@ -158,7 +158,7 @@ public class FurnitureManager : MonoBehaviour
         UI_DeleteButton.Instance.Show();
     }
 
-    public async UniTaskVoid PosRecommend()
+    public async UniTaskVoid PosRecommend(FurnitureType furnitureType)
     {
         // 가구 타입
         // 가구 아이디
@@ -185,8 +185,7 @@ public class FurnitureManager : MonoBehaviour
 
 
             //if () { }
-            RecommendMake(FurnitureType.Bed, 1, p_X, p_Y, Direction.Front);
-
+            RecommendMake(furnitureType, 1, p_X, p_Y, Direction.Front);
 
             //allPos.RemoveAll();
             /*for (int i = 0; i < count; ++i)

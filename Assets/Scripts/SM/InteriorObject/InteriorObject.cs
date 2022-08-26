@@ -81,8 +81,8 @@ public abstract class InteriorObject : MonoBehaviour
 
         if (FurnitureType==FurnitureType.PhotoFrame ) 
         {
-            worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.4, (float)4.4);
-            worldPosition.y = Mathf.Clamp(worldPosition.y, (float)3.5, (float)3.85);
+            worldPosition.x = Mathf.Clamp(worldPosition.x, (float)-4.45, (float)4.49);
+            worldPosition.y = Mathf.Clamp(worldPosition.y, (float)3.8, (float)4.16);
         }
         else 
         {
