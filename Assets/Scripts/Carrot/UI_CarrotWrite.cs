@@ -145,7 +145,7 @@ public class UI_CarrotWrite : MonoBehaviour
         m_ContextText.text = "";
         m_CategoryText.value = 0;
     }
-
+    Texture2D convertForTexture;
     public IEnumerator GetTexture(RawImage img, string image_name)
     {
         var url = "http://www.mongilmongilgames.com/image/" + image_name;
@@ -157,7 +157,9 @@ public class UI_CarrotWrite : MonoBehaviour
         }
         else
         {
-            img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            convertForTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Rect rect = new Rect(0, 0, convertForTexture.width, convertForTexture.height);
+            img.GetComponent<SpriteRenderer>().sprite = Sprite.Create(convertForTexture, rect, new Vector2(0.5f, 0.5f));
 
         }
     }
