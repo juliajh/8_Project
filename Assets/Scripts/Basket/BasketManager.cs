@@ -14,6 +14,8 @@ public class BasketManager : MonoBehaviour
     public static BasketManager Instance;
    // public GameObject shopContent;
     public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
+    
+    
     public Transform ParentTransform;
     public UI_BasketItem Prefab;
     public Action OnChangeCallback;
@@ -69,7 +71,7 @@ public class BasketManager : MonoBehaviour
 
         if (response.Result)
         {
-            UnityEngine.Debug.Log("ÀúÀå ¼º°ø");
+            UnityEngine.Debug.Log("???? ????");
         }
     }
 
@@ -101,6 +103,33 @@ public class BasketManager : MonoBehaviour
         OnChangeCallback?.Invoke();
 
     }
+    
+    public async UniTaskVoid RelativeLoad()
+    {
+        RelativeRequestData relativeData = new RelativeRequestData
+        {
+            Title = "ì—¬ë¦„ì´ˆë¡ì´ë¶ˆ ê·¸ë¦°ì»¬ëŸ¬ì´ë¶ˆ ì—¬ë¦„ì¤„ë¬´ëŠ¬ì´ë¶ˆ ì„¸íŠ¸ ìŠ¤íŠ¸"
+        };
+
+        var response = await NetManager.Post<ResponseRelativePacket>(new RequestRelativePacket(relativeData));
+
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Title);
+                Debug.Log(data.Price);
+                Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Relative);
+            }
+        }
+    }
 
     public void OnClickBasketDeleteButton()
     {
@@ -113,7 +142,7 @@ public class BasketManager : MonoBehaviour
         BasketList.Clear();
         if (response.Result)
         {
-            Debug.Log("Àå¹Ù±¸´Ï »èÁ¦ ¿Ï·á");
+            Debug.Log("?????? ???? ???");
         }
     }
 

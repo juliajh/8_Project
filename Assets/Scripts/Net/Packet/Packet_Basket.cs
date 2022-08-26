@@ -16,8 +16,8 @@ public class BasketResponseData
 }
 
 
-// Àå¹Ù±¸´Ï ºÒ·¯¿À´Â ¿äÃ» ÆĞÅ¶
-// deviceId¸¸ º¸³»¸é µÊ
+// ì¥ë°”êµ¬ë‹ˆ ë¶ˆëŸ¬ì˜¤ëŠ” ìš”ì²­ íŒ¨í‚·
+// deviceIdë§Œ ë³´ë‚´ë©´ ë¨
 public class RequestBasketLoadPacket : IRequestPacket
 {
     public RequestBasketLoadPacket() : base("/LoadBasket")
@@ -25,8 +25,8 @@ public class RequestBasketLoadPacket : IRequestPacket
     }
 }
 
-// Àå¹Ù±¸´Ï ºÒ·¯¿À´Â ¼ö½Å ÆĞÅ¶
-// »óÇ° Á¤º¸µéÀ» ¹Ş¾Æ¿Â´Ù
+// ì¥ë°”êµ¬ë‹ˆ ë¶ˆëŸ¬ì˜¤ëŠ” ìˆ˜ì‹  íŒ¨í‚·
+// ìƒí’ˆ ì •ë³´ë“¤ì„ ë°›ì•„ì˜¨ë‹¤
 public class ResponseBasketLoadPacket : ResponsePacket
 {
     public BasketResponseData[] Data { get; private set; }
@@ -34,8 +34,8 @@ public class ResponseBasketLoadPacket : ResponsePacket
 
 
 
-// Àå¹Ù±¸´Ï ÀúÀåÇÏ´Â ¿äÃ» ÆĞÅ¶
-// ÀúÀåÇÒ »óÇ°ÀÇ Link ¹®ÀÚ¿­ÀÇ ³¡¿¡ Á¸ÀçÇÏ´Â id°ª ¸®½ºÆ®¸¦ stringÇüÅÂ·Î º¸³»±â
+// ì¥ë°”êµ¬ë‹ˆ ì €ì¥í•˜ëŠ” ìš”ì²­ íŒ¨í‚·
+// ì €ì¥í•  ìƒí’ˆì˜ Link ë¬¸ìì—´ì˜ ëì— ì¡´ì¬í•˜ëŠ” idê°’ ë¦¬ìŠ¤íŠ¸ë¥¼ stringí˜•íƒœë¡œ ë³´ë‚´ê¸°
 public class RequestBasketSavePacket : IRequestPacket
 {
     public string Product { get; private set; }
@@ -46,15 +46,15 @@ public class RequestBasketSavePacket : IRequestPacket
     }
 }
 
-// Àå¹Ù±¸´Ï ÀúÀåÇÏ´Â ¼ö½Å ÆĞÅ¶
+// ì¥ë°”êµ¬ë‹ˆ ì €ì¥í•˜ëŠ” ìˆ˜ì‹  íŒ¨í‚·
 public class ResponseBasketSavePacket : ResponsePacket
 {
 }
 
 
 
-// Àå¹Ù±¸´Ï ÀüÃ¼ »èÁ¦ÇÏ´Â ÆĞÅ¶
-// deviceId¸¸ º¸³»¸é µÊ
+// ì¥ë°”êµ¬ë‹ˆ ì „ì²´ ì‚­ì œí•˜ëŠ” íŒ¨í‚·
+// deviceIdë§Œ ë³´ë‚´ë©´ ë¨
 public class RequestBasketDeletePacket : IRequestPacket
 {
     public RequestBasketDeletePacket() : base("/DeleteBasket")
@@ -62,7 +62,7 @@ public class RequestBasketDeletePacket : IRequestPacket
     }
 }
 
-// Àå¹Ù±¸´Ï »èÁ¦ÇÑ ¼ö½Å ÆĞÅ¶
+// ì¥ë°”êµ¬ë‹ˆ ì‚­ì œí•œ ìˆ˜ì‹  íŒ¨í‚·
 public class ResponseBasketDeletePacket : ResponsePacket
 {
 }
