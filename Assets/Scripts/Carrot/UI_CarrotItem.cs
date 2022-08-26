@@ -10,7 +10,6 @@ public class UI_CarrotItem : MonoBehaviour
 {
     private CarrotResponseData m_Data;
 
-
     //public List<RawImage> m_imageList = new List<RawImage>();
     public RawImage m_Image;
     public TextMeshProUGUI m_CategoryText;
