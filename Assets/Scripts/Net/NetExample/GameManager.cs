@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
             
 
         }
+        FurnitureManager.Instance.Save();
     }
 
     public IEnumerator FadeOut(float time)
