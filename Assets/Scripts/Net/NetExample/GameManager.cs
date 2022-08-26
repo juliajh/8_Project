@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
             yield return wait;
         }
-        
+        FurnitureManager.Instance.Save();
     }
 
     public IEnumerator FadeIn(float time)
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
             
 
         }
-        FurnitureManager.Instance.Save();
+        
     }
 
     public IEnumerator FadeOut(float time)
