@@ -13,6 +13,8 @@ public class UI_CarrotWrite : MonoBehaviour
     private CarrotResponseData m_Data;
 
     public RawImage m_RawImage;
+    public SpriteRenderer m_Rawimage1;
+
     public Image m_Image;
     public InputField m_FurnitureNameText;
     public InputField m_PriceText;
