@@ -59,6 +59,11 @@ public class UI_RecommendItem : MonoBehaviour
         print(m_Data.Link);
         print(m_Data.Title);
 
+
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        FurnitureManager.Instance.putButton.transform.position = worldPosition;
+        Instantiate(FurnitureManager.Instance.putButton);
+
         BasketManager.Instance.AddBasket(m_Data);
 
         Instantiate(FurnitureManager.Instance.putButton);
