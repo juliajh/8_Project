@@ -14,16 +14,18 @@ public class BasketManager : MonoBehaviour
     public static BasketManager Instance;
    // public GameObject shopContent;
     public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
-    
+    public List<RelativeResponseData> RelativeList = new List<RelativeResponseData>();
     
     public Transform ParentTransform;
     public UI_BasketItem Prefab;
     public Action OnChangeCallback;
+    
 
     private void Awake()
     {
         Instance = this;
         BasketLoad();
+        RelativeLoad();
     }
 
 
@@ -106,29 +108,36 @@ public class BasketManager : MonoBehaviour
     
     public async UniTaskVoid RelativeLoad()
     {
-        RelativeRequestData relativeData = new RelativeRequestData
+
+        foreach (RelativeResponseData relativeItem in RelativeList)
         {
-            Title = "여름초록이불 그린컬러이불 여름줄무늬이불 세트 스트"
-        };
-
-        var response = await NetManager.Post<ResponseRelativePacket>(new RequestRelativePacket(relativeData));
-
-        if (response.Result)
-        {
-            int count = response.Data.Length;
-
-            var responseData = response.Data;
-
-            for (int i = 0; i < count; ++i)
+            RelativeRequestData relativeData = new RelativeRequestData
             {
-                var data = responseData[i];
-                Debug.Log(data.Title);
-                Debug.Log(data.Price);
-                Debug.Log(data.Link);
-                Debug.Log(data.Image);
-                Debug.Log(data.Relative);
+                Title = relativeItem.Title
+            };
+            
+            var response = await NetManager.Post<ResponseRelativePacket>(new RequestRelativePacket(relativeData));
+
+            if (response.Result)
+            {
+                int count = response.Data.Length;
+
+                var responseData = response.Data;
+
+                for (int i = 0; i < count; ++i)
+                {
+                    var data = responseData[i];
+                    Debug.Log(data.Title);
+                    Debug.Log(data.Price);
+                    Debug.Log(data.Link);
+                    Debug.Log(data.Image);
+                    Debug.Log(data.Relative);
+                
+                    RelativeList.Add(data);
+                }
             }
         }
+        OnChangeCallback?.Invoke();
     }
 
     public void OnClickBasketDeleteButton()

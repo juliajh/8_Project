@@ -15,6 +15,8 @@ public class UI_Basket : MonoBehaviour
     
     public TextMeshProUGUI countText;
     public List<UI_BasketItem> Items;
+    public List<UI_BasketRelativeItem> RelativeItems;
+    
     private void Awake()
     {
         Instance = this;
@@ -25,22 +27,22 @@ public class UI_Basket : MonoBehaviour
     private void Start()
     {
         Refresh();
-        //RecommandRefresh();
+        RecommandRefresh();
     }
 
-    /*
+    
     public void RecommandRefresh()
     {
-        var dataList = BasketManager.Instance.BasketList;
+        var dataList = BasketManager.Instance.RelativeList;
         int dataCount = dataList.Count;
 
-        int itemCount = Items.Count;
+        int itemCount = RelativeItems.Count;
 
         if (dataCount == 0)
         {
             for (int i = 0; i < itemCount; ++i)
             {
-                Items[i].gameObject.SetActive(false);
+                RelativeItems[i].gameObject.SetActive(false);
             }
 
             return;
@@ -54,25 +56,25 @@ public class UI_Basket : MonoBehaviour
                 newItem.transform.SetParent(RelativeParentTransform);
                 newItem.GetComponent<RectTransform>().localScale = Vector3.one;
 
-                Items.Add(newItem);
+                RelativeItems.Add(newItem);
             }
 
-            itemCount = Items.Count;
+            itemCount = RelativeItems.Count;
         }
 
         for (int i = 0; i < itemCount; ++i)
         {
             if (i >= dataCount)
             {
-                Items[i].gameObject.SetActive(false);
+                RelativeItems[i].gameObject.SetActive(false);
                 continue;
             }
 
-            Items[i].gameObject.SetActive(true);
-            Items[i].Init(dataList[i]);
+            RelativeItems[i].gameObject.SetActive(true);
+            RelativeItems[i].Init(dataList[i]);
         }
     }
-    */
+    
     
     public void Refresh()
     {
@@ -122,11 +124,14 @@ public class UI_Basket : MonoBehaviour
     {
         gameObject.SetActive(true);
         Refresh();
+        RecommandRefresh();
         BasketManager.Instance.OnChangeCallback += Refresh;
+        BasketManager.Instance.OnChangeCallback += RecommandRefresh;
     }
     public void Close()
     {
         gameObject.SetActive(false);
         BasketManager.Instance.OnChangeCallback -= Refresh;
+        BasketManager.Instance.OnChangeCallback -= RecommandRefresh;
     }
 }
