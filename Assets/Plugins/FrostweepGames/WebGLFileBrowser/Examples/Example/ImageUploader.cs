@@ -18,7 +18,7 @@ namespace check
 	public class ImageUploader : MonoBehaviour
 	{
 		// ¿ÃπÃ¡ˆ
-		Texture imageTexture;
+		Texture2D imageTexture;
 		string fieldName;
 		string fileName = "defaultImageName";
 		ImageType imageType = ImageType.PNG;
@@ -48,7 +48,7 @@ namespace check
 			return new GameObject("ImageUploader").AddComponent<ImageUploader>();
 		}
 
-		public ImageUploader SetTexture(Texture texture)
+		public ImageUploader SetTexture(Texture2D texture)
 		{
 			this.imageTexture = texture;
 			return this;
@@ -223,7 +223,7 @@ namespace check
 			return new Dictionary<string, string>();
         }
 
-		Texture2D GetTextureCopy(Texture source)
+		Texture2D GetTextureCopy(Texture2D source)
 		{
 			//Create a RenderTexture
 			RenderTexture rt = RenderTexture.GetTemporary(
