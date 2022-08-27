@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using Newtonsoft.Json;
+using DG.Tweening;
 
 public class FurnitureManager : MonoBehaviour
 {
@@ -99,7 +100,7 @@ public class FurnitureManager : MonoBehaviour
         }
 
         InteriorObjects.Add(obj);
-        PosRecommend(obj.FurnitureType);
+        PosRecommend(obj.FurnitureType,index);
 
         
     }
@@ -170,7 +171,7 @@ public class FurnitureManager : MonoBehaviour
         UI_DeleteButton.Instance.Show();
     }
 
-    public async UniTaskVoid PosRecommend(FurnitureType furnitureType)
+    public async UniTaskVoid PosRecommend(FurnitureType furnitureType,int index)
     {
         // 가구 타입
         // 가구 아이디
@@ -197,7 +198,7 @@ public class FurnitureManager : MonoBehaviour
 
 
             //if () { }
-            RecommendMake(furnitureType, 1, p_X, p_Y, Direction.Front);
+            RecommendMake(furnitureType, index, p_X, p_Y, Direction.Front);
             
 
 

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UI_RecommendItem : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class UI_RecommendItem : MonoBehaviour
         Application.OpenURL(m_Data.Link);
     }
 
+    Vector3 destination = new Vector3(-5.66f, 3.46f);
+    GameObject particleTransform;
     public void OnClickBasketButton() 
     {
         //장바구니 리스트에 추가 할 항목
@@ -61,12 +64,16 @@ public class UI_RecommendItem : MonoBehaviour
 
 
         Vector2 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
         FurnitureManager.Instance.putButton.transform.position = worldPosition;
-        Instantiate(FurnitureManager.Instance.putButton);
+        particleTransform = Instantiate(FurnitureManager.Instance.putButton);
+        
+        //particleTransform.transform.DOMove(destination,2);
+        
+
 
         BasketManager.Instance.AddBasket(m_Data);
 
-        Instantiate(FurnitureManager.Instance.putButton);
 
         //basketImage.texture = ((DownloadHandler)request.downloadHandler)m_Data.Image;
     }
