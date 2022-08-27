@@ -78,7 +78,6 @@ public class FurnitureManager : MonoBehaviour
         GameObject forRecommend = Instantiate(recommendParticle, particlePos, Quaternion.identity);
         forRecommend.transform.SetParent(obj.transform);
     }
-
     int sortOrder = 5;
     public void Make(FurnitureType furnitureType, int index)
     {
@@ -86,7 +85,9 @@ public class FurnitureManager : MonoBehaviour
         obj.SetIndex(index);
         sortOrder += 1;
         print("sir" + sortOrder);
-        obj.m_SpriteRenderer.sortingOrder = sortOrder; 
+        obj.m_SpriteRenderer.sortingOrder = sortOrder;
+        obj.gameObject.AddComponent<PolygonCollider2D>();
+
         if (furnitureType == FurnitureType.PhotoFrame) 
         {
             obj.transform.position = new Vector3(0, 3.8f, 0);
