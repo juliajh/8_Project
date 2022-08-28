@@ -178,11 +178,22 @@ public class FurnitureManager : MonoBehaviour
         // 가구 아이디
         // 가구 색상
 
+        string tmp = ((ColorType)index).ToString();
+
+        if (furnitureType == FurnitureType.BookShelf || furnitureType == FurnitureType.Desk ||
+        furnitureType == FurnitureType.FlowerPot || furnitureType == FurnitureType.PhotoFrame)
+        {
+            tmp = index.ToString();
+        }
+
         PosRequestData posRequestData = new PosRequestData
         {
-            FurnitureType = FurnitureType.Bed.ToString(),
-            ColorType = ColorType.Blue.ToString()
+            /*            FurnitureType = FurnitureType.Bed.ToString(),
+                        ColorType = ColorType.Blue.ToString()*/
+            FurnitureType = furnitureType.ToString(),
+            ColorType = tmp
         };
+       
         var response = await NetManager.Post<ResponsePosPacket>(new RequestPosPacket(posRequestData));
 
         if (response.Result)
@@ -196,6 +207,7 @@ public class FurnitureManager : MonoBehaviour
             var data = responseData[0];
             float p_X = float.Parse(data.PosX);
             float p_Y = float.Parse(data.PosY);
+            Debug.Log(data);
 
 
             //if () { }

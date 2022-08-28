@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         var inwait = new WaitForSeconds(3f);
         while(true)
         {
+            FurnitureManager.Instance.Save();
             yield return inwait;
             StartCoroutine(FadeOut(1f));
             //Save
@@ -27,7 +28,6 @@ public class GameManager : MonoBehaviour
 
             yield return wait;
         }
-        FurnitureManager.Instance.Save();
     }
 
     public IEnumerator FadeIn(float time)

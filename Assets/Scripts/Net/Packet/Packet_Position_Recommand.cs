@@ -13,6 +13,10 @@ public class PosResponseData
 {
     public string PosX;
     public string PosY;
+    public string name;
+    public string vaule;
+    public string fur;
+    public string color;
 }
 
 
