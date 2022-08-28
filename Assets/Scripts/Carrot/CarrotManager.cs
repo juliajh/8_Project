@@ -16,8 +16,8 @@ public class CarrotManager : MonoBehaviour
     public List<CarrotResponseData> CarrotList = new List<CarrotResponseData>();
 
 
-    public List<RawImage> CarrotImage = new List<RawImage>();
-    public SpriteRenderer imageSprite;
+    //public List<RawImage> CarrotImage = new List<RawImage>();
+    //public SpriteRenderer imageSprite;
 
     public Action OnChangeCallback;
 

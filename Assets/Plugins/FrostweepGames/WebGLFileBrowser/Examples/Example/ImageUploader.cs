@@ -23,7 +23,7 @@ namespace check
 		string fileName = "defaultImageName";
 		ImageType imageType = ImageType.PNG;
 		// 원래는 이거 써야 함
-		// string url = NetDefine.NET_SERVER_ADDR;
+		//string url = NetDefine.NET_SERVER_ADDR;
 
 		// 테스트용
 		string url = "http://192.168.0.37:5080";

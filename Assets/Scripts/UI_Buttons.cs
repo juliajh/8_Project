@@ -10,7 +10,7 @@ public class UI_Buttons : MonoBehaviour
     private void Start()
     {
         CountBasket();
-        BasketManager.Instance.OnChangeCallback += CountBasket;
+        BasketManager.Instance.BasketChangeCallback += CountBasket;
     }
 
     public void AllDeleteButton()

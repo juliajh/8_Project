@@ -16,16 +16,15 @@ public class BasketManager : MonoBehaviour
     public List<RecommendResponseData> BasketList = new List<RecommendResponseData>();
     public List<RelativeResponseData> RelativeList = new List<RelativeResponseData>();
     
-    public Transform ParentTransform;
-    public UI_BasketItem Prefab;
-    public Action OnChangeCallback;
-    
+    //public Transform ParentTransform;
+    //public UI_BasketItem Prefab;
+    public Action BasketChangeCallback;
+    public Action RelativeChangeCallback;
 
     private void Awake()
     {
         Instance = this;
         BasketLoad();
-        RelativeLoad();
     }
 
 
@@ -43,14 +42,18 @@ public class BasketManager : MonoBehaviour
             BasketList.Add(data);
         }
 
-        OnChangeCallback?.Invoke();
+        BasketChangeCallback?.Invoke();
+        RelativeLoadFunc();
+        RelativeChangeCallback?.Invoke();
     }
     
     public void RemoveBasket(RecommendResponseData data)
     {
         BasketList.Remove(data);
 
-        OnChangeCallback?.Invoke();
+        BasketChangeCallback?.Invoke();
+        RelativeLoadFunc();
+        RelativeChangeCallback?.Invoke();
     }
 
     public void SaveBtnClick()
@@ -102,20 +105,26 @@ public class BasketManager : MonoBehaviour
                 BasketList.Add(data);
             }
         }
-        OnChangeCallback?.Invoke();
-
+        BasketChangeCallback?.Invoke();
+        //RelativeLoad();
     }
     
+    public void RelativeLoadFunc()
+    {
+        RelativeLoad();
+    }
+
     public async UniTaskVoid RelativeLoad()
     {
+        Debug.Log("INININ");
 
-        foreach (RelativeResponseData relativeItem in RelativeList)
+        foreach (RecommendResponseData basketItem in BasketList)
         {
             RelativeRequestData relativeData = new RelativeRequestData
             {
-                Title = relativeItem.Title
+                Title = basketItem.Title
             };
-            
+
             var response = await NetManager.Post<ResponseRelativePacket>(new RequestRelativePacket(relativeData));
 
             if (response.Result)
@@ -124,7 +133,7 @@ public class BasketManager : MonoBehaviour
 
                 var responseData = response.Data;
 
-                for (int i = 0; i < count; ++i)
+                for (int i = 0; i < 2; ++i)
                 {
                     var data = responseData[i];
                     Debug.Log(data.Title);
@@ -137,10 +146,12 @@ public class BasketManager : MonoBehaviour
                 }
             }
         }
-        OnChangeCallback?.Invoke();
+        RelativeLoadFunc(); 
+        RelativeChangeCallback?.Invoke();
     }
 
-    public void OnClickBasketDeleteButton()
+
+    public void OnClickBasketAllDeleteButton()
     {
         BasketDelete();
     }
@@ -153,6 +164,10 @@ public class BasketManager : MonoBehaviour
         {
             Debug.Log("?????? ???? ???");
         }
+
+        BasketChangeCallback?.Invoke();
+        RelativeLoadFunc();
+        RelativeChangeCallback?.Invoke();
     }
 
 }

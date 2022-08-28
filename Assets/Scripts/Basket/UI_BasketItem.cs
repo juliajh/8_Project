@@ -53,6 +53,7 @@ public class UI_BasketItem : MonoBehaviour
     {
         BasketManager.Instance.RemoveBasket(m_Data);
         UI_Basket.Instance.Refresh();
+
     }
 
 }

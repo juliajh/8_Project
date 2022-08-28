@@ -125,13 +125,14 @@ public class UI_Basket : MonoBehaviour
         gameObject.SetActive(true);
         Refresh();
         RecommandRefresh();
-        BasketManager.Instance.OnChangeCallback += Refresh;
-        BasketManager.Instance.OnChangeCallback += RecommandRefresh;
+        BasketManager.Instance.BasketChangeCallback += Refresh;
+        BasketManager.Instance.RelativeChangeCallback += RecommandRefresh;
     }
+
     public void Close()
     {
         gameObject.SetActive(false);
-        BasketManager.Instance.OnChangeCallback -= Refresh;
-        BasketManager.Instance.OnChangeCallback -= RecommandRefresh;
+        BasketManager.Instance.BasketChangeCallback -= Refresh;
+        BasketManager.Instance.RelativeChangeCallback -= RecommandRefresh;
     }
 }

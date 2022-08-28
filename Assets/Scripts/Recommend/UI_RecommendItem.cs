@@ -54,6 +54,7 @@ public class UI_RecommendItem : MonoBehaviour
 
     Vector3 destination = new Vector3(-5.66f, 3.46f);
     GameObject particleTransform;
+
     public void OnClickBasketButton() 
     {
         //장바구니 리스트에 추가 할 항목
@@ -73,8 +74,6 @@ public class UI_RecommendItem : MonoBehaviour
 
 
         BasketManager.Instance.AddBasket(m_Data);
-
-
         //basketImage.texture = ((DownloadHandler)request.downloadHandler)m_Data.Image;
     }
     
