@@ -44,7 +44,6 @@ public class BasketManager : MonoBehaviour
 
         BasketChangeCallback?.Invoke();
         RelativeLoadFunc();
-        RelativeChangeCallback?.Invoke();
     }
     
     public void RemoveBasket(RecommendResponseData data)
@@ -53,7 +52,6 @@ public class BasketManager : MonoBehaviour
 
         BasketChangeCallback?.Invoke();
         RelativeLoadFunc();
-        RelativeChangeCallback?.Invoke();
     }
 
     public void SaveBtnClick()
@@ -106,12 +104,13 @@ public class BasketManager : MonoBehaviour
             }
         }
         BasketChangeCallback?.Invoke();
-        //RelativeLoad();
+        RelativeLoadFunc();
     }
     
     public void RelativeLoadFunc()
     {
         RelativeLoad();
+        RelativeChangeCallback?.Invoke();
     }
 
     public async UniTaskVoid RelativeLoad()
@@ -133,7 +132,7 @@ public class BasketManager : MonoBehaviour
 
                 var responseData = response.Data;
 
-                for (int i = 0; i < 2; ++i)
+                for (int i = 0; i < count; ++i)
                 {
                     var data = responseData[i];
                     Debug.Log(data.Title);
@@ -146,7 +145,7 @@ public class BasketManager : MonoBehaviour
                 }
             }
         }
-        RelativeLoadFunc(); 
+        
         RelativeChangeCallback?.Invoke();
     }
 
@@ -167,7 +166,6 @@ public class BasketManager : MonoBehaviour
 
         BasketChangeCallback?.Invoke();
         RelativeLoadFunc();
-        RelativeChangeCallback?.Invoke();
     }
 
 }

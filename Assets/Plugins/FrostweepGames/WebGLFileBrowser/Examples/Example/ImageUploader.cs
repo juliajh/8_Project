@@ -23,10 +23,10 @@ namespace check
 		string fileName = "defaultImageName";
 		ImageType imageType = ImageType.PNG;
 		// 원래는 이거 써야 함
-		//string url = NetDefine.NET_SERVER_ADDR;
-
+		private string url = "https://metajihyun.herokuapp.com";
+		
 		// 테스트용
-		string url = "http://192.168.0.37:5080";
+		//string url = "http://192.168.0.37:5080";
 
 		// 카테고리, 가구명, 사진, 가격, 게시판 제목, 내용, 등록자id
 		string category = "1";
