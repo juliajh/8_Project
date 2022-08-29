@@ -10,7 +10,6 @@ public class UI_FloorItem : MonoBehaviour
     public Image m_IconImage;
     public int m_NumInt;
 
-    
 
     public void Init(Floor data)
     {

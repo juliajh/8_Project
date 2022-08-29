@@ -63,6 +63,7 @@ public class UI_CarrotWrite : MonoBehaviour
         Set();
     }
 
+    //Edit시 여는 함수
     private void Set()
     {
         m_RawImage.gameObject.SetActive(true);
@@ -116,7 +117,9 @@ public class UI_CarrotWrite : MonoBehaviour
                 .OnComplete(text => Debug.Log(text))
                 .StartUploading();
 
-        CarrotManager.Instance.CarrotList.Add(data);
+       // CarrotManager.Instance.CarrotList.Add(data);
+
+        CarrotManager.Instance.CarrotLoad();
         Close();
         UI_Carrot.Instance.Open();
     }
@@ -137,6 +140,8 @@ public class UI_CarrotWrite : MonoBehaviour
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
         {
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(GetTexture(m_RawImage, m_Data.imgName));
             Debug.Log(www.error);
         }
         else

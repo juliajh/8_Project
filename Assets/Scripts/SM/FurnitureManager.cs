@@ -246,6 +246,7 @@ public class FurnitureManager : MonoBehaviour
 
                     if (data.FurnitureType == FurnitureType.Floor)
                     {
+                        Debug.Log("data.Index=="+data.Index);
                         floors[data.Index].SetActive(true);
                     }
                     else
@@ -269,7 +270,7 @@ public class FurnitureManager : MonoBehaviour
                 floorNum = floors.IndexOf(f);
             }
         }
-
+        Debug.Log("floorNum=="+floorNum);
         return floorNum;
     }
 

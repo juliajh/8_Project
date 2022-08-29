@@ -18,7 +18,7 @@ public class CarrotManager : MonoBehaviour
 
     //public List<RawImage> CarrotImage = new List<RawImage>();
     //public SpriteRenderer imageSprite;
-
+    
     public Action OnChangeCallback;
 
     private void Awake()
@@ -40,6 +40,12 @@ public class CarrotManager : MonoBehaviour
 
     public async UniTaskVoid CarrotLoad()
     {
+        if (CarrotList.Count >= 1)
+        {
+            CarrotList.Clear();    
+        }
+        
+        
         var response = await NetManager.Post<ResponseCarrotListPacket>(new RequestCarrotListPacket());
 
         if (response.Result)
@@ -62,6 +68,8 @@ public class CarrotManager : MonoBehaviour
                 CarrotList.Add(data);
             }
         }
+
+        OnChangeCallback?.Invoke();
     }
 
 

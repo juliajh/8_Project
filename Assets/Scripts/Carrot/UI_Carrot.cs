@@ -68,11 +68,15 @@ public class UI_Carrot : MonoBehaviour
         gameObject.SetActive(true);
 
         Refresh();
-        
+
+        CarrotManager.Instance.OnChangeCallback += Refresh;
+
     }
     public void Close()
     {
         gameObject.SetActive(false);
+        
+        CarrotManager.Instance.OnChangeCallback -= Refresh;
     }
 
     public void Write()

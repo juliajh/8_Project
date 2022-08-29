@@ -23,14 +23,6 @@ public class FloorManager : MonoBehaviour
         });
     }
 
-    private void Start()
-    {
-        foreach (GameObject floor in floors)
-        {
-            floor.SetActive(false);
-        }
-    }
-
     public void OnClickItem(int m_NumInt)
     {
         foreach (GameObject floor in floors)
@@ -40,4 +32,5 @@ public class FloorManager : MonoBehaviour
 
         floors[m_NumInt].SetActive(true);
     }
+    
 }

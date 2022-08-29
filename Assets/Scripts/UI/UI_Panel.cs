@@ -15,6 +15,12 @@ public class UI_Panel : MonoBehaviour
     public void OnClickStandButton() { OnClickPannelButton(FurnitureType.Stand); }
     public void OnClickFloorBtn() { OnClickPannelButton(FurnitureType.Floor); }
 
+    void Start()
+    {
+        Panels[(int)FurnitureType.Floor].gameObject.SetActive(true);
+        Panels[(int)FurnitureType.Floor].Refresh();
+    }
+    
     private void OnClickPannelButton(FurnitureType furnitureType)
     {
 

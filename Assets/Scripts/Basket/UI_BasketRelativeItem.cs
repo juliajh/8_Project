@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,8 +24,8 @@ public class UI_BasketRelativeItem : MonoBehaviour
     private void Set()
     {
         m_Title.text = m_Data.Title;
-        m_Price.text = m_Data.Price;
-        m_Relative.text = '"' + m_Data.Relative.Substring(0,7) +"..."+'"'+ "¸¦ º» »ç¿ëÀÚ°¡ °¡Àå ¸¹ÀÌ º» »óÇ°ÀÔ´Ï´Ù.";
+        m_Price.text = m_Data.Price+'â‚©';
+        m_Relative.text = '"' + m_Data.Relative.Substring(0,7) +"..."+'"'+ "ë¥¼ ë³¸ ì‚¬ìš©ìê°€ ê°€ì¥ ë§ì´ ë³¸ ìƒí’ˆì…ë‹ˆë‹¤.";
         StartCoroutine(DownloadImage(m_Data.Image));
     }
     
