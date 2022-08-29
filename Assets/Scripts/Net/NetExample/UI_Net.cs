@@ -229,7 +229,9 @@ public class UI_Net : MonoBehaviour
             .OnComplete(text => Debug.Log(text))
             .StartUploading();
 
-        print(response["Data"]);
+        int ans=(int)(FurnitureType)Enum.Parse(typeof(FurnitureType), response["Data"]);
+        //value를 ans로 바꾸기 
+        
     }
 
 
