@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using check;
@@ -149,8 +150,11 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
                 .OnError(error => Debug.Log(error))
                 .OnComplete(text => Debug.Log(text))
                 .StartUploading();
-            Debug.Log("imageup");
+            
+            int ans=(int)(FurnitureType)Enum.Parse(typeof(FurnitureType), response["Data"]);
+            UI_CarrotWrite.Instance.m_CategoryText.value = ans;
         }
+        
         public void StartBtn()
         {
             //print("aa");
