@@ -32,6 +32,8 @@ public class FurnitureManager : MonoBehaviour
     public GameObject recommendParticle;
     public GameObject putButton;
     public GameObject destroyParticle;
+    public GameObject changePanelParticle;
+
 
     private void Awake()
     {

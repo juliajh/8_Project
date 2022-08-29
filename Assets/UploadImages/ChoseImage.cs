@@ -137,7 +137,7 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
 
 
 
-
+        GameObject particel;
         public async UniTaskVoid SendFile()
         {
             var response = await ImageUploader
@@ -153,6 +153,9 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
             
             int ans=(int)(FurnitureType)Enum.Parse(typeof(FurnitureType), response["Data"]);
             UI_CarrotWrite.Instance.m_CategoryText.value = ans;
+            Debug.Log(FurnitureManager.Instance.changePanelParticle);
+            Instantiate(FurnitureManager.Instance.changePanelParticle);
+
         }
         
         public void StartBtn()
