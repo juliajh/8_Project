@@ -133,6 +133,7 @@ public abstract class InteriorObject : MonoBehaviour
             {
                 Destroy(FurnitureManager.Instance.recommendFurniture[0].gameObject);
                 FurnitureManager.Instance.recommendFurniture.RemoveAt(0);
+                FurnitureManager.Instance.Save();
             }
             else
             {
