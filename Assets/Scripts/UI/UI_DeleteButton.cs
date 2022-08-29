@@ -35,6 +35,7 @@ public class UI_DeleteButton : MonoBehaviour
     public void DeleteButton() 
     {
         FurnitureManager.Instance.RemoveCurrenntInteriorObject();
+        FurnitureManager.Instance.Save();
     }
 
 
