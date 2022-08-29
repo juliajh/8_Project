@@ -63,7 +63,7 @@ public class UI_CarrotItem : MonoBehaviour
     /*
     IEnumerator DownloadImage(string MediaUrl)
     {
-        string url = MediaUrl.Replace("https://", "http://");
+        string url = MediaUrl;//.Replace("https://", "http://");
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
