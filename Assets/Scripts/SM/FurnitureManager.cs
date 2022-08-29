@@ -84,9 +84,11 @@ public class FurnitureManager : MonoBehaviour
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType], m_Parent);
         obj.SetIndex(index);
         sortOrder += 1;
-        print("sir" + sortOrder);
+        
         obj.m_SpriteRenderer.sortingOrder = sortOrder;
         obj.gameObject.AddComponent<PolygonCollider2D>();
+        print("vv"+obj.gameObject);
+
 
         if (furnitureType == FurnitureType.PhotoFrame) 
         {
@@ -120,6 +122,10 @@ public class FurnitureManager : MonoBehaviour
         InteriorObject obj = Instantiate<InteriorObject>(Prefabs[(int)furnitureType]);
         obj.SetIndex(index);
         obj.transform.position = new Vector3(x, y, 0);
+
+
+        obj.m_SpriteRenderer.sortingOrder = sortOrder;
+        obj.gameObject.AddComponent<PolygonCollider2D>();
 
         obj.direction = direction;
         print(obj.direction);

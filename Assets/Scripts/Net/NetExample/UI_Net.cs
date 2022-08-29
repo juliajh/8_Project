@@ -9,7 +9,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 using check;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
 
 public class UI_Net : MonoBehaviour
 {

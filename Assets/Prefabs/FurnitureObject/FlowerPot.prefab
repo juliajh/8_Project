@@ -134,7 +134,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 6
 --- !u!114 &316638567208807923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +154,8 @@ MonoBehaviour:
   canArrangeMent: 1
   m_Material: {fileID: 0}
   m_SpriteRenderer: {fileID: 0}
+  furnitureCollider: {fileID: 0}
+  furnitureRigidBody: {fileID: 0}
   direction: 0
 --- !u!1 &1675399094069875540
 GameObject:

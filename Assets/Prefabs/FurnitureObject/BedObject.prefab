@@ -103,8 +103,8 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.000000059604645, y: -0.09826094}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.47, w: 0}
-    pivot: {x: 0.24816848, y: 0.61337876}
+    border: {x: 0, y: 0.29999998, z: 0.47, w: 0}
+    pivot: {x: 0.25916234, y: 0.60018617}
     oldSize: {x: 0.96, y: 1.44}
     newSize: {x: 0.96, y: 1.44}
     adaptiveTilingThreshold: 0.5
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 6
 --- !u!114 &2625567533213864408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,12 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ef8246f47974f40b157a2e93ef9eeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FurnitureType: 0
+  Index: 0
   triggerRenderer: {fileID: 0}
   isSelected: 0
   canArrangeMent: 1
   m_Material: {fileID: 0}
   m_SpriteRenderer: {fileID: 0}
-  Direction: 0
+  furnitureCollider: {fileID: 0}
+  furnitureRigidBody: {fileID: 0}
+  direction: 0
 --- !u!1 &2625567533435878825
 GameObject:
   m_ObjectHideFlags: 0
