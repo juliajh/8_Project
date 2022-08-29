@@ -50,9 +50,18 @@ public class UI_CarrotWrite : MonoBehaviour
         m_Image.gameObject.SetActive(true);
     }
 
+
+    
     public void Close()
     {
         Clear();
+        m_RawImage.gameObject.SetActive(false);
+
+        Image imageRemove = m_Image.GetComponent<Image>();
+
+        imageRemove.sprite = default;
+
+        Debug.Log("이미지 지워버러ㅕ");
         gameObject.SetActive(false);
     }
 
