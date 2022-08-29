@@ -12,5 +12,6 @@ public enum FurnitureType
     PhotoFrame = 5,
     Sofa = 6,
     Stand = 7,
-    Floor = 8,
+    Floor = 8
+    
 }
