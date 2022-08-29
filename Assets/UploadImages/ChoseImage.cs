@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using check;
+using Cysharp.Threading.Tasks;
 
 namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
 {
@@ -115,17 +116,10 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
                     contentImage.sprite = file.ToSprite(); // dont forget to delete unused objects to free memory!
 
                     WebGLFileBrowser.RegisterFileObject(contentImage.sprite); // add sprite with texture to cache list. should be used with  WebGLFileBrowser.FreeMemory() when its no need anymore
-                    ImageUploader
-                    .Initialize()
-                    //.SetUrl(serverUrl)
-                    //.SetTexture(imageSprite.sprite.texture)
-                    .SetTexture(contentImage.sprite.texture)
-                    .SetFieldName("file")
-                    .SetFileName("file")
-                    .SetType(ImageType.JPG)
-                    .OnError(error => Debug.Log(error))
-                    .OnComplete(text => Debug.Log(text))
-                    .Upload();
+                    SendFile();
+
+
+
                 }
                 else
                 {
@@ -140,6 +134,23 @@ namespace FrostweepGames.Plugins.WebGLFileBrowser.Examples
             }
         }
 
+
+
+
+        public async UniTaskVoid SendFile()
+        {
+            var response = await ImageUploader
+                .Initialize()
+                .SetTexture(contentImage.sprite.texture)
+                .SetFieldName("file")
+                .SetFileName("file")
+                .SetUrl("/ReturnFurnitureClass")
+                .SetType(ImageType.JPG)
+                .OnError(error => Debug.Log(error))
+                .OnComplete(text => Debug.Log(text))
+                .StartUploading();
+            Debug.Log("imageup");
+        }
         public void StartBtn()
         {
             //print("aa");
