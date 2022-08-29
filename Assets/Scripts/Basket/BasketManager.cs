@@ -43,15 +43,14 @@ public class BasketManager : MonoBehaviour
         }
 
         BasketChangeCallback?.Invoke();
-        RelativeLoadFunc();
+        OneRelativeLoad();
     }
     
     public void RemoveBasket(RecommendResponseData data)
     {
         BasketList.Remove(data);
-
         BasketChangeCallback?.Invoke();
-        RelativeLoadFunc();
+        OneRelativeDel(data);
     }
 
     public void SaveBtnClick()
@@ -104,19 +103,11 @@ public class BasketManager : MonoBehaviour
             }
         }
         BasketChangeCallback?.Invoke();
-        RelativeLoadFunc();
-    }
-    
-    public void RelativeLoadFunc()
-    {
         RelativeLoad();
-        RelativeChangeCallback?.Invoke();
     }
 
     public async UniTaskVoid RelativeLoad()
     {
-        Debug.Log("INININ");
-
         foreach (RecommendResponseData basketItem in BasketList)
         {
             RelativeRequestData relativeData = new RelativeRequestData
@@ -131,7 +122,7 @@ public class BasketManager : MonoBehaviour
                 int count = response.Data.Length;
 
                 var responseData = response.Data;
-
+                
                 for (int i = 0; i < count; ++i)
                 {
                     var data = responseData[i];
@@ -145,11 +136,46 @@ public class BasketManager : MonoBehaviour
                 }
             }
         }
-        
         RelativeChangeCallback?.Invoke();
     }
 
+    public async UniTaskVoid OneRelativeLoad()
+    {
+        RelativeRequestData relativeData = new RelativeRequestData
+        {
+            Title = BasketList[BasketList.Count-1].Title
+        };
 
+        var response = await NetManager.Post<ResponseRelativePacket>(new RequestRelativePacket(relativeData));
+
+        
+        if (response.Result)
+        {
+            int count = response.Data.Length;
+
+            var responseData = response.Data;
+
+            for (int i = 0; i < count; ++i)
+            {
+                var data = responseData[i];
+                Debug.Log(data.Title);
+                Debug.Log(data.Price);
+                Debug.Log(data.Link);
+                Debug.Log(data.Image);
+                Debug.Log(data.Relative);
+                RelativeList.Add(data);
+            }
+        }
+        RelativeChangeCallback?.Invoke();
+    }
+    
+    public async UniTaskVoid OneRelativeDel(RecommendResponseData deldata)
+    {
+        RelativeList.RemoveAll(d => d.Relative == deldata.Title);
+        
+        RelativeChangeCallback?.Invoke();
+    }
+    
     public void OnClickBasketAllDeleteButton()
     {
         BasketDelete();
@@ -165,7 +191,9 @@ public class BasketManager : MonoBehaviour
         }
 
         BasketChangeCallback?.Invoke();
-        RelativeLoadFunc();
+        RelativeList.Clear();
+        RelativeChangeCallback?.Invoke();
+        
     }
 
 }
