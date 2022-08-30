@@ -31,7 +31,7 @@ public class UI_BasketItem : MonoBehaviour
 
     IEnumerator DownloadImage(string MediaUrl)
     {
-        string url = MediaUrl;//.Replace("https://", "http://");
+        string url = $"{NetDefine.NET_SERVER_ADDR}/proxy/{MediaUrl}";
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)

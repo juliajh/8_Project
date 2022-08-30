@@ -34,12 +34,9 @@ public class UI_RecommendItem : MonoBehaviour
 
     IEnumerator DownloadImage(string MediaUrl)
     {
-        string url = MediaUrl;//.Replace("https://", "http://");
+        string url = $"{NetDefine.NET_SERVER_ADDR}/proxy/{MediaUrl}";
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
-        request.SetRequestHeader("Accept", "*/*");
-        request.SetRequestHeader("Accept-Encoding", "gzip, deflate");
-        request.SetRequestHeader("User-Agent", "runscope/0.1");
-        
+
         yield return request.SendWebRequest();
         if (request.isNetworkError || request.isHttpError)
         {
