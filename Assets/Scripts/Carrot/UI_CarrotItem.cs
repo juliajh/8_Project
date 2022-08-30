@@ -43,7 +43,9 @@ public class UI_CarrotItem : MonoBehaviour
 
     IEnumerator GetTexture(RawImage img, string image_name)
     {
-        var url = "http://www.mongilmongilgames.com/image/" + image_name;
+
+        string url = $"{NetDefine.NET_SERVER_ADDR}/proxy/http://www.mongilmongilgames.com/image/{image_name}";
+
         Debug.Log("url=="+url);
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();

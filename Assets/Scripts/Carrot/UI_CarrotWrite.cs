@@ -144,7 +144,7 @@ public class UI_CarrotWrite : MonoBehaviour
 
     IEnumerator GetTexture(RawImage img, string image_name)
     {
-        var url = "http://www.mongilmongilgames.com/image/" + image_name;
+        string url = $"{NetDefine.NET_SERVER_ADDR}/proxy/http://www.mongilmongilgames.com/image/{image_name}";
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();
         if (www.result != UnityWebRequest.Result.Success)
