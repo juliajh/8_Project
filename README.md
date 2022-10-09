@@ -18,15 +18,15 @@
 가구를 사고 팔 수 있는 커뮤니티가 있습니다. 딥러닝의 Image Classification을 통해 사용자가 올린 가구의 카테고리를 분류합니다.  <br>
 ![그림10](https://user-images.githubusercontent.com/54497150/193846942-2ac04035-1a52-455a-abfc-25cbb3a79808.gif)<br><br>
 
-## 개발 환경 및 활용 기술
+## 🛠개발 환경 및 활용 기술
 <img src="https://user-images.githubusercontent.com/54497150/193849397-b50eea6f-f75b-485b-9ec8-0f30db3fca84.png" width=700px height=400px>
 <br><br>
 
-## 아키텍처 
+## 💻아키텍처 
 <img src="https://user-images.githubusercontent.com/54497150/193849830-c4116488-a9ef-45f0-8ec9-c0bde4bdc496.png" width=700px height=400px>
 <br><br>
 
-## Contributors
+## 👋Contributors
 **PM**
 - 김홍일(현, 몽일몽일게임즈대표) @NoooJin <br>
 "안되면 되게하라! 성심, 성의, 정성, 정량"
